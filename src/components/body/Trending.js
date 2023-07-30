@@ -58,7 +58,7 @@ const Trending = () => {
         <div className='section'>
             <div className='heading'>
                 <div className='heading-left'>
-                    <h3>Trending</h3>
+                    <h3>Trending Movies</h3>
                     <button
                         className={(trendingData === 'day' ? active : notActive)}
                         onClick={handleButtonSelector}

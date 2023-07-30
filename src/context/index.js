@@ -15,15 +15,17 @@ class MyProvider extends Component {
         comingSoon: 'movie',
         popular: 'movie',
         popOutWindow: 'notActive',
+        popOutChannel: 'movie',
         popOutWindowId: '',
+        carouselData: 'movie',
     }
 
     handlePopOutWindow = (e) => {
         this.setState({
             popOutWindow: 'active',
             popOutWindowId: e.target.id,
+            popOutChannel: e.target.name,
         });
-        console.log(this.state.popOutWindowId);
     }
 
     handleClosePopOutWindow = () => {

@@ -21,9 +21,8 @@ const Popular = () => {
 
     async function getTrendingMovieData() {
         try {
-            const selector = state.popular;
+            const selector = popular;
             const response = await axios.get(`https://api.themoviedb.org/3/${selector}/popular?api_key=${apiKey}`);
-            // console.log(response.data);
             setPopularData(response.data.results);
         }
         catch (error) {
@@ -37,14 +36,18 @@ const Popular = () => {
                 <div
                     className='card-container'
                     onClick={handlePopOutWindow}
+                    name={popular}
                     key={item.id}
                     id={item.id}
                 >
                     <div className='card-container-img'>
-                        <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.title} id={item.id} />
-                        {/* <div className='rating'>
-                            <p>98%</p>
-                        </div> */}
+                        <img
+                            src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
+                            alt={item.title}
+                            id={item.id}
+                            name={popular}
+                        />
+
                     </div>
                     <div className='card-container-title' id={item.id}>
                         {(

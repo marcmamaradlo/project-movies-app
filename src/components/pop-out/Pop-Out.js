@@ -12,7 +12,6 @@ const PopOutComponent = () => {
     const apiKey = state.apiKey;
 
     const [popularData, setPopularData] = useState([]);
-    console.log(popularData);
 
     useEffect(() => {
         getTrendingMovieData() // eslint-disable-next-line
@@ -20,16 +19,14 @@ const PopOutComponent = () => {
 
     async function getTrendingMovieData() {
         try {
-            // const apiKey = '0b6d2ddf9c5e096294fa3534fb357915';
-            // const selector = state.comingSoon;
-            // const response = await axios.get(`https://api.themoviedb.org/3/movie/${popOutWindowId}?api_key=${apiKey}`);
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${popOutWindowId}?api_key=${apiKey}`);
-            // console.log(response.data);
+            const selector = state.popOutChannel;
+            const response = await axios.get(`https://api.themoviedb.org/3/${selector}/${popOutWindowId}?api_key=${apiKey}`);
             setPopularData(response.data);
         }
         catch (error) {
-            console.log(error);
+            console.log(error, 'No Data Mounted in State');
         }
+
     }
 
     const popOutDivStyle = {
@@ -61,9 +58,6 @@ const PopOutComponent = () => {
         )
     }
 
-    // const popOutComponent = () => {
-    // }
-
     const displayPopOutWindow = () => {
         return (
             popOutWindow === 'active'
@@ -72,7 +66,6 @@ const PopOutComponent = () => {
                     onClick={handleClosePopOutWindow}>
                     <div className='pop-out-container' style={{ ...popOutDivStyle }}>
                         <div className='pop-out-div'>
-                            {/* <img src={`https://image.tmdb.org/t/p/w1280${popularData.backdrop_path}`} alt={popularData.original_title} /> */}
                             <div
                                 className='pop-out-close-icon'
                                 onClick={handleClosePopOutWindow}
@@ -82,9 +75,12 @@ const PopOutComponent = () => {
                                 <img src={`https://image.tmdb.org/t/p/w300${popularData.poster_path}`} alt='some title' />
                             </div>
                             <div className='pop-out-details'>
-                                <p className='pop-out-details-title'>{popularData.title}</p>
+                                {(
+                                    state.popOutChannel === 'movie'
+                                        ? <p className='pop-out-details-title'>{popularData.title}</p>
+                                        : <p className='pop-out-details-title'>{popularData.name}</p>
+                                )}
                                 <p className='pop-out-details-overview'>{popularData.overview}<br /><br />{popularData.tagline}</p>
-                                {/* <p className='pop-out-details-tagline'>{popularData.tagline}</p> */}
                                 <div className='pop-out-details-details'>
                                     <p>{`Status: ${popularData.status}, ${(
                                         popularData.release_date
