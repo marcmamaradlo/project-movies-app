@@ -1,5 +1,5 @@
 import Banner from '../body/Banner';
-import Trending from "./Trending";
+// import Trending from "./Trending";
 // import RecentTrailers from "./Recent-Trailers";
 import Popular from './Popular';
 import ComingSoon from './Coming-Soon';
@@ -10,7 +10,7 @@ const Main = () => {
     return (
         <div className='container'>
             <Banner />
-            <Trending />
+            {/* <Trending /> */}
             {/* <RecentTrailers /> */}
             <Popular />
             <ComingSoon />

@@ -31,18 +31,9 @@ const BannerCarousel = () => {
             carouselData
                 ? carouselData.map((item) => (
                     <div className='carousel-card' style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/w780${item.backdrop_path})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        width: '26.5rem',
-                        height: '15rem',
-                        borderRadius: '5px',
-                        color: 'white'
+                        backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
                     }}>
-                        <p>{item.release_date}</p>
                         <h3>{item.title}</h3>
-                        {/* <img src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`} alt={item.title} /> */}
                     </div>
                 ))
                 : console.log('state is empty')
@@ -73,9 +64,9 @@ const BannerCarousel = () => {
         <div className='carousel-section'>
             <div className='heading'>
                 <div className='heading-left'>
-                    <h3 className='text-white'>Trending Movies</h3>
+                    <h3 className='text-white text-shadow'>Trending Movies</h3>
                 </div>
-                <p className='text-white'>view all <i className="fa-solid fa-arrow-right"></i></p>
+                <p className='text-white text-shadow'>view all <i className="fa-solid fa-arrow-right"></i></p>
             </div>
             <div className='carousel-card-container'>
                 <Carousel

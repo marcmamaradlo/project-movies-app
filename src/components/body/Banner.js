@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
+import Carousel from "react-multi-carousel";
 import BannerCarousel from "./Banner-Carousel";
 import axios from "axios";
 
@@ -11,42 +12,38 @@ const Banner = () => {
 
     const [bannerBGData, setBannerBGData] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
-    // const [finalData, setFinalData] = useState([]);
-
-    console.log(movieDetails);
-
-    // const checkFinalData = () => {
-    //     return movieDetails === true
-    //         ? `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`
-    //         : null
-    // }
 
     const bannerStyles = {
-        backgroundImage: [movieDetails
+        backgroundImage: movieDetails
             ? `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`
-            : null],
+            : `url(https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1712&q=80)`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
     }
 
     useEffect(() => {
-        bannerBGData.map((item) => (
-            setMovieDetails(item.id) // eslint-disable-next-line
-        ));
-        // checkFinalData(); // eslint-disable-next-line
-    }, [bannerBGData]);
-
-    useEffect(() => {
-        getTrendingMovieData() // eslint-disable-next-line
+        getBannerMovieData() // eslint-disable-next-line
     }, []);
 
-    async function getTrendingMovieData() {
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`);
-            setBannerBGData(response.data.results);
+    useEffect(() => {
+        getBGData() // eslint-disable-next-line
+    }, [bannerBGData])
 
-            const backgroundID = await axios.get(`https://api.themoviedb.org/3/movie/${movieDetails.toString()}?api_key=${apiKey}`);
+    async function getBannerMovieData() {
+        try {
+            const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`);
+            const random = Math.floor(Math.random() * 21);
+            setBannerBGData(response.data.results[random].id);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function getBGData() {
+        try {
+            const backgroundID = await axios.get(`https://api.themoviedb.org/3/movie/${bannerBGData}?api_key=${apiKey}`);
             setMovieDetails(backgroundID.data);
         }
         catch (error) {
@@ -54,20 +51,35 @@ const Banner = () => {
         }
     }
 
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 1
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 1
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 1
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
+
     return (
         <div className='banner-container'>
             <div className='banner' style={{ ...bannerStyles }}>
                 <div className='banner-div'>
                     <div className='banner-details'>
-                        <h2>Welcome!</h2>
-                        <p>Millions of movies, TV shows and people to discover. Explore now!</p>
-                        <div className='navbar-search'>
-                            <input type='text' id='searchInput' placeholder='Search...' />
-                            <button><i className="fa-solid fa-magnifying-glass"></i></button>
+                        <div className="banner-details-div">
+                            <h2 className='text-shadow'>{movieDetails.title}</h2>
                         </div>
-                        {/* <div className='banner-button'>
-                            <button>About API <i className="fa-solid fa-arrow-right"></i></button>
-                        </div> */}
+                        <p className='text-shadow'>{movieDetails.tagline}</p>
                     </div>
                 </div>
                 <div className='banner-carousel'>
