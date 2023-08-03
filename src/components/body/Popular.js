@@ -14,6 +14,7 @@ const Popular = () => {
     const handlePopOutWindow = context.handlePopOutWindow;
 
     const [popularData, setPopularData] = useState([]);
+    console.log(popularData);
 
     useEffect(() => {
         getTrendingMovieData() // eslint-disable-next-line

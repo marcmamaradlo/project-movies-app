@@ -29,10 +29,14 @@ const BannerCarousel = () => {
     const carouselImages = () => {
         return (
             carouselData
-                ? carouselData.map((item) => (
-                    <div className='carousel-card' style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
-                    }}>
+                ? carouselData.map((item, index) => (
+                    <div
+                        className='carousel-card'
+                        key={index}
+                        style={{
+                            backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
+                        }}
+                    >
                         <h3>{item.title}</h3>
                     </div>
                 ))
@@ -43,11 +47,11 @@ const BannerCarousel = () => {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
+            breakpoint: { max: 2560, min: 1440 },
             items: 3
         },
         desktop: {
-            breakpoint: { max: 3000, min: 1024 },
+            breakpoint: { max: 1440, min: 1024 },
             items: 3
         },
         tablet: {

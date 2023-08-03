@@ -51,7 +51,7 @@ const ComingSoon = () => {
         <div className='section'>
             <div className='heading'>
                 <div className='heading-left'>
-                    <h3>Coming Soon</h3>
+                    <h3>Recomendations</h3>
                 </div>
                 <p>view all <i className="fa-solid fa-arrow-right"></i></p>
             </div>

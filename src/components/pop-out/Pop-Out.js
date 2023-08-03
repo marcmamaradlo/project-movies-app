@@ -81,6 +81,17 @@ const PopOutComponent = () => {
                                         : <p className='pop-out-details-title'>{popularData.name}</p>
                                 )}
                                 <p className='pop-out-details-overview'>{popularData.overview}<br /><br /><span className='pop-out-details-tagline'>{popularData.tagline}</span></p>
+                                <div className='pop-out-buttons'>
+                                    <button
+
+                                    >
+                                        Trailer
+                                    </button>
+                                    <button
+                                    >
+                                        Watch Now
+                                    </button>
+                                </div>
                                 <div className='pop-out-details-details'>
                                     <p>{`Status: ${popularData.status}, ${(
                                         popularData.release_date

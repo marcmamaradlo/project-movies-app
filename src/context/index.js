@@ -18,6 +18,7 @@ class MyProvider extends Component {
         popOutChannel: 'movie',
         popOutWindowId: '',
         carouselData: 'movie',
+        videoID: '614479',
     }
 
     handlePopOutWindow = (e) => {

@@ -12,6 +12,7 @@ const Trending = () => {
     const notActive = 'heading-left-button';
 
     const [dataTrending, setDataTrending] = useState([]);
+    console.log(dataTrending);
 
     useEffect(() => {
         getTrendingMovieData('movie') // eslint-disable-next-line

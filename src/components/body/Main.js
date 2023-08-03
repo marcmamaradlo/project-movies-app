@@ -4,6 +4,7 @@ import Banner from '../body/Banner';
 import Popular from './Popular';
 import ComingSoon from './Coming-Soon';
 import PopOutComponent from '../pop-out/Pop-Out';
+import DynamicPage from '../main-dynamic-page/Dynamic-Page';
 
 const Main = () => {
 
@@ -15,6 +16,7 @@ const Main = () => {
             <Popular />
             <ComingSoon />
             <PopOutComponent />
+            <DynamicPage />
         </div>
     )
 }

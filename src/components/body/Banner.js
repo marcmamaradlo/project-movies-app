@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
-import Carousel from "react-multi-carousel";
 import BannerCarousel from "./Banner-Carousel";
 import axios from "axios";
 
@@ -12,6 +11,7 @@ const Banner = () => {
 
     const [bannerBGData, setBannerBGData] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
+
 
     const bannerStyles = {
         backgroundImage: movieDetails
@@ -50,26 +50,6 @@ const Banner = () => {
             console.log(error);
         }
     }
-
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 1
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 1
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 1
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1
-        }
-    };
 
     return (
         <div className='banner-container'>
