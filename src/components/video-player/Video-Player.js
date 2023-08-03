@@ -8,7 +8,7 @@ const VideoPlayer = () => {
     const defaultURL = 'https://vidsrc.to/embed/movie'
     return (
         <>
-            <iframe src={`${defaultURL}/${state.videoID}`} id='video-player' name='video-player'>
+            <iframe src={`${defaultURL}/${state.videoID}`} id='video-player' name='video-player' title='video-player'>
 
             </iframe>
         </>
