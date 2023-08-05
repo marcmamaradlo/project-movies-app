@@ -37,7 +37,7 @@ const Banner = () => {
             setBannerBGData(response.data.results[random].id);
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -47,7 +47,7 @@ const Banner = () => {
             setMovieDetails(backgroundID.data);
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 

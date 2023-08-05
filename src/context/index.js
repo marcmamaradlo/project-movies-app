@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import axios from 'axios';
 
 const MyContext = React.createContext();
 
@@ -8,6 +9,7 @@ class MyProvider extends Component {
         value: 0,
         hoverEffect: false,
         apiKey: '0b6d2ddf9c5e096294fa3534fb357915',
+        displayComponent: 'main',
         bgSrc: 'https://images.unsplash.com/photo-1454117096348-e4abbeba002c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         apiData: [],
         trendingData: 'day',
@@ -19,6 +21,19 @@ class MyProvider extends Component {
         popOutWindowId: '',
         carouselData: 'movie',
         videoID: '614479',
+        youtubeComponentID: '',
+        youtubePopOut: false,
+    }
+
+    handleYoutubeComponent = (e) => {
+        this.setState({
+            youtubeComponentID: e.target.id,
+            youtubePopOut: true
+        })
+    }
+
+    handleDisplayComponent = (e) => {
+        this.setState({ displayComponent: e.target.id })
     }
 
     handlePopOutWindow = (e) => {
@@ -30,7 +45,10 @@ class MyProvider extends Component {
     }
 
     handleClosePopOutWindow = () => {
-        this.setState({ popOutWindow: 'notActive' });
+        this.setState({
+            popOutWindow: 'notActive',
+            youtubePopOut: false
+        });
     }
 
     handleButtonSelector = (e) => {
@@ -60,7 +78,7 @@ class MyProvider extends Component {
             {
                 state,
                 handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
-                handlePopOutWindow,
+                handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
             } = this;
 
         return (
@@ -68,7 +86,7 @@ class MyProvider extends Component {
                 value={{
                     state, value, bgSrc, apiData, apiKey,
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
-                    handlePopOutWindow,
+                    handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

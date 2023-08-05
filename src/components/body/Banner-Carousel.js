@@ -88,7 +88,7 @@ const BannerCarousel = () => {
                     customTransition="all 1s"
                     transitionDuration={500}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+                    removeArrowOnDeviceType={["tablet", "mobile", "desktop", "superLargeDesktop"]}
                     // deviceType={this.props.deviceType}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px"

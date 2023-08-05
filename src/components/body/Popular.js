@@ -12,9 +12,9 @@ const Popular = () => {
     const active = 'heading-left-button-active';
     const notActive = 'heading-left-button';
     const handlePopOutWindow = context.handlePopOutWindow;
+    const handleDisplayComponent = context.handleDisplayComponent;
 
     const [popularData, setPopularData] = useState([]);
-    console.log(popularData);
 
     useEffect(() => {
         getTrendingMovieData() // eslint-disable-next-line
@@ -25,6 +25,7 @@ const Popular = () => {
             const selector = popular;
             const response = await axios.get(`https://api.themoviedb.org/3/${selector}/popular?api_key=${apiKey}`);
             setPopularData(response.data.results);
+            // 
         }
         catch (error) {
             console.log(error);
@@ -102,7 +103,7 @@ const Popular = () => {
                         TV Shows
                     </button>
                 </div>
-                <p>view all <i className="fa-solid fa-arrow-right"></i></p>
+                <p id='view-all' name='popular' onClick={handleDisplayComponent}>view all <i className="fa-solid fa-arrow-right"></i></p>
             </div>
             <div className='popular'>
                 {popularComponent()}

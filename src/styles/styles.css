@@ -60,6 +60,11 @@ font-family: 'Antonio', sans-serif;
         color: white;
     }
 
+    .box-shadow {
+        /* border: 3px solid #e5be1a; */
+        box-shadow: -1px 10px 20px 10px lightgray;
+    }
+
     /* Heading Start */
     .heading {
         display: flex;
@@ -334,6 +339,71 @@ font-family: 'Antonio', sans-serif;
         color: white;
     }
 
+    .recent-trailer {
+        border-radius: 5px;
+        height: 50vh;
+    }
+
+    .recent-trailer-div {
+        display: flex;
+        align-items: center;
+        margin: 0 2rem;
+        color: white;
+        height: 93%;
+        backdrop-filter: blur(5px) grayscale(50%);
+    }
+
+    .trailer-card-container {
+        height: auto;
+        margin-right: 1rem;
+    }
+
+    .trailer-card-container-img {
+        border-radius: 5px;
+        height: 90%;
+        width: 25rem;
+        position: relative;
+    }
+
+    .trailer-card-container-img:hover {
+        /* box-shadow: 1px 10px 20px 1px rgb(0, 0, 0); */
+    }
+
+    .trailer-card-container-img img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .trailer-card-container-title {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    .trailer-card-container-title p {
+        padding: 0;
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+        height: 2.5rem;
+        font-weight: 700;
+    }
+
+    .trailer-card-container-img i {
+        position: absolute;
+        top: 40%;
+        left: 45%;
+        font-size: 3.5rem;
+        color: white;
+    }
+
+    .trailer-card-container-img i:hover {
+        /* top: 41%; */
+        font-size: 3.8rem;
+        transition: all 200ms;
+    }
+
     .trending,
     .recent-trailer-div,
     .popular,
@@ -343,7 +413,7 @@ font-family: 'Antonio', sans-serif;
         border-radius: 5px;
         overflow-x: scroll;
         margin: 0;
-        padding: 2rem 0;
+        padding: 2rem;
         scrollbar-width: thin;
     }
 
@@ -358,12 +428,12 @@ font-family: 'Antonio', sans-serif;
     }
 
     /* Chrome, Edge, and Safari */
-    .trending::-webkit-scrollbar,
+    /* .trending::-webkit-scrollbar,
     .recent-trailer-div::-webkit-scrollbar,
     .popular::-webkit-scrollbar,
     .coming-soon::-webkit-scrollbar {
         width: 13px;
-    }
+    } */
 
     .trending::-webkit-scrollbar-track,
     .recent-trailer-div::-webkit-scrollbar-track,
@@ -372,14 +442,14 @@ font-family: 'Antonio', sans-serif;
         background: #ffffff;
     }
 
-    .trending::-webkit-scrollbar-thumb,
+    /* .trending::-webkit-scrollbar-thumb,
     .recent-trailer-div::-webkit-scrollbar-thumb,
     .popular::-webkit-scrollbar-thumb,
     .coming-soon::-webkit-scrollbar-thumb {
         background-color: #282726;
         border-radius: 10px;
         border: 3px solid #ffffff;
-    }
+    } */
 
     /* Card Container Start  */
     .card-container {
@@ -411,12 +481,6 @@ font-family: 'Antonio', sans-serif;
 
     /* .card-container-title {} */
 
-    .card-container-year {
-        height: 1.5rem;
-        font-family: 'Work', sans-serif;
-        font-weight: 600;
-    }
-
     .card-container-title p {
         margin-top: 1rem;
         padding-top: 0;
@@ -425,13 +489,30 @@ font-family: 'Antonio', sans-serif;
         font-weight: 700;
     }
 
+    .card-container-year {
+        height: 1.5rem;
+        font-family: 'Work', sans-serif;
+        font-weight: 600;
+    }
+
+    .card-container-icons {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Work', sans-serif;
+        color: #e5be1a;
+    }
+
+    .card-container-icons p {
+        padding-right: 0.5rem;
+    }
+
     /* Card Container End  */
 
     /* Pop out Component Start */
 
     .display-none {
         display: none;
-        transition: 300ms;
+        transition: all 300ms;
     }
 
     .pop-out {
@@ -535,6 +616,7 @@ font-family: 'Antonio', sans-serif;
         margin-right: 1rem;
         border-radius: 5px;
         border: 1px solid #282726;
+        cursor: pointer;
     }
 
     .pop-out-image-container {
@@ -623,25 +705,27 @@ font-family: 'Antonio', sans-serif;
     .dynamic-details-title {
         font-family: 'Raleway', sans-serif;
         font-size: 2rem;
-        margin: 0 0 0.5rem 0;
+        margin: 0;
     }
 
     .dynamic-details-title-icons {
         display: flex;
         align-items: center;
-        margin: -1rem 0 0.5rem 0;
+        margin: -1rem 0 0 0;
         font-family: 'Work Sans', sans-serif;
     }
 
     .dynamic-details-title-icons span,
     .dynamic-details-title-icons p {
-        padding-right: 0.5rem;
+        padding-right: 0.7rem;
     }
 
     .dynamic-details-overview {
         font-family: 'Raleway', sans-serif;
         font-size: 1rem;
         margin: 0 0 2rem 0;
+        text-align: left;
+        word-spacing: 2px;
     }
 
     .dynamic-details-details .details {
@@ -664,6 +748,50 @@ font-family: 'Antonio', sans-serif;
     }
 
     /* Dynamic Banner Component End */
+
+    /* View All Component Start */
+    .view-all {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .view-all .card-container {
+        margin: 0 0 2rem 0;
+        width: 192px;
+    }
+
+    .view-all .card-container-title p {
+        margin-top: 0;
+    }
+
+    /* View All Component End */
+
+    /* Pagenation Component Start */
+    .pagenation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid white;
+        height: 4rem;
+    }
+
+    .pagenation p {
+        margin: 0 0.5rem;
+        font-size: 1.1rem;
+        width: 1rem;
+        font-family: 'Work Sans', sans-serif;
+    }
+
+    .pagenation p:hover {
+        font-size: 1.5rem;
+        transition: all 200ms;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    /* Pagenation Component End */
 
     /* Footer Start */
     .footer {
@@ -728,6 +856,39 @@ font-family: 'Antonio', sans-serif;
     }
 
     /* Footer End */
+
+    /* Youtube Component Start */
+    .youtube-component {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.99);
+        backdrop-filter: blur(5px) grayscale(100%);
+
+    }
+
+    .trailer-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+    .youtube-player {
+        width: 70%;
+        height: 70%;
+    }
+
+    /* Youtube Component End */
 }
 
 

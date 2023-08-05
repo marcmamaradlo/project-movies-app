@@ -18,8 +18,9 @@ const DynamicPage = () => {
                             <div className='dynamic-details-title-icons'>
                                 <p><span className="material-symbols-outlined">hd</span></p>
                                 <p><i className="fa-solid fa-star"></i> 5.0</p>
-                                <p><i class="fa-solid fa-clock"></i> 2Hr</p>
-                                <p><i class="fa-regular fa-calendar-days"></i> 2023</p>
+                                <p><i className="fa-solid fa-clock"></i> 2hr</p>
+                                <p><i className="fa-solid fa-volume-off"></i> 2.1</p>
+                                <p><i className="fa-regular fa-calendar-days"></i> 2023</p>
                             </div>
                             <p className='dynamic-details-overview'>When a goddess of war reincarnates in the body of a young girl, street orphan Seiya discovers that he is destined to protect her and save the world. But only if he can face his own past and become a Knight of the Zodiac. </p>
                             <div className='dynamic-details-details'>
@@ -42,6 +43,10 @@ const DynamicPage = () => {
                                 <div>
                                     <p className='details'>Homepage: </p>
                                     <p className='tags'><a href='someWebsite'>simplecodesph.website</a></p>
+                                </div>
+                                <div>
+                                    <p className='details'>Tags: </p>
+                                    {/* <p className='tags'><a href='someWebsite'>simplecodesph.website</a></p> */}
                                 </div>
                             </div>
                         </div>

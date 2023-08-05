@@ -24,9 +24,8 @@ const PopOutComponent = () => {
             setPopularData(response.data);
         }
         catch (error) {
-            console.log(error, 'No Data Mounted in State');
+            // console.log(error, 'No Data Mounted in State');
         }
-
     }
 
     const popOutDivStyle = {

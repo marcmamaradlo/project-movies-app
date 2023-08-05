@@ -9,12 +9,13 @@ const VideoPlayer = () => {
     return (
         <>
             <iframe
+                allowFullScreen
                 src={`${defaultURL}/${state.videoID}`}
                 id='video-player'
                 name='video-player'
                 title='video-player'
             >
-
+                Video Player
             </iframe>
         </>
     )
