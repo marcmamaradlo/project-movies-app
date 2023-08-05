@@ -931,3 +931,30 @@ font-family: 'Antonio', sans-serif;
         font-size: 1rem;
     }
 }
+
+@media screen and (max-width: 1440px) {
+
+    .section {
+        width: 90%;
+    }
+
+    .navbar,
+    .banner-div,
+    .banner-carousel {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .section {
+        width: 95%;
+    }
+
+    .navbar,
+    .banner-div,
+    .banner-carousel {
+        width: 95%;
+    }
+}
