@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import Banner from '../body/Banner';
 // import Trending from "./Trending";
 import RecentTrailers from "./Recent-Trailers";
@@ -7,12 +7,12 @@ import ComingSoon from './Coming-Soon';
 import PopOutComponent from '../pop-out/Pop-Out';
 // import DynamicPage from '../main-dynamic-page/Dynamic-Page';
 // import ViewAll from '../view-all-page/View-All-Page';
-import { MyContext } from '../../context';
+// import { MyContext } from '../../context';
 
 const Main = () => {
 
-    const context = useContext(MyContext);
-    const state = context.state;
+    // const context = useContext(MyContext);
+    // const state = context.state;
 
     const handleShowComponent = () => {
         return (
