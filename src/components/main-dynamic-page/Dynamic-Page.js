@@ -1,56 +1,63 @@
-// import VideoPlayer from "../video-player/Video-Player";
-import ComingSoon from "../body/Coming-Soon";
+import { useContext, useState, useEffect } from "react";
+import { MyContext } from "../../context";
+import axios from "axios";
+import DynamicContent from "./Dynamic-Content";
 import DynamicBanner from "./Dynamic-Banner";
+import ComingSoon from "../body/Coming-Soon";
 const DynamicPage = () => {
+
+    window.scrollTo({
+        top: '0',
+        behavior: 'smooth'
+    })
+
+    const [dynamicData, setDynamicData] = useState([]);
+    const [dynamicKeywords, setDynamicKeywords] = useState([]);
+    const context = useContext(MyContext);
+    const state = context.state;
+    const apiKey = state.apiKey;
+    const popular = state.popular;
+    const popOutWindow = state.popOutWindow;
+
+    useEffect(() => {
+        getDynamicPageData(); // eslint-disable-next-line
+        handleWindowScrollingY(); // eslint-disable-next-line
+    }, [popular]);
+
+    async function getDynamicPageData() {
+        try {
+            const dynamicPageDataID = state.dynamicPageDataID
+            const selector = popular;
+            const dataDetailes = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}?api_key=${apiKey}`);
+            setDynamicData(dataDetailes.data);
+            const dataKeywords = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}/keywords?api_key=${apiKey}`);
+            setDynamicKeywords(dataKeywords.data.keywords);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleWindowScrollingY = () => {
+        if (popOutWindow === 'active') {
+            return document.body.style.overflowY = 'hidden'
+        }
+        if (popOutWindow === 'notActive') {
+            return document.body.style.overflowY = 'scroll'
+        }
+        else {
+            return document.body.style.overflowY = 'scroll'
+        }
+    }
+
     return (
         <>
             <div className='container'>
-                <DynamicBanner />
+                <DynamicBanner data={dynamicData} />
             </div>
             <div className='container bg-dark'>
                 <div className='section'>
-                    <div className='dynamic-container'>
-                        <div className='dynamic-image-container'>
-                            <img src='https://images.unsplash.com/photo-1602248003575-934425e8088d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80' alt='some title' />
-                        </div>
-                        <div className='dynamic-details'>
-                            <p className='dynamic-details-title'>Knights of the Zodiac</p>
-                            <div className='dynamic-details-title-icons'>
-                                <p><span className="material-symbols-outlined">hd</span></p>
-                                <p><i className="fa-solid fa-star"></i> 5.0</p>
-                                <p><i className="fa-solid fa-clock"></i> 2hr</p>
-                                <p><i className="fa-solid fa-volume-off"></i> 2.1</p>
-                                <p><i className="fa-regular fa-calendar-days"></i> 2023</p>
-                            </div>
-                            <p className='dynamic-details-overview'>When a goddess of war reincarnates in the body of a young girl, street orphan Seiya discovers that he is destined to protect her and save the world. But only if he can face his own past and become a Knight of the Zodiac. </p>
-                            <div className='dynamic-details-details'>
-                                <div>
-                                    <p className='details'>Status: </p>
-                                    <p className='tags'>Released, 2023</p>
-                                </div>
-                                <div>
-                                    <p className='details'>Genre: </p>
-                                    <p className='tags'><a href='/'>Action</a>, <a href='/'>Fantasy</a>, <a href='/'>Documentary</a></p>
-                                </div>
-                                <div>
-                                    <p className='details'>Language: </p>
-                                    <p className='tags'>English</p>
-                                </div>
-                                <div>
-                                    <p className='details'>Cast: </p>
-                                    <p className='tags'><a href='/'>D' One</a>, <a href='/'>Edwin Fernandez</a>, <a href='/'>Marc Mamaradlo</a></p>
-                                </div>
-                                <div>
-                                    <p className='details'>Homepage: </p>
-                                    <p className='tags'><a href='someWebsite'>simplecodesph.website</a></p>
-                                </div>
-                                <div>
-                                    <p className='details'>Tags: </p>
-                                    {/* <p className='tags'><a href='someWebsite'>simplecodesph.website</a></p> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <DynamicContent data={dynamicData} keywords={dynamicKeywords} />
                 </div>
             </div>
             <div className='container bg-dark'>

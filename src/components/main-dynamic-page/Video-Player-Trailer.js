@@ -2,12 +2,12 @@ import { useContext, useState, useEffect } from "react";
 import { MyContext } from "../../context";
 import axios from "axios";
 import YouTube from 'react-youtube';
-const YoutubeComponent = () => {
+const YoutubePlayerTrailer = () => {
 
     const context = useContext(MyContext);
     const state = context.state;
     const youtubeComponentID = state.youtubeComponentID;
-    const handleClosePopOutWindow = context.handleClosePopOutWindow;
+    // const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [videoData, setVideoData] = useState([]);
     console.log(videoData);
 
@@ -35,7 +35,7 @@ const YoutubeComponent = () => {
                 key={youtubeComponentID.id}
                 videoId={youtubeID.key}
                 opts={opts}
-                className={'youtube-player'}
+                className='dynamic-player-trailer'
             />
             : null
         )
@@ -52,15 +52,9 @@ const YoutubeComponent = () => {
 
     return (
         state.youtubePopOut
-            ? <div
-                onClick={handleClosePopOutWindow}
-                className='youtube-component'>
-                <div className='trailer-container'>
-                    {handleTrailerVideoID()}
-                </div>
-            </div>
+            ? handleTrailerVideoID()
             : null
     )
 }
 
-export default YoutubeComponent;
+export default YoutubePlayerTrailer;

@@ -20,9 +20,41 @@ class MyProvider extends Component {
         popOutChannel: 'movie',
         popOutWindowId: '',
         carouselData: 'movie',
-        videoID: '614479',
+        videoID: '', // movie ID in dynamic-page[Dynamic-Banner] '614479'
         youtubeComponentID: '',
         youtubePopOut: false,
+        dynamicPageDataID: '',
+        dynamicPageData: '', //'watch-now'
+        dynamicPageDataType: 'movie', // 'tv'
+    }
+
+    handleDynamicContentButton = (e) => {
+        if (e.target.name === 'trailer') {
+            this.setState({ youtubePopOut: true });
+        }
+        this.setState({
+            dynamicPageData: e.target.name,
+            youtubeComponentID: e.target.id,
+        });
+        console.log(this.state.youtubeComponentID)
+    }
+
+    handlePopOutTrailerButton = (e) => {
+        console.log('Trailer Button', e.target.id);
+        this.setState({
+            dynamicPageDataID: e.target.id,
+            dynamicPageData: 'trailer',
+            popOutWindow: 'notActive',
+        });
+    }
+
+    handlePopOutWatchNowButton = (e) => {
+        console.log('Watch Now Button', e.target.name);
+        this.setState({
+            dynamicPageDataID: e.target.name,
+            dynamicPageData: 'watch-now',
+            popOutWindow: 'notActive',
+        });
     }
 
     handleYoutubeComponent = (e) => {
@@ -79,6 +111,7 @@ class MyProvider extends Component {
                 state,
                 handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
+                handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton
             } = this;
 
         return (
@@ -87,6 +120,7 @@ class MyProvider extends Component {
                     state, value, bgSrc, apiData, apiKey,
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
+                    handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

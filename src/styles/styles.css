@@ -664,23 +664,25 @@ font-family: 'Antonio', sans-serif;
         align-items: center;
         justify-content: center;
         /* border: 1px solid black; */
+        backdrop-filter: blur(5px), grayscale(100%);
         width: 100%;
         height: 70vh;
+        /* border: 1px solid red; */
     }
 
     .dynamic-banner div {
         color: white;
         /* border: 1px solid white; */
-        border-radius: 5px;
-        box-shadow: 2px 2px 20px 1px black;
-        height: 90%;
-        width: 70%;
+        /* border-radius: 5px; */
+        /* box-shadow: 2px 2px 20px 1px black; */
+        height: 95%;
+        /* width: 70%; */
     }
 
-    .dynamic-banner div:hover {
+    /* .dynamic-banner div:hover {
         box-shadow: 2px 2px 20px 1px grey;
         transition: 200ms;
-    }
+    } */
 
     .dynamic-container {
         display: flex;
@@ -695,6 +697,28 @@ font-family: 'Antonio', sans-serif;
         width: 100%;
         height: auto;
         border-radius: 5px;
+    }
+
+    .dynamic-button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.3rem;
+    }
+
+    .dynamic-button-container button {
+        width: 48.5%;
+        background-color: silver;
+        border-radius: 3px;
+        height: 2rem;
+        outline: none;
+        border: none;
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 600;
+        color: #282726;
+    }
+
+    .dynamic-button-container button:hover {
+        background-color: white;
     }
 
     .dynamic-details {
@@ -721,30 +745,68 @@ font-family: 'Antonio', sans-serif;
     }
 
     .dynamic-details-overview {
-        font-family: 'Raleway', sans-serif;
-        font-size: 1rem;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 1.2rem;
         margin: 0 0 2rem 0;
         text-align: left;
         word-spacing: 2px;
+        font-weight: 300;
     }
 
     .dynamic-details-details .details {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
         width: 7rem;
+        height: 100%;
+        /* border: 1px solid white; */
+    }
+
+    .dynamic-details-details .tags {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        line-break: 1rem;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid white; */
     }
 
     .dynamic-details-details div {
         display: flex;
-        height: 2rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0;
+        margin: 0;
+        height: 3rem;
         font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        /* border: 1px solid red; */
+    }
+
+    .details p,
+    .tags p,
+    .tags a {
+        padding: 0;
+        margin: 0;
     }
 
     .dynamic-details-details a {
         text-decoration: none;
         color: white;
+        /* border: 1px solid blue; */
     }
 
     .dynamic-details-details a:hover {
         text-decoration: underline;
+    }
+
+    .dynamic-player-trailer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     /* Dynamic Banner Component End */
@@ -956,5 +1018,71 @@ font-family: 'Antonio', sans-serif;
     .banner-div,
     .banner-carousel {
         width: 95%;
+    }
+
+    .dynamic-container {
+        flex-direction: column;
+    }
+
+    .dynamic-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .dynamic-image-container img {
+        width: 70%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .dynamic-button-container {
+        width: 70%;
+    }
+
+    .dynamic-details {
+        margin: 0;
+    }
+
+    .dynamic-details-details div {
+        height: auto;
+    }
+
+    .dynamic-details-details .details {
+        width: 10rem;
+    }
+
+    .coming-soon,
+    .popular {
+        padding: 2rem 0;
+    }
+
+    .pop-out-details {
+        margin: 0 0 0 1rem;
+        width: 95%;
+    }
+
+    .pop-out-buttons {
+        margin: 1rem 0;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .dynamic-image-container {
+        width: 100%;
+        width: 100%;
+    }
+
+    .dynamic-banner div {
+        height: 70%;
+    }
+
+    iframe {
+        height: 70%;
     }
 }

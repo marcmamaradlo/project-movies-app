@@ -5,8 +5,8 @@ import RecentTrailers from "./Recent-Trailers";
 import Popular from './Popular';
 import ComingSoon from './Coming-Soon';
 import PopOutComponent from '../pop-out/Pop-Out';
-import DynamicPage from '../main-dynamic-page/Dynamic-Page';
-import ViewAll from '../view-all-page/View-All-Page';
+// import DynamicPage from '../main-dynamic-page/Dynamic-Page';
+// import ViewAll from '../view-all-page/View-All-Page';
 import { MyContext } from '../../context';
 
 const Main = () => {
@@ -16,17 +16,15 @@ const Main = () => {
 
     const handleShowComponent = () => {
         return (
-            state.displayComponent === 'view-all'
-                ? <ViewAll />
-                : <>
-                    <Banner />
-                    <Popular />
-                    <RecentTrailers />
-                    <ComingSoon />
-                    <PopOutComponent />
-                    <DynamicPage />
-                    <ViewAll />
-                </>
+            <>
+                <Banner />
+                <Popular />
+                <RecentTrailers />
+                <ComingSoon />
+                <PopOutComponent />
+                {/* <DynamicPage /> */}
+                {/* <ViewAll /> */}
+            </>
         )
     }
 

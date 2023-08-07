@@ -1,8 +1,11 @@
 import { useEffect, useContext, useState } from "react";
 import { MyContext } from "../../context";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const PopOutComponent = () => {
+
+
 
     const context = useContext(MyContext);
     const state = context.state;
@@ -10,12 +13,26 @@ const PopOutComponent = () => {
     const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const popOutWindowId = state.popOutWindowId;
     const apiKey = state.apiKey;
+    const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
+    const handlePopOutWatchNowButton = context.handlePopOutWatchNowButton;
 
     const [popularData, setPopularData] = useState([]);
 
     useEffect(() => {
         getTrendingMovieData() // eslint-disable-next-line
     }, [popOutWindowId]);
+
+    const handleWindowScrollingY = () => {
+        if (popOutWindow === 'active') {
+            return document.body.style.overflowY = 'hidden'
+        }
+        if (popOutWindow === 'notActive') {
+            return document.body.style.overflowY = 'scroll'
+        }
+        else {
+            return document.body.style.overflowY = 'scroll'
+        }
+    }
 
     async function getTrendingMovieData() {
         try {
@@ -81,29 +98,22 @@ const PopOutComponent = () => {
                                 )}
                                 <p className='pop-out-details-overview'>{popularData.overview}<br /><br /><span className='pop-out-details-tagline'>{popularData.tagline}</span></p>
                                 <div className='pop-out-buttons'>
-                                    <button
-
-                                    >
-                                        Trailer
-                                    </button>
-                                    <button
-                                    >
-                                        Watch Now
-                                    </button>
+                                    <Link to='dynamic-page'><button id={popularData.id} onClick={handlePopOutTrailerButton}>Trailer</button></Link>
+                                    <Link to='dynamic-page'><button name={popularData.id} onClick={handlePopOutWatchNowButton}>Watch Now</button></Link>
                                 </div>
                                 <div className='pop-out-details-details'>
-                                    <p>{`Status: ${popularData.status}, ${(
+                                    {/* <p>{`Status: ${popularData.status}, ${(
                                         popularData.release_date
                                             ? popularData.release_date.split('-')[0]
                                             : null
-                                    )}`}</p>
+                                    )}`}</p> */}
                                     <div className='pop-out-details-details-div'>
                                         <p>{`Genre: ${popularDataGanres()}`}</p>
                                     </div>
                                     <div className='pop-out-details-details-div'>
                                         <p>{`Language: ${popularDataLanguages()}`}</p>
                                     </div>
-                                    <p>Homepage: <a href={popularData.homepage}>{popularData.homepage}</a></p>
+                                    {/* <p>Homepage: <a href={popularData.homepage}>{popularData.homepage}</a></p> */}
                                 </div>
                             </div>
                         </div>
@@ -112,6 +122,8 @@ const PopOutComponent = () => {
                 : null
         )
     }
+
+    handleWindowScrollingY()
     return (
         <>
             {displayPopOutWindow()}
