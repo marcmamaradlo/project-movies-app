@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className='container bg-dark'>
+        <div className='container navbar-bg-dark'>
             <div className='navbar'>
                 <div className='navbar-logo'>
                     <p><Link to='/'>MoviesDB</Link></p>

@@ -7,13 +7,25 @@ const YoutubeComponent = () => {
     const context = useContext(MyContext);
     const state = context.state;
     const youtubeComponentID = state.youtubeComponentID;
+    const youtubePopOut = state.youtubePopOut;
     const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [videoData, setVideoData] = useState([]);
-    console.log(videoData);
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line
-    }, []);
+    }, [youtubeComponentID]);
+
+    const handleWindowScrollingY = () => {
+        if (youtubePopOut === true) {
+            return document.body.style.overflowY = 'hidden'
+        }
+        if (youtubePopOut === false) {
+            return document.body.style.overflowY = 'scroll'
+        }
+        else {
+            return document.body.style.overflowY = 'scroll'
+        }
+    }
 
     async function getVideoData() {
         try {
@@ -29,7 +41,6 @@ const YoutubeComponent = () => {
 
     const handleTrailerVideoID = () => {
         const youtubeID = videoData.find(video => video.type === 'Trailer');
-        console.log(youtubeID);
         return (youtubeID
             ? <YouTube
                 key={youtubeComponentID.id}
@@ -49,6 +60,8 @@ const YoutubeComponent = () => {
             modestbranding: 1,
         },
     };
+
+    handleWindowScrollingY();
 
     return (
         state.youtubePopOut

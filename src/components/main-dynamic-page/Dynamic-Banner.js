@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MyContext } from "../../context";
+// import BannerNavbar from "../navbar/Banner-Navbar";
 import VideoPlayer from "../video-player/Video-Player";
 import YoutubePlayerTrailer from "./Video-Player-Trailer";
 
@@ -26,6 +27,11 @@ const DynamicBanner = ({ data }) => {
 
     return (
         <div className='dynamic-banner' style={{ ...dynamicBannerBackground }}>
+            {/* <div className='banner-container'> */}
+            {/* <div className='banner'> */}
+            {/* <BannerNavbar /> */}
+            {/* </div> */}
+            {/* </div> */}
             <div className='section'>
                 {showDisplay()}
             </div>

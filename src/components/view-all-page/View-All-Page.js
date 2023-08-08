@@ -9,8 +9,6 @@ const ViewAll = () => {
         });
     }, [])
 
-
-
     return (
         <div className='container bg-dark' id='view-all'>
             <div className='section'>

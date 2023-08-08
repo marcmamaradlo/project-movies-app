@@ -9,6 +9,7 @@ class MyProvider extends Component {
         value: 0,
         hoverEffect: false,
         apiKey: '0b6d2ddf9c5e096294fa3534fb357915',
+        navbarSearchFocus: false,
         displayComponent: 'main',
         bgSrc: 'https://images.unsplash.com/photo-1454117096348-e4abbeba002c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         apiData: [],
@@ -26,6 +27,14 @@ class MyProvider extends Component {
         dynamicPageDataID: '',
         dynamicPageData: '', //'watch-now'
         dynamicPageDataType: 'movie', // 'tv'
+    }
+
+    handleNavbarSearchBlur = () => {
+        this.setState({ navbarSearchFocus: false });
+    }
+
+    handleNavbarSearchFocus = () => {
+        this.setState({ navbarSearchFocus: true });
     }
 
     handleDynamicContentButton = (e) => {
@@ -111,7 +120,8 @@ class MyProvider extends Component {
                 state,
                 handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
-                handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton
+                handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
+                handleNavbarSearchFocus, handleNavbarSearchBlur,
             } = this;
 
         return (
@@ -121,6 +131,7 @@ class MyProvider extends Component {
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
+                    handleNavbarSearchFocus, handleNavbarSearchBlur,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

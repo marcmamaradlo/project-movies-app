@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../context";
 import axios from "axios";
-
 import YoutubeComponent from "../video-player/Youtube-Component";
 
 const RecentTrailers = () => {
@@ -39,8 +38,10 @@ const RecentTrailers = () => {
     }
 
     const trailerCarouselData = () => {
-        return movieTrailerData.map((item, index) => (
-            <div className='trailer-card-container' key={item.id} dataIndex={index}>
+        return movieTrailerData.map((item) => (
+            <div className='trailer-card-container' key={item.id}
+            // dataIndex={index}
+            >
                 <div className='trailer-card-container-img'>
                     <img
                         src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`}
@@ -55,7 +56,6 @@ const RecentTrailers = () => {
                         onClick={handleYoutubeComponent}
                         className="fa-solid fa-play text-shadow"
                     >
-
                     </i>
                 </div>
             </div>

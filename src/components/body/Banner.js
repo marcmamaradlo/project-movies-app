@@ -2,12 +2,15 @@ import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import BannerCarousel from "./Banner-Carousel";
 import axios from "axios";
+// import Navbar from "../navbar/Navbar";
+import BannerNavbar from "../navbar/Banner-Navbar";
 
 const Banner = () => {
 
     const context = useContext(MyContext);
     // const state = context.state;
     const apiKey = context.apiKey;
+
 
     const [bannerBGData, setBannerBGData] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
@@ -52,8 +55,9 @@ const Banner = () => {
     }
 
     return (
-        <div className='banner-container'>
-            <div className='banner' style={{ ...bannerStyles }}>
+        <div className='banner-container' style={{ ...bannerStyles }}>
+            <div className='banner'>
+                <BannerNavbar />
                 <div className='banner-div'>
                     <div className='banner-details'>
                         <div className="banner-details-div">
@@ -62,11 +66,11 @@ const Banner = () => {
                         <p className='text-shadow'>{movieDetails.tagline}</p>
                     </div>
                 </div>
-                <div className='banner-carousel'>
+                <div className='banner-carousel hide-on-mobile'>
                     <BannerCarousel />
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 

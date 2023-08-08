@@ -1,5 +1,6 @@
 // import { useContext } from 'react';
 import Banner from '../body/Banner';
+// import BannerCarousel from './Banner-Carousel';
 // import Trending from "./Trending";
 import RecentTrailers from "./Recent-Trailers";
 import Popular from './Popular';
@@ -18,6 +19,9 @@ const Main = () => {
         return (
             <>
                 <Banner />
+                {/* <div className='banner-carousel show-on-mobile'>
+                    <BannerCarousel />
+                </div> */}
                 <Popular />
                 <RecentTrailers />
                 <ComingSoon />
