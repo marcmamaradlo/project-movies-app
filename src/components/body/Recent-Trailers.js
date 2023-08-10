@@ -67,7 +67,7 @@ const RecentTrailers = () => {
             <div className='section'>
                 <div className='heading'>
                     <div className='heading-left'>
-                        <h3>Recent Movie Trailers</h3>
+                        <h3>Movie Trailers</h3>
                         <button className='heading-left-button'>Today</button>
                         <button className='heading-left-button'>This Week</button>
                     </div>

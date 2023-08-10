@@ -6,25 +6,57 @@ const DynamicContent = ({ data, keywords }) => {
 
     const context = useContext(MyContext);
     const handleDynamicContentButton = context.handleDynamicContentButton;
+    const handleFakeLinks = context.handleFakeLinks;
     const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
-    let runtimeFixed = 0;
     const genres = data.genres;
 
+    const handleCastArtist = () => {
+        return data.credits
+            ? data.credits.cast.slice(0, 4).map((item, index) => (
+                <li key={index}>
+                    <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a>
+                </li>
+            ))
+            : console.log('Cast Error')
+    }
+
+
     const handleDynamicKeywords = () => {
-        return keywords.map((item) => (
-            <a href='/' id={item.id} key={item.id}>{`${item.name},  `}</a>
-        ));
+        return (keywords
+            ? keywords.map((item) => (
+                <li key={item.id}>
+                    <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a>
+                </li>
+            ))
+            : null
+        )
     }
 
     const handleRuntimeRemainder = () => {
         const runtime = (data.runtime ? data.runtime / 60 : data.runtime);
         let x = runtime;
         x = Math.floor(x * 100) / 100;
-        return runtimeFixed = x;
+        return x;
     }
 
-    handleRuntimeRemainder()
+    const handleGenres = () => {
+        return (genres
+            ? genres.map((item, index) => (
+                <li key={index}>
+                    <a onClick={handleFakeLinks} href='/'>{`${item.name} ,`}</a>
+                </li>
+            ))
+            : null
+        )
+    }
+
+    const handleTitle = () => {
+        return data.title ? data.title : data.original_title;
+    }
+
+    handleCastArtist();
+
     return (
         <>
             <div className='dynamic-container'>
@@ -36,11 +68,11 @@ const DynamicContent = ({ data, keywords }) => {
                     </div>
                 </div>
                 <div className='dynamic-details'>
-                    <p className='dynamic-details-title'>{data.title}</p>
+                    <p className='dynamic-details-title'>{handleTitle()}</p>
                     <div className='dynamic-details-title-icons'>
                         <p><span className="material-symbols-outlined">hd</span></p>
                         <p><i className="fa-solid fa-star"></i> {data.vote_average}</p>
-                        <p><i className="fa-solid fa-clock"></i> {runtimeFixed}H</p>
+                        <p><i className="fa-solid fa-clock"></i> {handleRuntimeRemainder()}H</p>
                         <p><i className="fa-solid fa-volume-off"></i> 2.1</p>
                         <p><i className="fa-regular fa-calendar-days"></i> {releaseData}</p>
                     </div>
@@ -56,17 +88,21 @@ const DynamicContent = ({ data, keywords }) => {
                         </div>
                         <div>
                             <p className='details'>Genre: </p>
-                            <p className='tags'><a href='/'>{genres ? genres[0].name : ''}, </a><a href='/'>{genres ? genres[1].name : ''},</a><a href='/'> {genres ? genres[2].name : ''}</a></p>
+                            <ul className='tags'>
+                                {handleGenres()}
+                            </ul>
                         </div>
                         <div>
                             <p className='details'>Cast: </p>
-                            <p className='tags'>N/A</p>
+                            <ul className='tags'>
+                                {handleCastArtist()}
+                            </ul>
                         </div>
                         <div>
                             <p className='details'>Tags: </p>
-                            <p className='tags'>
+                            <ul className='tags'>
                                 {handleDynamicKeywords()}
-                            </p>
+                            </ul>
                         </div>
                         <div>
                             <p className='details'>Homepage: </p>

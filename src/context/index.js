@@ -29,6 +29,11 @@ class MyProvider extends Component {
         dynamicPageDataType: 'movie', // 'tv'
     }
 
+    handleFakeLinks = (e) => {
+        e.preventDefault();
+        alert('Kalma lang, hindi pa tapos yung Website!');
+    }
+
     handleNavbarSearchBlur = () => {
         this.setState({ navbarSearchFocus: false });
     }
@@ -121,7 +126,7 @@ class MyProvider extends Component {
                 handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
-                handleNavbarSearchFocus, handleNavbarSearchBlur,
+                handleNavbarSearchFocus, handleNavbarSearchBlur, handleFakeLinks,
             } = this;
 
         return (
@@ -131,7 +136,7 @@ class MyProvider extends Component {
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
-                    handleNavbarSearchFocus, handleNavbarSearchBlur,
+                    handleNavbarSearchFocus, handleNavbarSearchBlur, handleFakeLinks,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

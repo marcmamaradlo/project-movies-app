@@ -47,15 +47,15 @@ const BannerCarousel = () => {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
-            breakpoint: { max: 2560, min: 1440 },
-            items: 3
+            breakpoint: { max: 1440, min: 1024 },
+            items: 4
         },
         desktop: {
-            breakpoint: { max: 1440, min: 1024 },
+            breakpoint: { max: 1024, min: 576 },
             items: 3
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
+            breakpoint: { max: 576, min: 464 },
             items: 2
         },
         mobile: {

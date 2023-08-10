@@ -7,7 +7,6 @@ const YoutubePlayerTrailer = () => {
     const context = useContext(MyContext);
     const state = context.state;
     const youtubeComponentID = state.youtubeComponentID;
-    // const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [videoData, setVideoData] = useState([]);
     console.log(videoData);
 

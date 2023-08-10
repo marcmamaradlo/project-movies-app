@@ -15,6 +15,7 @@ const PopOutComponent = () => {
     const apiKey = state.apiKey;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
     const handlePopOutWatchNowButton = context.handlePopOutWatchNowButton;
+    const handleFakeLinks = context.handleFakeLinks;
 
     const [popularData, setPopularData] = useState([]);
 
@@ -53,11 +54,13 @@ const PopOutComponent = () => {
     }
 
     const popularDataGanres = () => {
-
         return (
             popularData.genres
                 ? popularData.genres.map((item) => (
-                    item.name
+                    // console.log(item.name)
+                    <li key={item.id}>
+                        <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name}, `}</a>
+                    </li>
                 ))
                 : null
         )
@@ -68,7 +71,10 @@ const PopOutComponent = () => {
         return (
             popularData.spoken_languages
                 ? popularData.spoken_languages.map((item) => (
-                    item.english_name
+                    <li>
+                        <a href='/'>{`${item.english_name}, `}</a>
+                    </li>
+
                 ))
                 : null
         )
@@ -89,6 +95,10 @@ const PopOutComponent = () => {
                             </div>
                             <div className='pop-out-image-container'>
                                 <img src={`https://image.tmdb.org/t/p/w300${popularData.poster_path}`} alt='some title' />
+                                <div className='pop-out-buttons'>
+                                    <Link to='dynamic-page'><button id={popularData.id} onClick={handlePopOutTrailerButton}>Trailer</button></Link>
+                                    <Link to='dynamic-page'><button name={popularData.id} onClick={handlePopOutWatchNowButton}>Watch Now</button></Link>
+                                </div>
                             </div>
                             <div className='pop-out-details'>
                                 {(
@@ -97,10 +107,10 @@ const PopOutComponent = () => {
                                         : <p className='pop-out-details-title'>{popularData.name}</p>
                                 )}
                                 <p className='pop-out-details-overview'>{popularData.overview}<br /><br /><span className='pop-out-details-tagline'>{popularData.tagline}</span></p>
-                                <div className='pop-out-buttons'>
+                                {/* <div className='pop-out-buttons'>
                                     <Link to='dynamic-page'><button id={popularData.id} onClick={handlePopOutTrailerButton}>Trailer</button></Link>
                                     <Link to='dynamic-page'><button name={popularData.id} onClick={handlePopOutWatchNowButton}>Watch Now</button></Link>
-                                </div>
+                                </div> */}
                                 <div className='pop-out-details-details'>
                                     {/* <p>{`Status: ${popularData.status}, ${(
                                         popularData.release_date
@@ -108,10 +118,12 @@ const PopOutComponent = () => {
                                             : null
                                     )}`}</p> */}
                                     <div className='pop-out-details-details-div'>
-                                        <p>{`Genre: ${popularDataGanres()}`}</p>
+                                        <p>Genre:</p>
+                                        <ul>{popularDataGanres()}</ul>
                                     </div>
                                     <div className='pop-out-details-details-div'>
-                                        <p>{`Language: ${popularDataLanguages()}`}</p>
+                                        <p>Language:</p>
+                                        <ul>{popularDataLanguages()}</ul>
                                     </div>
                                     {/* <p>Homepage: <a href={popularData.homepage}>{popularData.homepage}</a></p> */}
                                 </div>

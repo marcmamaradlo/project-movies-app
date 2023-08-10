@@ -389,9 +389,9 @@ font-family: 'Antonio', sans-serif;
         position: relative;
     }
 
-    .trailer-card-container-img:hover {
-        /* box-shadow: 1px 10px 20px 1px rgb(0, 0, 0); */
-    }
+    /* .trailer-card-container-img:hover {
+        box-shadow: 1px 10px 20px 1px rgb(0, 0, 0);
+    } */
 
     .trailer-card-container-img img {
         width: 100%;
@@ -769,11 +769,10 @@ font-family: 'Antonio', sans-serif;
     }
 
     .dynamic-details-overview {
-        font-family: 'Work Sans', sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 1.2rem;
         margin: 0 0 2rem 0;
         text-align: left;
-        word-spacing: 2px;
         font-weight: 300;
     }
 
@@ -791,10 +790,17 @@ font-family: 'Antonio', sans-serif;
         align-items: flex-start;
         justify-content: flex-start;
         flex-wrap: wrap;
+        flex-direction: row;
         line-break: 1rem;
         width: 100%;
         height: 100%;
+        padding: 0;
         /* border: 1px solid white; */
+    }
+
+    .dynamic-details-details .tags li {
+        list-style: none;
+        margin-right: 0.5rem;
     }
 
     .dynamic-details-details div {
@@ -803,7 +809,7 @@ font-family: 'Antonio', sans-serif;
         justify-content: flex-start;
         padding: 0;
         margin: 0;
-        height: 3rem;
+        height: auto;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         /* border: 1px solid red; */
@@ -1120,7 +1126,7 @@ font-family: 'Antonio', sans-serif;
     }
 
     .carousel-card-container {
-        height: 100%;
+        height: 12rem;
     }
 
     .youtube-player {
@@ -1203,6 +1209,10 @@ font-family: 'Antonio', sans-serif;
         width: 95%;
     }
 
+    .carousel-card-container {
+        height: 12rem;
+    }
+
     .banner-navbar-search-container {
         width: 70%;
     }
@@ -1282,13 +1292,148 @@ font-family: 'Antonio', sans-serif;
 
 @media screen and (max-width: 425px) {
 
+    .popular,
+    .similar {
+        padding-top: 2rem;
+        padding-bottom: 0;
+    }
+
+    .heading-left h3 {
+        font-size: 1rem;
+    }
+
+    .heading p {
+        font-size: 0.8rem;
+    }
+
+    .banner-details h2 {
+        font-size: 1rem;
+    }
+
+    .banner-details p {
+        font-size: 0.8rem;
+    }
+
+    .card-container {
+        min-width: 9rem;
+    }
+
+    .card-container-img {
+        height: 12rem;
+    }
+
     .dynamic-image-container {
         width: 100%;
         width: 100%;
     }
 
+    .card-container-title p {
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .card-container-year {
+        display: none;
+    }
+
+    .pop-out-div {
+        overflow-y: scroll;
+    }
+
+    .pop-out-image-container {
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        width: auto;
+    }
+
+    .pop-out-image-container img {
+        height: 75%;
+        width: 90%;
+        border-radius: 5px;
+    }
+
+    .pop-out-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    .pop-out-buttons button {
+        font-family: 'Work Sans', sans-serif;
+        width: 10rem;
+        height: 2rem;
+        margin-right: 0rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .pop-out-details-title {
+        font-size: 1rem;
+    }
+
+    .pop-out-details-overview {
+        font-size: 0.8rem;
+        text-align: justify;
+        padding: 1rem 1rem 1.5rem 0;
+    }
+
+    .pop-out-details-details-div {
+        /* border: 1px solid red; */
+        height: 2rem;
+    }
+
+    .pop-out-details-details-div p {
+        font-size: 0.8rem;
+        /* border: 1px solid blue; */
+        height: 1rem;
+    }
+
+    .pop-out-details-details-div ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.8rem;
+        padding: 0.3rem;
+        margin: 0;
+        /* border: 1px solid white; */
+    }
+
+    .pop-out-details-details-div li {
+        margin-right: 0.5rem;
+    }
+
+    .pop-out-details-details-div a {
+        width: 100%;
+        word-wrap: break-word;
+    }
+
     .dynamic-banner div {
         height: 70%;
+    }
+
+    .dynamic-details-title-icons {
+        margin: 0;
+    }
+
+    .dynamic-details-title-icons i {
+        font-size: 0.8rem;
+    }
+
+    .dynamic-details-title {
+        font-size: 1rem;
+    }
+
+    .dynamic-details-overview {
+        font-size: 0.8rem;
+    }
+
+    .details,
+    .tags {
+        font-size: 0.8rem;
     }
 
     iframe {

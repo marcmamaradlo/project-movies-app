@@ -3,7 +3,7 @@ import { MyContext } from "../../context";
 import axios from "axios";
 import DynamicContent from "./Dynamic-Content";
 import DynamicBanner from "./Dynamic-Banner";
-import ComingSoon from "../body/Coming-Soon";
+import Similar from "./Similar";
 const DynamicPage = () => {
 
     window.scrollTo({
@@ -13,6 +13,7 @@ const DynamicPage = () => {
 
     const [dynamicData, setDynamicData] = useState([]);
     const [dynamicKeywords, setDynamicKeywords] = useState([]);
+    const [similarData, setSimilarData] = useState([]);
     const context = useContext(MyContext);
     const state = context.state;
     const apiKey = state.apiKey;
@@ -28,10 +29,12 @@ const DynamicPage = () => {
         try {
             const dynamicPageDataID = state.dynamicPageDataID
             const selector = popular;
-            const dataDetailes = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}?api_key=${apiKey}`);
+            const dataDetailes = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}?api_key=${apiKey}&append_to_response=credits`);
             setDynamicData(dataDetailes.data);
             const dataKeywords = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}/keywords?api_key=${apiKey}`);
             setDynamicKeywords(dataKeywords.data.keywords);
+            const similar = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}/similar?api_key=${apiKey}&page=1`)
+            setSimilarData(similar.data.results);
         }
         catch (error) {
             console.log(error);
@@ -57,11 +60,14 @@ const DynamicPage = () => {
             </div>
             <div className='container bg-dark'>
                 <div className='section'>
-                    <DynamicContent data={dynamicData} keywords={dynamicKeywords} />
+                    <DynamicContent
+                        data={dynamicData}
+                        keywords={dynamicKeywords}
+                    />
                 </div>
             </div>
             <div className='container bg-dark'>
-                <ComingSoon />
+                <Similar data={similarData} />
             </div>
         </>
     )
