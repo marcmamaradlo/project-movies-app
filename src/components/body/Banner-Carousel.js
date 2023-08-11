@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { MyContext } from "../../context";
+import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
@@ -8,6 +9,7 @@ const BannerCarousel = () => {
 
     const context = useContext(MyContext);
     const state = context.state;
+    // const params = useParams('');
 
     const [carouselData, setCarouselData] = useState([]);
 
@@ -33,9 +35,9 @@ const BannerCarousel = () => {
                     <div
                         className='carousel-card'
                         key={index}
-                        style={{
-                            backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
-                        }}
+                        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`, }}
+                    // onMouseEnter={}
+                    // onMouseLeave={}
                     >
                         <h3>{item.title}</h3>
                     </div>
@@ -70,7 +72,15 @@ const BannerCarousel = () => {
                 <div className='heading-left'>
                     <h3 className='text-white text-shadow'>Trending Movies</h3>
                 </div>
-                <p className='text-white text-shadow'>view all <i className="fa-solid fa-arrow-right"></i></p>
+                <Link to='view-all'>
+                    <p
+                        className='text-white text-shadow'
+                        id='trending'
+
+                    >
+                        view all <i className="fa-solid fa-arrow-right"></i>
+                    </p>
+                </Link>
             </div>
             <div className='carousel-card-container'>
                 <Carousel

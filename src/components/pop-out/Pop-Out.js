@@ -14,7 +14,7 @@ const PopOutComponent = () => {
     const popOutWindowId = state.popOutWindowId;
     const apiKey = state.apiKey;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
-    const handlePopOutWatchNowButton = context.handlePopOutWatchNowButton;
+    // const handlePopOutWatchNowButton = context.handlePopOutWatchNowButton;
     const handleFakeLinks = context.handleFakeLinks;
 
     const [popularData, setPopularData] = useState([]);
@@ -96,8 +96,8 @@ const PopOutComponent = () => {
                             <div className='pop-out-image-container'>
                                 <img src={`https://image.tmdb.org/t/p/w300${popularData.poster_path}`} alt='some title' />
                                 <div className='pop-out-buttons'>
-                                    <Link to='dynamic-page'><button id={popularData.id} onClick={handlePopOutTrailerButton}>Trailer</button></Link>
-                                    <Link to='dynamic-page'><button name={popularData.id} onClick={handlePopOutWatchNowButton}>Watch Now</button></Link>
+                                    <Link to='dynamic-page'><button id={popularData.id} onClick={handlePopOutTrailerButton}>View Page</button></Link>
+                                    {/* <Link to='dynamic-page'><button name={popularData.id} onClick={handlePopOutWatchNowButton}>Watch Now</button></Link> */}
                                 </div>
                             </div>
                             <div className='pop-out-details'>

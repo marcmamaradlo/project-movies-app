@@ -32,6 +32,11 @@ const DynamicBanner = ({ data }) => {
             {/* <BannerNavbar /> */}
             {/* </div> */}
             {/* </div> */}
+            <div className='dynamic-banner-play-button'>
+                {/* <span class="material-symbols-outlined">
+                    play_circle
+                </span> */}
+            </div>
             <div className='section'>
                 {showDisplay()}
             </div>

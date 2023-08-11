@@ -10,9 +10,6 @@ const Similar = ({ data }) => {
                     <div className='card-container-title'>
                         <p>{item.title}</p>
                     </div>
-                    {/* <div className='card-container-year'>
-                        <p>{item.release_date}</p>
-                    </div> */}
                 </div>
             ))
         }

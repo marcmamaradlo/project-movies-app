@@ -68,8 +68,8 @@ const RecentTrailers = () => {
                 <div className='heading'>
                     <div className='heading-left'>
                         <h3>Movie Trailers</h3>
-                        <button className='heading-left-button'>Today</button>
-                        <button className='heading-left-button'>This Week</button>
+                        {/* <button className='heading-left-button'>Today</button>
+                        <button className='heading-left-button'>This Week</button> */}
                     </div>
                     <p>view all <i className="fa-solid fa-arrow-right"></i></p>
                 </div>

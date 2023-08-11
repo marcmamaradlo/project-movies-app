@@ -4,12 +4,13 @@ import axios from "axios";
 import DynamicContent from "./Dynamic-Content";
 import DynamicBanner from "./Dynamic-Banner";
 import Similar from "./Similar";
+import ImageCarouselPortrait from "../reuseable/image-carousel-portrait";
 const DynamicPage = () => {
 
-    window.scrollTo({
-        top: '0',
-        behavior: 'smooth'
-    })
+    // window.scrollTo({
+    //     top: '0',
+    //     behavior: 'smooth'
+    // })
 
     const [dynamicData, setDynamicData] = useState([]);
     const [dynamicKeywords, setDynamicKeywords] = useState([]);
@@ -67,7 +68,10 @@ const DynamicPage = () => {
                 </div>
             </div>
             <div className='container bg-dark'>
-                <Similar data={similarData} />
+                <ImageCarouselPortrait
+                    data={similarData}
+                    headerName='Recommendations'
+                />
             </div>
         </>
     )

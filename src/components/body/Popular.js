@@ -7,10 +7,7 @@ const Popular = () => {
     const context = useContext(MyContext);
     const state = context.state;
     const apiKey = context.apiKey;
-    const handleButtonSelector = context.handleButtonSelector;
     const popular = state.popular;
-    const active = 'heading-left-button-active';
-    const notActive = 'heading-left-button';
     const handlePopOutWindow = context.handlePopOutWindow;
     const handleDisplayComponent = context.handleDisplayComponent;
 
@@ -78,7 +75,7 @@ const Popular = () => {
             <div className='heading'>
                 <div className='heading-left'>
                     <h3>Popular</h3>
-                    <button
+                    {/* <button
                         className={(
                             popular === 'movie'
                                 ? active
@@ -101,7 +98,7 @@ const Popular = () => {
                         id='tv'
                     >
                         TV Shows
-                    </button>
+                    </button> */}
                 </div>
                 <p id='view-all' name='popular' onClick={handleDisplayComponent}>view all <i className="fa-solid fa-arrow-right"></i></p>
             </div>

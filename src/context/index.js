@@ -27,6 +27,12 @@ class MyProvider extends Component {
         dynamicPageDataID: '',
         dynamicPageData: '', //'watch-now'
         dynamicPageDataType: 'movie', // 'tv'
+        viewAllDataName: '', // 'trending', 'popular', 'similar, '',
+
+    }
+
+    handleViewAllButton = () => {
+
     }
 
     handleFakeLinks = (e) => {

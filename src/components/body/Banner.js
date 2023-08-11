@@ -2,16 +2,12 @@ import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import BannerCarousel from "./Banner-Carousel";
 import axios from "axios";
-// import Navbar from "../navbar/Navbar";
 import BannerNavbar from "../navbar/Banner-Navbar";
 
 const Banner = () => {
 
     const context = useContext(MyContext);
-    // const state = context.state;
     const apiKey = context.apiKey;
-
-
     const [bannerBGData, setBannerBGData] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
 
@@ -32,6 +28,7 @@ const Banner = () => {
     useEffect(() => {
         getBGData() // eslint-disable-next-line
     }, [bannerBGData])
+
 
     async function getBannerMovieData() {
         try {
