@@ -3,7 +3,7 @@ import { MyContext } from "../../context";
 import axios from "axios";
 import DynamicContent from "./Dynamic-Content";
 import DynamicBanner from "./Dynamic-Banner";
-import Similar from "./Similar";
+// import Similar from "./Similar";
 import ImageCarouselPortrait from "../reuseable/image-carousel-portrait";
 const DynamicPage = () => {
 
