@@ -1396,6 +1396,10 @@ font-family: 'Antonio', sans-serif;
         color: #282726;
     }
 
+    .banner-container {
+        height: 95vh;
+    }
+
     .card-container {
         height: 15rem;
     }
@@ -1413,7 +1417,7 @@ font-family: 'Antonio', sans-serif;
         padding-top: 0;
         font-family: 'Work Sans', sans-serif;
         height: 2.5rem;
-        font-weight: 300;
+        font-weight: 200;
     }
 
     .carousel-card-container {
@@ -1661,6 +1665,11 @@ font-family: 'Antonio', sans-serif;
     .pop-out-details-details-div a {
         width: 100%;
         word-wrap: break-word;
+    }
+
+    .server-button-active,
+    .server-button-default {
+        width: 5.2rem;
     }
 
     .dynamic-banner div {
