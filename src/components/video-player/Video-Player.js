@@ -5,11 +5,14 @@ const VideoPlayer = ({ videoID }) => {
 
     const context = useContext(MyContext);
     const serverButtonID = context.state.serverButtonID;
-    console.log(videoID);
-
     const vidsrcTo = `https://vidsrc.to/embed/movie/${videoID}`
     const vidsrcMe = `https://vidsrc.me/embed/movie?tmdb=${videoID}/`
     const xtreamhubCom = `https://xtreamhub.com/video/${videoID}`
+
+    // const buttonData = {
+
+    // }
+
 
     const chooseServer = () => {
         if (serverButtonID === 'server01') {

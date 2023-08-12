@@ -10,6 +10,7 @@ const YoutubeComponent = () => {
     const youtubePopOut = state.youtubePopOut;
     const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [videoData, setVideoData] = useState([]);
+    console.log(videoData);
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line
@@ -39,19 +40,6 @@ const YoutubeComponent = () => {
 
     }
 
-    const handleTrailerVideoID = () => {
-        const youtubeID = videoData.find(video => video.type === 'Trailer' || 'Official Trailer');
-        return (youtubeID
-            ? <YouTube
-                key={youtubeComponentID.id}
-                videoId={youtubeID.key}
-                opts={opts}
-                className={'youtube-player'}
-            />
-            : null
-        )
-    }
-
     const opts = {
         playerVars: {
             autoplay: 1,
@@ -60,6 +48,28 @@ const YoutubeComponent = () => {
             modestbranding: 1,
         },
     };
+
+    const handleTrailerVideoID = () => {
+        const youtubeID = videoData.find(video => video.type === 'Trailer');
+        if (youtubeID === 'Trailer') {
+            return <YouTube
+                key={youtubeComponentID.id}
+                videoId={youtubeID.key}
+                opts={opts}
+                className={'youtube-player'}
+            />
+        }
+        else {
+            return <YouTube
+                key={youtubeComponentID.id}
+                videoId={youtubeID.key}
+                opts={opts}
+                className={'youtube-player'}
+            />
+        }
+    }
+
+
 
     handleWindowScrollingY();
 

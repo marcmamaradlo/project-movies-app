@@ -1,23 +1,19 @@
 const Footer = () => {
     return (
-        <div className='container'>
-            <div className='footer'>
-                <div className='footer-div'>
-                    <p className='footer-thank-you'>Thank You!</p>
-                    <p className='footer-text'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quisquam reiciendis
-                        excepturi officia ipsa rem, maxime vitae vel nam. Vero, expedita hic corrupti voluptatum praesentium repellat reprehenderit,</p>
-                    <div className='footer-icons-container'>
-                        <i className="fa fa-brands fa-youtube"></i>
-                        <i className="fa fa-brands fa-instagram"></i>
-                        <i className="fa fa-brands fa-facebook-square"></i>
+        <div className='container bg-dark'>
+            <div className='section'>
+                <div className='footer'>
+                    <div className='footer-top'>
+                        <p>TV Shows <i className="fa-solid fa-caret-right"></i></p>
+                        <p>Trending <i className="fa-solid fa-caret-right"></i></p>
+                        <p>Category <i className="fa-solid fa-caret-right"></i></p>
+                        <p>Movies <i className="fa-solid fa-caret-right"></i></p>
+
                     </div>
-                </div>
-            </div>
-            <div className='footer-footer'>
-                <div className='footer-footer-details'>
-                    <p className="text-arimo m-3">marc.edwin.mamaradlo@gmail.com</p>
-                    <p>ReactJS</p>
-                    <p>Designed by: SimpleCodesPH</p>
+                    <div className='footer-bottom'>
+                        <p>Enjoy free streaming website without registration.</p>
+                        <p>This site does not store any files on our server, we are only linked to the media which is hosted on third party services.</p>
+                    </div>
                 </div>
             </div>
         </div>

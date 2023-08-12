@@ -286,6 +286,7 @@ font-family: 'Antonio', sans-serif;
         text-align: right;
         width: 70%;
         height: 80%;
+        border-bottom: 1px solid silver;
     }
 
     .banner-details {
@@ -401,8 +402,8 @@ font-family: 'Antonio', sans-serif;
         align-items: center;
         margin: 0 2rem;
         color: white;
-        height: 93%;
-        backdrop-filter: blur(5px) grayscale(50%);
+        height: 100%;
+        backdrop-filter: blur(2px) grayscale(70%);
     }
 
     .trailer-card-container {
@@ -458,8 +459,6 @@ font-family: 'Antonio', sans-serif;
 
     .trending,
     .recent-trailer-div,
-    .popular,
-    .coming-soon,
     .image-carousel-portrait {
         display: flex;
         flex-flow: row;
@@ -474,44 +473,19 @@ font-family: 'Antonio', sans-serif;
     /* Firefox */
     .trending,
     .recent-trailer-div,
-    .popular,
-    .coming-soon,
     .image-carousel-portrait {
-        scrollbar-width: thin;
-        scrollbar-color: #282726 #ffffff;
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
     }
 
     /* Chrome, Edge, and Safari */
-    /* .trending::-webkit-scrollbar,
+    .trending::-webkit-scrollbar,
     .recent-trailer-div::-webkit-scrollbar,
-    .popular::-webkit-scrollbar,
-    .coming-soon::-webkit-scrollbar {
-        width: 13px;
-    } */
-
-    .trending::-webkit-scrollbar-track,
-    .recent-trailer-div::-webkit-scrollbar-track,
-    .popular::-webkit-scrollbar-track,
-    .coming-soon::-webkit-scrollbar-track,
-    .image-carousel-portrait::-webkit-scrollbar-track {
-        background: #ffffff;
+    .image-carousel-portrait::-webkit-scrollbar {
+        display: none;
     }
-
-    /* .trending::-webkit-scrollbar-thumb,
-    .recent-trailer-div::-webkit-scrollbar-thumb,
-    .popular::-webkit-scrollbar-thumb,
-    .coming-soon::-webkit-scrollbar-thumb {
-        background-color: #282726;
-        border-radius: 10px;
-        border: 3px solid #ffffff;
-    } */
-
-    /* Card Container Start  */
-    /* .card-container {
-        height: auto;
-        min-width: 12rem;
-        margin-right: 1rem;
-    } */
 
     .card-container {
         height: 17rem;
@@ -691,7 +665,6 @@ font-family: 'Antonio', sans-serif;
         margin-right: 1rem;
         border-radius: 5px;
         border: none;
-        /* border: 1px solid #282726; */
         cursor: pointer;
     }
 
@@ -733,7 +706,6 @@ font-family: 'Antonio', sans-serif;
 
     .pop-out-details-details-div p {
         font-size: 0.8rem;
-        /* border: 1px solid blue; */
         height: 1rem;
     }
 
@@ -745,7 +717,6 @@ font-family: 'Antonio', sans-serif;
         font-size: 0.8rem;
         padding: 0.3rem;
         margin: 0;
-        /* border: 1px solid white; */
     }
 
     .pop-out-details-details-div li {
@@ -765,26 +736,16 @@ font-family: 'Antonio', sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* border: 1px solid black; */
         backdrop-filter: blur(5px), grayscale(100%);
         width: 100%;
         height: 70vh;
-        /* border: 1px solid red; */
+
     }
 
     .dynamic-banner div {
         color: white;
-        /* border: 1px solid white; */
-        /* border-radius: 5px; */
-        /* box-shadow: 2px 2px 20px 1px black; */
         height: 95%;
-        /* width: 70%; */
     }
-
-    /* .dynamic-banner div:hover {
-        box-shadow: 2px 2px 20px 1px grey;
-        transition: 200ms;
-    } */
 
     .dynamic-container {
         display: flex;
@@ -898,7 +859,6 @@ font-family: 'Antonio', sans-serif;
         justify-content: flex-start;
         width: 7rem;
         height: 100%;
-        /* border: 1px solid white; */
     }
 
     .dynamic-details-details .tags {
@@ -911,7 +871,6 @@ font-family: 'Antonio', sans-serif;
         width: 100%;
         height: 100%;
         padding: 0;
-        /* border: 1px solid white; */
     }
 
     .dynamic-details-details .tags li {
@@ -928,7 +887,6 @@ font-family: 'Antonio', sans-serif;
         height: auto;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
-        /* border: 1px solid red; */
     }
 
     .details p,
@@ -941,7 +899,6 @@ font-family: 'Antonio', sans-serif;
     .dynamic-details-details a {
         text-decoration: none;
         color: white;
-        /* border: 1px solid blue; */
     }
 
     .dynamic-details-details a:hover {
@@ -1016,64 +973,42 @@ font-family: 'Antonio', sans-serif;
 
     /* Footer Start */
     .footer {
+        display: flex;
+        align-items: flex-start;
         flex-direction: column;
-        height: 350px;
-        background-color: #e5be1a;
-        color: #282726;
-        width: 100%;
-    }
-
-    .footer-div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        font-family: 'Raleway', sans-serif;
-        width: 70%;
-        color: #282726;
-    }
-
-    .footer-thank-you {
-        font-size: 3rem;
-        margin-bottom: 0;
-        color: #282726;
-    }
-
-    .footer-text {
-        font-size: 1.2rem;
-        text-align: justify;
-        color: #282726;
-        font-weight: 600;
-    }
-
-    .footer-icons-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-direction: row;
-    }
-
-    .footer-icons-container i {
-        font-size: 2rem;
-        margin: 0 1rem;
-    }
-
-    .footer-footer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-        width: 100%;
-        font-family: 'Work Sans', sans-serif;
+        height: auto;
         background-color: #282726;
-        color: #e5be1a;
+        color: silver;
+        width: 100%;
     }
 
-    .footer-footer-details {
+    .footer p {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 70%;
+        font-family: 'Work Sans', sans-serif;
+        width: 100%;
+    }
+
+    .footer-top {
+        display: flex;
+    }
+
+    .footer-top p {
+        width: 7rem;
+    }
+
+    .footer-top p:hover {
+        color: #e5be1a;
+        cursor: pointer;
+    }
+
+    .footer-top i {
+        margin: 0.15rem 0 0.15rem 0.3rem;
+    }
+
+    .footer-bottom {
+        width: 100%;
+        border-top: 1px solid silver;
+        font-size: 1rem;
     }
 
     /* Footer End */
@@ -1187,13 +1122,7 @@ font-family: 'Antonio', sans-serif;
 
     .heading {
         height: 3rem;
-        /* border: 1px solid black; */
     }
-
-    /* .heading p {
-        padding-bottom: 2rem;
-        margin-top: 0.9rem;
-    } */
 
     .navbar {
         display: none;
@@ -1294,19 +1223,21 @@ font-family: 'Antonio', sans-serif;
 
     .recent-trailer-div {
         height: 100%;
+        width: 110%;
+        margin: -2.5rem;
+    }
+
+    .recent-trailer-div::-webkit-scrollbar {
+        display: none;
     }
 
     .image-carousel-portrait {
         overflow-y: hidden;
     }
 
-    /* .dynamic-banner {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-direction: column;
-    } */
-
+    .image-carousel-portrait::-webkit-scrollbar {
+        display: none
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1327,18 +1258,6 @@ font-family: 'Antonio', sans-serif;
     .banner-div {
         height: 100%;
     }
-
-    /* .body-banner-carousel {
-
-    } */
-
-    /* .hide-on-mobile {
-        display: none;
-    } */
-
-    /* .show-on-mobile {
-        display: flex;
-    } */
 
     .card-container {
         min-width: 10rem;
@@ -1378,6 +1297,7 @@ font-family: 'Antonio', sans-serif;
 
     .section {
         width: 95%;
+        margin: 1rem 0;
     }
 
     .navbar,
@@ -1392,7 +1312,7 @@ font-family: 'Antonio', sans-serif;
 
     .banner-button button {
         height: 2rem;
-        width: 7rem;
+        width: 8rem;
         color: #282726;
     }
 
@@ -1418,6 +1338,27 @@ font-family: 'Antonio', sans-serif;
         font-family: 'Work Sans', sans-serif;
         height: 2.5rem;
         font-weight: 200;
+    }
+
+    .recent-trailer-div {
+        height: 83%;
+        width: 88%;
+        margin: 0rem;
+        padding: 2rem;
+    }
+
+    .trailer-card-container-img {
+        width: 20rem;
+    }
+
+    .trailer-card-container-img i {
+        top: 37%;
+        font-size: 2.5rem;
+    }
+
+    .trailer-card-container-img i:hover {
+        top: 36%;
+        font-size: 2.7rem;
     }
 
     .carousel-card-container {
@@ -1464,8 +1405,6 @@ font-family: 'Antonio', sans-serif;
         width: 10rem;
     }
 
-    .coming-soon,
-    .popular,
     .image-carousel-portrait {
         padding: 2rem 0;
     }
@@ -1523,17 +1462,12 @@ font-family: 'Antonio', sans-serif;
         margin-bottom: 3rem;
     }
 
-    .footer-div {
-        width: 90%;
+    .footer-bottom p {
+        font-size: 0.8rem;
     }
 
-    .footer-footer-details {
-        flex-wrap: wrap;
-    }
-
-    .footer-footer-details p {
-        text-align: center;
-        width: 100%;
+    .view-all-expanded {
+        padding: 2rem 0;
     }
 }
 
@@ -1562,12 +1496,17 @@ font-family: 'Antonio', sans-serif;
     }
 
     .card-container {
-        width: 6rem;
+        min-width: 8em;
         height: 10rem;
     }
 
     .card-container-img {
         height: 12rem;
+    }
+
+    .recent-trailer-div {
+        width: 86%;
+        height: 83%;
     }
 
     .dynamic-image-container {
@@ -1580,7 +1519,7 @@ font-family: 'Antonio', sans-serif;
     }
 
     .card-container-title p {
-        font-weight: 600;
+        font-weight: 300;
         font-size: 0.8rem;
     }
 
@@ -1637,13 +1576,11 @@ font-family: 'Antonio', sans-serif;
     }
 
     .pop-out-details-details-div {
-        /* border: 1px solid red; */
         height: 2rem;
     }
 
     .pop-out-details-details-div p {
         font-size: 0.8rem;
-        /* border: 1px solid blue; */
         height: 1rem;
     }
 
@@ -1655,7 +1592,6 @@ font-family: 'Antonio', sans-serif;
         font-size: 0.8rem;
         padding: 0.3rem;
         margin: 0;
-        /* border: 1px solid white; */
     }
 
     .pop-out-details-details-div li {
@@ -1672,8 +1608,12 @@ font-family: 'Antonio', sans-serif;
         width: 5.2rem;
     }
 
+    .dynamic-banner {
+        height: 50vh;
+    }
+
     .dynamic-banner div {
-        height: 70%;
+        height: 80%;
     }
 
     .dynamic-details-title-icons {
@@ -1698,15 +1638,31 @@ font-family: 'Antonio', sans-serif;
     }
 
     iframe {
-        height: 70%;
+        height: 100%;
     }
 
     .view-all-expanded {
         justify-content: space-evenly;
+        padding: 2rem 0;
     }
+
+    .view-all-expanded .card-container {
+        width: 8rem;
+        height: 12rem;
+    }
+
+    .footer-top p {
+        width: 6rem;
+        font-size: 0.8rem;
+    }
+
 }
 
 @media screen and (max-width: 375px) {
+
+    .section {
+        margin: 1rem 0;
+    }
 
     .view-all-expanded {
         justify-content: space-between;
@@ -1720,4 +1676,34 @@ font-family: 'Antonio', sans-serif;
 
         height: 13rem;
     }
+
+    .recent-trailer {
+        height: 35vh;
+    }
+
+    .recent-trailer-div {
+        width: 83%;
+        height: 90%;
+    }
+
+    .trailer-card-container-img {
+        width: 17rem;
+    }
+
+    .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .footer-top p {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .recent-trailer-div {
+        width: 80%;
+    }
+
 }

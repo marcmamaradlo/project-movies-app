@@ -82,7 +82,7 @@ class MyProvider extends Component {
         this.setState({
             youtubeComponentID: e.target.id,
             youtubePopOut: true
-        })
+        });
     }
 
     handleDisplayComponent = (e) => {

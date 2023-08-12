@@ -39,9 +39,7 @@ const RecentTrailers = () => {
 
     const trailerCarouselData = () => {
         return movieTrailerData.map((item) => (
-            <div className='trailer-card-container' key={item.id}
-            // dataIndex={index}
-            >
+            <div className='trailer-card-container' key={item.id}>
                 <div className='trailer-card-container-img'>
                     <img
                         src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`}
@@ -64,12 +62,10 @@ const RecentTrailers = () => {
 
     return (
         <>
-            <div className='section'>
+            {/* <div className='section'>
                 <div className='heading'>
                     <div className='heading-left'>
                         <h3>Movie Trailers</h3>
-                        {/* <button className='heading-left-button'>Today</button>
-                        <button className='heading-left-button'>This Week</button> */}
                     </div>
                     <p>view all <i className="fa-solid fa-arrow-right"></i></p>
                 </div>
@@ -79,8 +75,22 @@ const RecentTrailers = () => {
                     </div>
                 </div>
                 <YoutubeComponent />
+            </div> */}
+            <div className='container bg-dark'>
+                <div className='section'>
+                    <div className='heading'>
+                        <div className='heading-left'>
+                            <h3>Movie Trailers</h3>
+                        </div>
+                    </div>
+                    <div className='recent-trailer' style={{ ...dynamicBG }}>
+                        <div className='recent-trailer-div'>
+                            {trailerCarouselData()}
+                        </div>
+                    </div>
+                </div>
+                <YoutubeComponent />
             </div>
-
         </>
     )
 }

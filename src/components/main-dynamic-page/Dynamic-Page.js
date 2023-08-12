@@ -9,7 +9,7 @@ const DynamicPage = () => {
 
     window.scrollTo({
         top: '0',
-        behavior: 'smooth'
+        behavior: 'instant'
     })
 
     const [dynamicData, setDynamicData] = useState([]);
