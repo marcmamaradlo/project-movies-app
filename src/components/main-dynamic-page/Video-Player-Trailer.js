@@ -8,7 +8,6 @@ const YoutubePlayerTrailer = () => {
     const state = context.state;
     const youtubeComponentID = state.youtubeComponentID;
     const [videoData, setVideoData] = useState([]);
-    console.log(videoData);
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line
@@ -27,7 +26,7 @@ const YoutubePlayerTrailer = () => {
     }
 
     const handleTrailerVideoID = () => {
-        const youtubeID = videoData.find(video => video.type === 'Trailer');
+        const youtubeID = videoData.find(video => video.type === 'Trailer' || 'Official Trailer');
         console.log(youtubeID);
         return (youtubeID
             ? <YouTube

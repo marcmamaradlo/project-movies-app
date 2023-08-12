@@ -5,8 +5,6 @@ import axios from "axios";
 
 const PopOutComponent = () => {
 
-
-
     const context = useContext(MyContext);
     const state = context.state;
     const popOutWindow = state.popOutWindow;

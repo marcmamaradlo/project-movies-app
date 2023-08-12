@@ -12,6 +12,10 @@ font-family: 'Antonio', sans-serif;
         box-sizing: border-box;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     iframe {
         border-radius: 5px;
         border: none;
@@ -281,7 +285,7 @@ font-family: 'Antonio', sans-serif;
         justify-content: flex-start;
         text-align: right;
         width: 70%;
-        height: 60%;
+        height: 80%;
     }
 
     .banner-details {
@@ -305,6 +309,13 @@ font-family: 'Antonio', sans-serif;
         font-family: 'Work', sans-serif;
     }
 
+    .banner-button {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 70%;
+    }
+
     .banner-button button {
         height: 2.5rem;
         width: 10rem;
@@ -312,11 +323,17 @@ font-family: 'Antonio', sans-serif;
         border: none;
         outline: none;
         border-radius: 5px;
-        background-color: #282726;
-        color: #e5be1a;
+        background-color: silver;
+        color: white;
         font-family: 'Raleway', sans-serif;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    .banner-button button:hover {
+        background-color: white;
+        color: #282726;
+        transition: 200ms;
     }
 
     .banner-carousel {
@@ -788,22 +805,60 @@ font-family: 'Antonio', sans-serif;
         display: flex;
         justify-content: space-between;
         margin-top: 0.3rem;
+        border: none;
+        outline: none;
     }
 
     .dynamic-button-container button {
         width: 48.5%;
         background-color: silver;
-        border-radius: 3px;
+        border-radius: 5px;
         height: 2rem;
         outline: none;
         border: none;
-        font-family: 'Work Sans', sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 600;
         color: #282726;
     }
 
-    .dynamic-button-container button:hover {
+    .dynamic-button-container button:hover,
+    .dynamic-server-button-container button:hover {
         background-color: white;
+        transition: 200ms;
+    }
+
+    .dynamic-server-button-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+        border: none;
+        outline: none;
+    }
+
+    .server-button-default {
+        background-color: silver;
+        color: #28272688;
+        height: 2rem;
+        outline: none;
+        border: none;
+        font-family: 'Raleway', sans-serif;
+        margin: 0 0.5rem;
+        width: 7.4rem;
+        border-radius: 5px;
+        font-weight: 600;
+    }
+
+    .server-button-active {
+        background-color: silver;
+        color: #282726;
+        height: 2rem;
+        outline: none;
+        border: none;
+        font-family: 'Raleway', sans-serif;
+        margin: 0 0.5rem;
+        width: 7.4rem;
+        border-radius: 5px;
+        font-weight: 600;
     }
 
     .dynamic-details {
@@ -1110,6 +1165,10 @@ font-family: 'Antonio', sans-serif;
         width: 90%;
     }
 
+    .banner-button {
+        width: 90%;
+    }
+
     .recent-trailer-div {
         height: 100%;
     }
@@ -1327,8 +1386,34 @@ font-family: 'Antonio', sans-serif;
         width: 95%;
     }
 
+    .banner-button {
+        width: 95%;
+    }
+
+    .banner-button button {
+        height: 2rem;
+        width: 7rem;
+        color: #282726;
+    }
+
     .card-container {
-        height: 13rem;
+        height: 15rem;
+    }
+
+    .card-container-details {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 200;
+    }
+
+    .card-container-title p {
+        margin-top: 0;
+        padding-top: 0;
+        font-family: 'Work Sans', sans-serif;
+        height: 2.5rem;
+        font-weight: 300;
     }
 
     .carousel-card-container {
@@ -1473,7 +1558,7 @@ font-family: 'Antonio', sans-serif;
     }
 
     .card-container {
-        min-width: 9rem;
+        width: 6rem;
         height: 10rem;
     }
 
@@ -1605,5 +1690,25 @@ font-family: 'Antonio', sans-serif;
 
     iframe {
         height: 70%;
+    }
+
+    .view-all-expanded {
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    .view-all-expanded {
+        justify-content: space-between;
+    }
+
+    .view-all-expanded .card-container {
+        margin-right: 0;
+    }
+
+    .card-container {
+
+        height: 13rem;
     }
 }

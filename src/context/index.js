@@ -15,8 +15,8 @@ class MyProvider extends Component {
         apiData: [],
         trendingData: 'day',
         recentTrailer: 'day',
-        comingSoon: 'movie',
-        popular: 'movie',
+        // comingSoon: 'movie',
+        // popular: 'movie',
         popOutWindow: 'notActive',
         popOutChannel: 'movie',
         popOutWindowId: '',
@@ -28,11 +28,11 @@ class MyProvider extends Component {
         dynamicPageData: '', //'watch-now'
         dynamicPageDataType: 'movie', // 'tv'
         viewAllDataName: '', // 'trending', 'popular', 'similar, '',
-
+        serverButtonID: 'server01', // server01, server02, server03, server04
     }
 
-    handleViewAllButton = () => {
-
+    handleServerButton = (e) => {
+        this.setState({ serverButtonID: e.target.id });
     }
 
     handleFakeLinks = (e) => {
@@ -60,11 +60,12 @@ class MyProvider extends Component {
     }
 
     handlePopOutTrailerButton = (e) => {
-        console.log('Trailer Button', e.target.id);
+        // console.log('TMDB Movie ID', e.target.name);
         this.setState({
             dynamicPageDataID: e.target.id,
             dynamicPageData: 'trailer',
             popOutWindow: 'notActive',
+            linkName: e.target.name,
         });
     }
 
@@ -132,7 +133,7 @@ class MyProvider extends Component {
                 handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
-                handleNavbarSearchFocus, handleNavbarSearchBlur, handleFakeLinks,
+                handleNavbarSearchFocus, handleNavbarSearchBlur, handleFakeLinks, handleServerButton,
             } = this;
 
         return (
@@ -142,7 +143,7 @@ class MyProvider extends Component {
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
-                    handleNavbarSearchFocus, handleNavbarSearchBlur, handleFakeLinks,
+                    handleNavbarSearchFocus, handleNavbarSearchBlur, handleFakeLinks, handleServerButton,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

@@ -1,16 +1,17 @@
 import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
-import BannerCarousel from "./Banner-Carousel";
+// import BannerCarousel from "./Banner-Carousel";
 import axios from "axios";
 import BannerNavbar from "../navbar/Banner-Navbar";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
 
     const context = useContext(MyContext);
     const apiKey = context.apiKey;
+    const handlePopOutTrailerButton = context.handlePopOutTrailerButton
     const [bannerBGData, setBannerBGData] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
-
 
     const bannerStyles = {
         backgroundImage: movieDetails
@@ -28,6 +29,10 @@ const Banner = () => {
     useEffect(() => {
         getBGData() // eslint-disable-next-line
     }, [bannerBGData])
+
+    // setInterval(() => {
+    //     getBannerMovieData()
+    // }, 5000);
 
 
     async function getBannerMovieData() {
@@ -63,9 +68,12 @@ const Banner = () => {
                         <p className='text-shadow'>{movieDetails.tagline}</p>
                     </div>
                 </div>
-                <div className='banner-carousel hide-on-mobile'>
-                    <BannerCarousel />
+                <div className='banner-button'>
+                    <Link to='/movie-page'><button id={bannerBGData} onClick={handlePopOutTrailerButton}>Watch Now</button></Link>
                 </div>
+                {/* <div className='banner-carousel hide-on-mobile'>
+                    <BannerCarousel />
+                </div> */}
             </div>
         </div>
     )

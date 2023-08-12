@@ -18,7 +18,7 @@ const DynamicContent = ({ data, keywords }) => {
                     <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a>
                 </li>
             ))
-            : console.log('Cast Error')
+            : null // console.log('Cast Error')
     }
 
 

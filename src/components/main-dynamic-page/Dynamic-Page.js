@@ -7,10 +7,10 @@ import DynamicBanner from "./Dynamic-Banner";
 import ImageCarouselPortrait from "../reuseable/image-carousel-portrait";
 const DynamicPage = () => {
 
-    // window.scrollTo({
-    //     top: '0',
-    //     behavior: 'smooth'
-    // })
+    window.scrollTo({
+        top: '0',
+        behavior: 'smooth'
+    })
 
     const [dynamicData, setDynamicData] = useState([]);
     const [dynamicKeywords, setDynamicKeywords] = useState([]);
@@ -18,18 +18,23 @@ const DynamicPage = () => {
     const context = useContext(MyContext);
     const state = context.state;
     const apiKey = state.apiKey;
-    const popular = state.popular;
-    const popOutWindow = state.popOutWindow;
+    // const popular = state.popular;
+    // const popOutWindow = state.popOutWindow;
+    const dynamicPageDataID = state.dynamicPageDataID;
+    const handleServerButton = context.handleServerButton;
+    const dynamicPageData = state.dynamicPageData;
+    const serverButtonID = state.serverButtonID;
+    const serverButtonName = ['server01', 'server02', 'server03', 'server04',]
 
     useEffect(() => {
+        // handleWindowScrollingY(); // eslint-disable-next-line
         getDynamicPageData(); // eslint-disable-next-line
-        handleWindowScrollingY(); // eslint-disable-next-line
-    }, [popular]);
+    }, [dynamicPageDataID]);
 
     async function getDynamicPageData() {
         try {
-            const dynamicPageDataID = state.dynamicPageDataID
-            const selector = popular;
+
+            const selector = 'movie';
             const dataDetailes = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}?api_key=${apiKey}&append_to_response=credits`);
             setDynamicData(dataDetailes.data);
             const dataKeywords = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}/keywords?api_key=${apiKey}`);
@@ -42,22 +47,46 @@ const DynamicPage = () => {
         }
     }
 
-    const handleWindowScrollingY = () => {
-        if (popOutWindow === 'active') {
-            return document.body.style.overflowY = 'hidden'
-        }
-        if (popOutWindow === 'notActive') {
-            return document.body.style.overflowY = 'scroll'
-        }
-        else {
-            return document.body.style.overflowY = 'scroll'
-        }
+    // const handleWindowScrollingY = () => {
+    //     if (popOutWindow === 'active') {
+    //         return document.body.style.overflowY = 'hidden'
+    //     }
+    //     if (popOutWindow === 'notActive') {
+    //         return document.body.style.overflowY = 'scroll'
+    //     }
+    //     else {
+    //         return document.body.style.overflowY = 'scroll'
+    //     }
+    // }
+
+    const handleServerButtons = () => {
+        return serverButtonName.map((item, index) => (
+            <button
+                className={
+                    serverButtonID === item
+                        ? 'server-button-active'
+                        : 'server-button-default'
+                }
+                onClick={handleServerButton}
+                id={item}
+            >
+                {`Server ${index + 1}`}
+            </button>
+        ))
     }
 
     return (
         <>
             <div className='container'>
                 <DynamicBanner data={dynamicData} />
+            </div>
+            <div className='container bg-dark'>
+                <div className={dynamicPageData === 'watchNow'
+                    ? 'dynamic-server-button-container'
+                    : 'display-none'
+                }>
+                    {handleServerButtons()}
+                </div>
             </div>
             <div className='container bg-dark'>
                 <div className='section'>
@@ -71,6 +100,7 @@ const DynamicPage = () => {
                 <ImageCarouselPortrait
                     data={similarData}
                     headerName='Recommendations'
+                    type='movie'
                 />
             </div>
         </>

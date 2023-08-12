@@ -40,7 +40,7 @@ const YoutubeComponent = () => {
     }
 
     const handleTrailerVideoID = () => {
-        const youtubeID = videoData.find(video => video.type === 'Trailer');
+        const youtubeID = videoData.find(video => video.type === 'Trailer' || 'Official Trailer');
         return (youtubeID
             ? <YouTube
                 key={youtubeComponentID.id}
