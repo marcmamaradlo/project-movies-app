@@ -38,7 +38,7 @@ const RecentTrailers = () => {
 
     const trailerCarouselData = () => {
         return movieTrailerData.map((item) => (
-            <div className='trailer-card-container' key={item.id}>
+            <div className='trailer-card-container' key={item.id} onClick={handleYoutubeComponent} id={item.id}>
                 <div className='trailer-card-container-img'>
                     <img
                         src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`}
@@ -50,7 +50,6 @@ const RecentTrailers = () => {
                     </div>
                     <i
                         id={item.id}
-                        onClick={handleYoutubeComponent}
                         className="fa-solid fa-play text-shadow"
                     >
                     </i>
