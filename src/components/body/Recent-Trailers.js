@@ -11,7 +11,6 @@ const RecentTrailers = () => {
     const handleMouseEnter = context.handleMouseEnter;
     const handleMouseLeave = context.handleMouseLeave;
     const handleYoutubeComponent = context.handleYoutubeComponent;
-
     const [movieTrailerData, setMovieTrailerData] = useState([]);
 
     useEffect(() => {

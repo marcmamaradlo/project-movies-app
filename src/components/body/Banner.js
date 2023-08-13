@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
-// import BannerCarousel from "./Banner-Carousel";
 import axios from "axios";
 import BannerNavbar from "../navbar/Banner-Navbar";
 import { Link } from "react-router-dom";
@@ -28,12 +27,7 @@ const Banner = () => {
 
     useEffect(() => {
         getBGData() // eslint-disable-next-line
-    }, [bannerBGData])
-
-    // setInterval(() => {
-    //     getBannerMovieData()
-    // }, 5000);
-
+    }, [bannerBGData]);
 
     async function getBannerMovieData() {
         try {
@@ -71,9 +65,6 @@ const Banner = () => {
                 <div className='banner-button'>
                     <Link to='/movie-page'><button id={bannerBGData} onClick={handlePopOutTrailerButton}>Watch Now</button></Link>
                 </div>
-                {/* <div className='banner-carousel hide-on-mobile'>
-                    <BannerCarousel />
-                </div> */}
             </div>
         </div>
     )

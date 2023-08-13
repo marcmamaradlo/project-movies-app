@@ -3,7 +3,6 @@ import { MyContext } from "../../context";
 import axios from "axios";
 import DynamicContent from "./Dynamic-Content";
 import DynamicBanner from "./Dynamic-Banner";
-// import Similar from "./Similar";
 import ImageCarouselPortrait from "../reuseable/image-carousel-portrait";
 const DynamicPage = () => {
 
@@ -18,22 +17,19 @@ const DynamicPage = () => {
     const context = useContext(MyContext);
     const state = context.state;
     const apiKey = state.apiKey;
-    // const popular = state.popular;
-    // const popOutWindow = state.popOutWindow;
     const dynamicPageDataID = state.dynamicPageDataID;
     const handleServerButton = context.handleServerButton;
     const dynamicPageData = state.dynamicPageData;
     const serverButtonID = state.serverButtonID;
     const serverButtonName = ['server01', 'server02', 'server03', 'server04',]
+    console.log(dynamicPageDataID);
 
     useEffect(() => {
-        // handleWindowScrollingY(); // eslint-disable-next-line
         getDynamicPageData(); // eslint-disable-next-line
     }, [dynamicPageDataID]);
 
     async function getDynamicPageData() {
         try {
-
             const selector = 'movie';
             const dataDetailes = await axios.get(`https://api.themoviedb.org/3/${selector}/${dynamicPageDataID}?api_key=${apiKey}&append_to_response=credits`);
             setDynamicData(dataDetailes.data);
@@ -46,18 +42,6 @@ const DynamicPage = () => {
             console.log(error);
         }
     }
-
-    // const handleWindowScrollingY = () => {
-    //     if (popOutWindow === 'active') {
-    //         return document.body.style.overflowY = 'hidden'
-    //     }
-    //     if (popOutWindow === 'notActive') {
-    //         return document.body.style.overflowY = 'scroll'
-    //     }
-    //     else {
-    //         return document.body.style.overflowY = 'scroll'
-    //     }
-    // }
 
     const handleServerButtons = () => {
         return serverButtonName.map((item, index) => (

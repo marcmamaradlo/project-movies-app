@@ -3,7 +3,6 @@ import { MyContext } from '../../context';
 import ImageCarouselPortrait from '../reuseable/image-carousel-portrait';
 import Banner from '../body/Banner';
 import RecentTrailers from "./Recent-Trailers";
-import PopOutComponent from '../pop-out/Pop-Out';
 import axios from 'axios';
 
 const Main = () => {
@@ -45,7 +44,6 @@ const Main = () => {
                     headerName='Top Rated Movies'
                     type='movie'
                 />
-                <PopOutComponent />
             </>
         )
     }

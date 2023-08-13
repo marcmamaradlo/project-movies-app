@@ -1,20 +1,40 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { MyContext } from "../../context";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+import SearchResult from "./Search-Result";
 
 const BannerNavbar = () => {
 
     const context = useContext(MyContext);
     const state = context.state;
-    const navbarSearchFocus = state.navbarSearchFocus;
-    const handleNavbarSearchFocus = context.handleNavbarSearchFocus;
-    const handleNavbarSearchBlur = context.handleNavbarSearchBlur;
+    const [userInput, setUserInput] = useState('');
+    const [searchResult, setSearchResult] = useState('');
+    console.log(searchResult)
 
-    // const handleInputClassname = () => {
-    //     return (navbarSearchFocus === true
-    //         ? 'banner-navbar-search-focus'
-    //         : 'banner-navbar-search')
-    // }
+    async function getSearchResults() {
+        try {
+            const inputString = userInput.split(' ').join('%');
+            const query = inputString;
+            const apiKey = state.apiKey;
+            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?language=en-US&query=${query}&page=1&api_key=${apiKey}`);
+            setSearchResult(response.data.results)
+        }
+        catch (error) {
+            // console.log('No Data Mounted in State');
+        }
+    }
+
+    const handleUserInput = (e) => {
+        setUserInput(e.target.value);
+    }
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        getSearchResults();
+    }
 
     return (
         <>
@@ -22,29 +42,24 @@ const BannerNavbar = () => {
                 <div className='banner-navbar'>
                     <div className='banner-navbar-logo'>
                         <p className='text-shadow'><Link to='/'>MoviesDB</Link></p>
-                        {/* <i className="fa-solid fa-video"></i> */}
                     </div>
-                    <div
-                        className='banner-navbar-search-container'
-                        onFocus={handleNavbarSearchFocus}
-                        onBlur={handleNavbarSearchBlur}
-                    >
-                        <div className='banner-navbar-search box-shadow'>
+                    <div className='banner-navbar-search-container'>
+                        <form
+                            className='banner-navbar-search box-shadow'
+                            onSubmit={handleSearchSubmit}
+                        >
                             <input
                                 type='text'
                                 id='searchInput'
+                                value={userInput}
                                 placeholder='Search...'
-                                className={navbarSearchFocus === true
-                                    ? 'banner-navbar-search-focus'
-                                    : ''}
+                                onChange={handleUserInput}
                             />
-                            <button
-                                className={navbarSearchFocus === true
-                                    ? 'banner-navbar-button-focus'
-                                    : ''}><i className="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
+                            <button><i className="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
                     </div>
                 </div>
+                <SearchResult data={searchResult} />
             </div>
         </>
     )

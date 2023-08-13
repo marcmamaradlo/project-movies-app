@@ -9,11 +9,6 @@ const VideoPlayer = ({ videoID }) => {
     const vidsrcMe = `https://vidsrc.me/embed/movie?tmdb=${videoID}/`
     const xtreamhubCom = `https://xtreamhub.com/video/${videoID}`
 
-    // const buttonData = {
-
-    // }
-
-
     const chooseServer = () => {
         if (serverButtonID === 'server01') {
             return <iframe
@@ -61,7 +56,6 @@ const VideoPlayer = ({ videoID }) => {
         }
         else {
             console.log('Sorry, video is not available in our servers.')
-            // console.log('Sorry, Video is not available n all of our servers.')
         }
     }
     return (

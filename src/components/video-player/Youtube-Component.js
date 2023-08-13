@@ -11,10 +11,11 @@ const YoutubeComponent = () => {
     const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [videoData, setVideoData] = useState([]);
     console.log(videoData);
+    console.log(youtubeComponentID)
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line
-    }, [youtubeComponentID]);
+    }, []);
 
     const handleWindowScrollingY = () => {
         if (youtubePopOut === true) {
@@ -32,7 +33,8 @@ const YoutubeComponent = () => {
         try {
             const apiKey = state.apiKey;
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${youtubeComponentID}/videos?api_key=${apiKey}`);
-            setVideoData(response.data.results)
+            setVideoData(response.data.results);
+            console.log(response.data)
         }
         catch (error) {
             // console.log('No Data Mounted in State');
@@ -59,7 +61,8 @@ const YoutubeComponent = () => {
                 className={'youtube-player'}
             />
         }
-        else {
+
+        else if (youtubeID === 'Official Trailer') {
             return <YouTube
                 key={youtubeComponentID.id}
                 videoId={youtubeID.key}
@@ -67,9 +70,18 @@ const YoutubeComponent = () => {
                 className={'youtube-player'}
             />
         }
+
+        else {
+            // console.log('nothing is happening')
+            return <YouTube
+                key={youtubeComponentID.id}
+                videoId={youtubeID.key}
+                opts={opts}
+                className={'youtube-player'}
+            />
+            // return alert('Sorry, This feature is not available right now.');
+        }
     }
-
-
 
     handleWindowScrollingY();
 
@@ -79,7 +91,10 @@ const YoutubeComponent = () => {
                 onClick={handleClosePopOutWindow}
                 className='youtube-component'>
                 <div className='trailer-container'>
-                    {handleTrailerVideoID()}
+                    {videoData
+                        ? handleTrailerVideoID()
+                        : null
+                    }
                 </div>
             </div>
             : null

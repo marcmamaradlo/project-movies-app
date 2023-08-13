@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 
 const ImageCarouselPortrait = (props) => {
 
+    const context = useContext(MyContext);
+    const [viewAll, setViewAll] = useState(false);
     const data = props.data;
     const type = props.type;
     const headerName = props.headerName;
-
-    const [viewAll, setViewAll] = useState(false);
-    const context = useContext(MyContext);
-    // const linkName = context.state.linkName;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
 
     const viewAllOnClick = () => {
