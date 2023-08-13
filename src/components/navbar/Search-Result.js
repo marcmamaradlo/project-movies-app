@@ -15,26 +15,27 @@ const SearchResult = ({ data }) => {
                     to='/movie-page'
                     id={item.id}
                     key={index}
-                    onClick={handlePopOutTrailerButton}
                 >
-                    <div className='search-result-card'>
-                        <div className='search-result-card-container-image'>
+
+                    <div id={item.id} className='search-result-card' onClick={handlePopOutTrailerButton}>
+                        <div className='search-result-card-container-image' id={item.id}>
                             <img src={item.poster_path
                                 ? `https://image.tmdb.org/t/p/w92${item.poster_path}`
                                 : `https://images.unsplash.com/photo-1604161546853-1a097fbc30fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=742&q=80`
                             }
                                 alt={item.title}
+                                id={item.id}
                             />
                         </div>
                         <div className='search-result-card-details' id={item.id}>
-                            <p className='result-title'>
+                            <p className='result-title' id={item.id}>
                                 {item.media_type === 'movie'
                                     ? item.title
                                     : item.name
                                 }
                             </p>
                             <div>
-                                <p>
+                                <p id={item.id}>
                                     {item.media_type === 'movie'
                                         ? (item.release_date
                                             ? item.release_date.split('-')[0]
@@ -46,10 +47,10 @@ const SearchResult = ({ data }) => {
                                         )
                                     }
                                 </p>
-                                <i className="fa-solid fa-circle"></i>
-                                <p>{item.media_type.toUpperCase()}</p>
-                                <i className="fa-solid fa-circle"></i>
-                                <p>{item.vote_average}</p>
+                                <i className="fa-solid fa-circle" id={item.id}></i>
+                                <p id={item.id}>{item.media_type.toUpperCase()}</p>
+                                <i className="fa-solid fa-circle" id={item.id}></i>
+                                <p id={item.id}>{item.vote_average}</p>
                             </div>
                         </div>
                     </div>
