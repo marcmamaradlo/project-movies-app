@@ -10,6 +10,7 @@ const DynamicContent = ({ data, keywords }) => {
     const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
     const genres = data.genres;
+    console.log(keywords)
 
     const handleCastArtist = () => {
         return data.credits
@@ -44,7 +45,7 @@ const DynamicContent = ({ data, keywords }) => {
         return (genres
             ? genres.map((item, index) => (
                 <li key={index}>
-                    <a onClick={handleFakeLinks} href='/'>{`${item.name} ,`}</a>
+                    <a onClick={handleFakeLinks} href='/'>{`${item.name} `}</a>
                 </li>
             ))
             : null
@@ -99,14 +100,21 @@ const DynamicContent = ({ data, keywords }) => {
                             </ul>
                         </div>
                         <div>
-                            <p className='details'>Tags: </p>
+                            {keywords
+                                ? <p className='details'>Tags: </p>
+                                : null}
+
                             <ul className='tags'>
                                 {handleDynamicKeywords()}
                             </ul>
                         </div>
                         <div>
-                            <p className='details'>Homepage: </p>
+
+                            {data.homepage
+                                ? <p className='details'>Homepage: </p>
+                                : null}
                             <p className='tags'><a href={data.homepage}>{data.homepage}</a></p>
+
                         </div>
                     </div>
                 </div>

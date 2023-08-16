@@ -10,9 +10,14 @@ const BannerNavbar = () => {
 
     const context = useContext(MyContext);
     const state = context.state;
-    const [userInput, setUserInput] = useState('');
-    const [searchResult, setSearchResult] = useState('');
-    console.log(searchResult)
+    const userInput = context.state.userInput;
+    const hamburgerIcon = context.state.hamburgerIcon;
+    const searchButton = context.state.searchButton;
+    const handleSearchButton = context.handleSearchButton;
+    const handleHamburgerIcon = context.handleHamburgerIcon;
+    const handleUserInput = context.handleUserInput;
+    const [searchResultData, setSearchResultData] = useState('');
+    console.log(searchButton)
 
     async function getSearchResults() {
         try {
@@ -20,15 +25,11 @@ const BannerNavbar = () => {
             const query = inputString;
             const apiKey = state.apiKey;
             const response = await axios.get(`https://api.themoviedb.org/3/search/multi?language=en-US&query=${query}&page=1&api_key=${apiKey}`);
-            setSearchResult(response.data.results)
+            setSearchResultData(response.data.results)
         }
         catch (error) {
             // console.log('No Data Mounted in State');
         }
-    }
-
-    const handleUserInput = (e) => {
-        setUserInput(e.target.value);
     }
 
     const handleSearchSubmit = (e) => {
@@ -40,10 +41,21 @@ const BannerNavbar = () => {
         <>
             <div className='section-zero-mp'>
                 <div className='banner-navbar'>
-                    <div className='banner-navbar-logo'>
+                    <div
+                        className={
+                            searchButton
+                                ? 'display-none'
+                                : 'banner-navbar-logo'
+                        }
+                    >
                         <p className='text-shadow'><Link to='/'>MoviesDB</Link></p>
                     </div>
-                    <div className='banner-navbar-search-container'>
+                    <div className={
+                        searchButton
+                            ? 'banner-navbar-search-container'
+                            : 'display-none'
+                    }
+                    >
                         <form
                             className='banner-navbar-search box-shadow'
                             onSubmit={handleSearchSubmit}
@@ -58,8 +70,47 @@ const BannerNavbar = () => {
                             <button><i className="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
+                    <div className='burger-icon text-shadow'>
+                        <button
+                            onClick={handleSearchButton}
+                            className={
+                                searchButton
+                                    ? 'display-none'
+                                    : 'box-shadow'
+                            }
+                        >
+                            Search... <i class="fa-solid fa-magnifying-glass"></i></button>
+                        <i
+                            onClick={handleHamburgerIcon}
+                            className={
+                                hamburgerIcon
+                                    ? 'display-none'
+                                    : 'fa-solid fa-bars'
+                            }
+                        >
+
+                        </i>
+                        <div className={
+                            hamburgerIcon
+                                ? 'off-canvas-menu'
+                                : 'display-none'
+                        }
+                        >
+                            <p>HOME</p>
+                            <p>MOVIES</p>
+                            <p>TV SHOW</p>
+                            <p>PEOPLE</p>
+                            <p>SEARCH</p>
+                            <i
+                                onClick={handleHamburgerIcon}
+                                class="fa-regular fa-rectangle-xmark"
+                            >
+
+                            </i>
+                        </div>
+                    </div>
                 </div>
-                <SearchResult data={searchResult} />
+                <SearchResult data={searchResultData} />
             </div>
         </>
     )

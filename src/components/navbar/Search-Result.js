@@ -5,12 +5,14 @@ import { MyContext } from "../../context";
 const SearchResult = ({ data }) => {
 
     const context = useContext(MyContext);
+    const searchResult = context.state.searchResult;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
     console.log(data);
 
     const searchResults = () => {
         return data
-            ? data.slice(0, 5).map((item, index) => (
+            // ? data.slice(0, 5).map((item, index) => (
+            ? data.map((item, index) => (
                 <Link
                     to='/movie-page'
                     id={item.id}
@@ -61,17 +63,23 @@ const SearchResult = ({ data }) => {
 
     return (
         data
-            ? <div className='search-result-container'>
+            ? <div
+                className={
+                    searchResult
+                        ? 'search-result-container'
+                        : 'display-none'
+                }
+            >
                 <div className='search-result-card-container' >
                     {searchResults()}
-                    {data.length > 5
+                    {/* {data.length > 5
                         ? <div className='search-result-view-all'>
                             <p>
                                 VIEW ALL <i className="fa-solid fa-arrow-right"></i>
                             </p>
                         </div >
                         : null
-                    }
+                    } */}
                 </div >
             </div >
             : null

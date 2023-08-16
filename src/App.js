@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import { useContext } from 'react';
-import Navbar from './components/navbar/Navbar';
+// import Navbar from './components/navbar/Navbar';
 import Main from './components/body/Main';
 import Footer from './components/footer/Footer'
 import DynamicPage from './components/main-dynamic-page/Dynamic-Page';
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/movie-page' element={<DynamicPage />} />

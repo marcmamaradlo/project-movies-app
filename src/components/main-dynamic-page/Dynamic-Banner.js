@@ -3,6 +3,7 @@ import { MyContext } from "../../context";
 // import BannerNavbar from "../navbar/Banner-Navbar";
 import VideoPlayer from "../video-player/Video-Player";
 import YoutubePlayerTrailer from "./Video-Player-Trailer";
+import BannerNavbar from "../navbar/Banner-Navbar";
 
 const DynamicBanner = ({ data }) => {
 
@@ -32,12 +33,9 @@ const DynamicBanner = ({ data }) => {
             {/* <BannerNavbar /> */}
             {/* </div> */}
             {/* </div> */}
-            <div className='dynamic-banner-play-button'>
-                {/* <span class="material-symbols-outlined">
-                    play_circle
-                </span> */}
-            </div>
-            <div className='section'>
+            <BannerNavbar />
+            <div className='dynamic-banner-div'>
+
                 {showDisplay()}
             </div>
         </div>

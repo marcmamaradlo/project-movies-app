@@ -22,12 +22,33 @@ class MyProvider extends Component {
         carouselData: 'movie',
         videoID: '', // movie ID in dynamic-page[Dynamic-Banner] '614479'
         youtubeComponentID: '',
-        youtubePopOut: false,
+        youtubePopOut: false, // true = display: none; || false = display: block;
         dynamicPageDataID: '',
         dynamicPageData: '', //'watch-now'
         dynamicPageDataType: 'movie', // 'tv'
         viewAllDataName: '', // 'trending', 'popular', 'similar, '',
         serverButtonID: 'server01', // server01, server02, server03, server04
+        hamburgerIcon: false, // true = display: none; || false = display: block;
+        searchButton: false, // true = display: none; || false = display: block;
+        searchResult: true, // true = display: none; || false = display: block;
+        userInput: '',
+    }
+
+    handleUserInput = (e) => {
+        this.setState({
+            userInput: e.target.value,
+            searchResult: true
+        });
+    }
+
+    handleSearchButton = () => {
+        this.setState({ searchButton: !this.state.searchButton });
+        console.log(this.state.searchButton);
+    }
+
+    handleHamburgerIcon = () => {
+        const hamburgerIcon = this.state.hamburgerIcon;
+        this.setState({ hamburgerIcon: !hamburgerIcon, });
     }
 
     handleServerButton = (e) => {
@@ -51,12 +72,11 @@ class MyProvider extends Component {
     }
 
     handlePopOutTrailerButton = (e) => {
-        // console.log('TMDB Movie ID', e.target.name);
         this.setState({
             dynamicPageDataID: e.target.id,
             dynamicPageData: 'trailer',
             popOutWindow: 'notActive',
-            linkName: e.target.name,
+            searchResult: false,
         });
     }
 
@@ -127,7 +147,8 @@ class MyProvider extends Component {
                 handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
-                handleFakeLinks, handleServerButton,
+                handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
+                handleUserInput,
             } = this;
 
         return (
@@ -137,7 +158,8 @@ class MyProvider extends Component {
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
-                    handleFakeLinks, handleServerButton,
+                    handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
+                    handleUserInput,
                 }}>
                 {this.props.children}
             </MyContext.Provider>
