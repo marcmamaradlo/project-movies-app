@@ -8,7 +8,8 @@ const Banner = () => {
 
     const context = useContext(MyContext);
     const apiKey = context.apiKey;
-    const handlePopOutTrailerButton = context.handlePopOutTrailerButton
+    const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
+    const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [bannerBGData, setBannerBGData] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
 
@@ -51,7 +52,7 @@ const Banner = () => {
     }
 
     return (
-        <div className='banner-container' style={{ ...bannerStyles }}>
+        <div onClick={handleClosePopOutWindow} className='banner-container' style={{ ...bannerStyles }}>
             <div className='banner'>
                 <BannerNavbar />
                 <div className='banner-div'>

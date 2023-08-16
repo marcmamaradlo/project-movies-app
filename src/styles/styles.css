@@ -1461,8 +1461,8 @@ iframe {
         top: 0;
         right: 0;
         width: 50%;
-        height: 90.6%;
-        background-color: #28272655;
+        height: 100%;
+        background-color: #282726d0;
         backdrop-filter: blur(5px);
         font-family: 'Raleway', sans-serif;
         font-size: 1.5rem;
