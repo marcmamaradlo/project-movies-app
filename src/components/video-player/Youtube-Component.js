@@ -10,8 +10,6 @@ const YoutubeComponent = () => {
     const youtubePopOut = state.youtubePopOut;
     const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [videoData, setVideoData] = useState([]);
-    console.log(videoData);
-    console.log(youtubeComponentID)
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line

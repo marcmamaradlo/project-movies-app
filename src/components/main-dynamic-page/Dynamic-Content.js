@@ -10,7 +10,6 @@ const DynamicContent = ({ data, keywords }) => {
     const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
     const genres = data.genres;
-    console.log(keywords)
 
     const handleCastArtist = () => {
         return data.credits

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 
 const MyContext = React.createContext();
 
 class MyProvider extends Component {
 
     state = {
-        value: 0,
+        pageID: '',
+        pageType: '',
         hoverEffect: false,
         apiKey: '0b6d2ddf9c5e096294fa3534fb357915',
         displayComponent: 'main',
@@ -72,16 +72,19 @@ class MyProvider extends Component {
     }
 
     handlePopOutTrailerButton = (e) => {
+        // console.log('onCLick', e.target.id);
         this.setState({
             dynamicPageDataID: e.target.id,
             dynamicPageData: 'trailer',
             popOutWindow: 'notActive',
             searchResult: false,
+            pageID: e.target.id,
+            pageType: e.target.name,
         });
     }
 
     handlePopOutWatchNowButton = (e) => {
-        console.log('Watch Now Button', e.target.name);
+        // console.log('Watch Now Button', e.target.name);
         this.setState({
             dynamicPageDataID: e.target.name,
             dynamicPageData: 'watch-now',
@@ -137,10 +140,7 @@ class MyProvider extends Component {
 
     render() {
 
-        console.log(this.state.youtubeComponentID);
-        console.log(this.state.youtubePopOut);
-
-        const { value, bgSrc, apiData, apiKey } = this.state;
+        const { pageID, bgSrc, apiData, apiKey } = this.state;
 
         const
             {
@@ -155,7 +155,7 @@ class MyProvider extends Component {
         return (
             <MyContext.Provider
                 value={{
-                    state, value, bgSrc, apiData, apiKey,
+                    state, pageID, bgSrc, apiData, apiKey,
                     handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,

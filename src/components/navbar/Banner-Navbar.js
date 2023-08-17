@@ -12,12 +12,11 @@ const BannerNavbar = () => {
     const state = context.state;
     const userInput = context.state.userInput;
     const hamburgerIcon = context.state.hamburgerIcon;
-    const searchButton = context.state.searchButton;
-    const handleSearchButton = context.handleSearchButton;
+    // const searchButton = context.state.searchButton;
+    // const handleSearchButton = context.handleSearchButton;
     const handleHamburgerIcon = context.handleHamburgerIcon;
     const handleUserInput = context.handleUserInput;
     const [searchResultData, setSearchResultData] = useState('');
-    console.log(searchButton)
 
     async function getSearchResults() {
         try {
@@ -41,21 +40,10 @@ const BannerNavbar = () => {
         <>
             <div className='section-zero-mp'>
                 <div className='banner-navbar'>
-                    <div
-                        className={
-                            searchButton
-                                ? 'display-none'
-                                : 'banner-navbar-logo'
-                        }
-                    >
+                    <div className='banner-navbar-logo'>
                         <p className='text-shadow'><Link to='/'>MoviesDB</Link></p>
                     </div>
-                    <div className={
-                        searchButton
-                            ? 'banner-navbar-search-container'
-                            : 'display-none'
-                    }
-                    >
+                    <div className='banner-navbar-search-container'>
                         <form
                             className='banner-navbar-search box-shadow'
                             onSubmit={handleSearchSubmit}
@@ -70,8 +58,14 @@ const BannerNavbar = () => {
                             <button><i className="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
+                    <div className='banner-navbar-menu text-shadow'>
+                        <p>MOVIES</p>
+                        <p>TV SHOW</p>
+                        <p>PEOPLE</p>
+                        <p>SEARCH</p>
+                    </div>
                     <div className='burger-icon text-shadow'>
-                        <button
+                        {/* <button
                             onClick={handleSearchButton}
                             className={
                                 searchButton
@@ -79,7 +73,8 @@ const BannerNavbar = () => {
                                     : 'box-shadow'
                             }
                         >
-                            Search... <i class="fa-solid fa-magnifying-glass"></i></button>
+                            Search... <i class="fa-solid fa-magnifying-glass"></i>
+                        </button> */}
                         <i
                             onClick={handleHamburgerIcon}
                             className={
@@ -103,7 +98,7 @@ const BannerNavbar = () => {
                             <p>SEARCH</p>
                             <i
                                 onClick={handleHamburgerIcon}
-                                class="fa-regular fa-rectangle-xmark"
+                                className="fa-regular fa-rectangle-xmark"
                             >
 
                             </i>

@@ -6,10 +6,13 @@ const ImageCarouselPortrait = (props) => {
 
     const context = useContext(MyContext);
     const [viewAll, setViewAll] = useState(false);
+    const pageID = context.state.pageID;
+    // const pageType = context.state.pageType;
     const data = props.data;
     const type = props.type;
     const headerName = props.headerName;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
+    console.log(pageID);
 
     const viewAllOnClick = () => {
         setViewAll(!viewAll);
@@ -18,9 +21,11 @@ const ImageCarouselPortrait = (props) => {
     const imageComponent = () => {
         return data.map((item) => (
             <Link
-                to='/movie-page'
+                // to={`/${pageType}/${pageID}&${item.title.split(' ').join('-')}`}
+                to={`/movie/${item.id}`}
                 key={item.id}
                 id={item.id}
+                name={item.name}
                 onClick={handlePopOutTrailerButton}
             >
                 <div

@@ -7,7 +7,6 @@ const SearchResult = ({ data }) => {
     const context = useContext(MyContext);
     const searchResult = context.state.searchResult;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
-    console.log(data);
 
     const searchResults = () => {
         return data
