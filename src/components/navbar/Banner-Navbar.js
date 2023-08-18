@@ -1,9 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
 import SearchResult from "./Search-Result";
 
 const BannerNavbar = () => {
@@ -12,11 +11,14 @@ const BannerNavbar = () => {
     const state = context.state;
     const userInput = context.state.userInput;
     const hamburgerIcon = context.state.hamburgerIcon;
-    // const searchButton = context.state.searchButton;
-    // const handleSearchButton = context.handleSearchButton;
+    const activePage = context.state.activePage;
     const handleHamburgerIcon = context.handleHamburgerIcon;
     const handleUserInput = context.handleUserInput;
     const [searchResultData, setSearchResultData] = useState('');
+
+    useEffect(() => {
+        getSearchResults() // eslint-disable-next-line
+    }, [userInput])
 
     async function getSearchResults() {
         try {
@@ -58,11 +60,11 @@ const BannerNavbar = () => {
                             <button><i className="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
-                    <div className='banner-navbar-menu text-shadow'>
-                        <p>MOVIES</p>
-                        <p>TV SHOW</p>
-                        <p>PEOPLE</p>
-                        <p>SEARCH</p>
+                    <div className='banner-navbar-menu'>
+                        <p className={activePage === 'movie' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>MOVIES</p>
+                        <p className={activePage === 'tv' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>TV SHOW</p>
+                        <p className={activePage === 'people' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>PEOPLE</p>
+                        <p className={activePage === 'search' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>SEARCH</p>
                     </div>
                     <div className='burger-icon text-shadow'>
                         {/* <button

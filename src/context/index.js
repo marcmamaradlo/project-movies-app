@@ -7,9 +7,10 @@ class MyProvider extends Component {
     state = {
         pageID: '',
         pageType: '',
+        activePage: 'movie', // 'movie', 'tv', 'people', 'search'
         hoverEffect: false,
         apiKey: '0b6d2ddf9c5e096294fa3534fb357915',
-        displayComponent: 'main',
+        // displayComponent: 'main',
         bgSrc: 'https://images.unsplash.com/photo-1454117096348-e4abbeba002c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
         apiData: [],
         trendingData: 'day',
