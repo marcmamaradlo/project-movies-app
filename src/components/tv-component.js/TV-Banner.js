@@ -21,7 +21,7 @@ const TVBanner = ({ data }) => {
             return <YoutubePlayerTrailer />
         }
         if (state.dynamicPageData === 'watchNow') {
-            return <VideoPlayer videoID={data.id} />
+            return <VideoPlayer />
         }
     }
 

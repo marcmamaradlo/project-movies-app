@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { MyContext } from "../../context";
+import { useParams } from "react-router-dom";
 import VideoPlayer from "../video-player/Video-Player";
 import YoutubePlayerTrailer from "./Video-Player-Trailer";
 import BannerNavbar from "../navbar/Banner-Navbar";
 
 const DynamicBanner = ({ data }) => {
+    const params = useParams();
+    console.log(params)
 
     const context = useContext(MyContext);
     const state = context.state;

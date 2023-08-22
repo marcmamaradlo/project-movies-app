@@ -14,7 +14,7 @@ const TestPage = () => {
     });
 
     const params = useParams();
-    console.log(params);
+    // console.log(params);
 
     const context = useContext(MyContext);
     const [dynamicData, setDynamicData] = useState([]);
@@ -22,7 +22,6 @@ const TestPage = () => {
     const [similarData, setSimilarData] = useState([]);
     const state = context.state;
     const apiKey = state.apiKey;
-    // const pageType = state.pageType;
     const dynamicPageDataID = state.dynamicPageDataID;
     const dynamicPageData = state.dynamicPageData;
     const serverButtonID = state.serverButtonID;

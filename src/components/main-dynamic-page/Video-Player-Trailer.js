@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { MyContext } from "../../context";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import YouTube from 'react-youtube';
 const YoutubePlayerTrailer = () => {
@@ -7,7 +8,9 @@ const YoutubePlayerTrailer = () => {
     const context = useContext(MyContext);
     const state = context.state;
     const youtubeComponentID = state.youtubeComponentID;
+    const params = useParams();
     const [videoData, setVideoData] = useState([]);
+    console.log(youtubeComponentID)
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line
@@ -16,7 +19,7 @@ const YoutubePlayerTrailer = () => {
     async function getVideoData() {
         try {
             const apiKey = state.apiKey;
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${youtubeComponentID}/videos?api_key=${apiKey}`);
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=${apiKey}`);
             setVideoData(response.data.results)
         }
         catch (error) {
@@ -27,7 +30,7 @@ const YoutubePlayerTrailer = () => {
 
     const handleTrailerVideoID = () => {
         const youtubeID = videoData.find(video => video.type === 'Trailer' || 'Official Trailer');
-        console.log(youtubeID);
+        // console.log(youtubeID.key);
         return (youtubeID
             ? <YouTube
                 key={youtubeComponentID.id}

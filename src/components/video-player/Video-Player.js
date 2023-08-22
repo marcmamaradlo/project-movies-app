@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { MyContext } from "../../context";
+import { useParams } from "react-router-dom";
 
-const VideoPlayer = ({ videoID }) => {
+const VideoPlayer = () => {
+    const params = useParams();
+    console.log(params.id);
 
     const context = useContext(MyContext);
     const serverButtonID = context.state.serverButtonID;
-    const vidsrcTo = `https://vidsrc.to/embed/movie/${videoID}`
-    const vidsrcMe = `https://vidsrc.me/embed/movie?tmdb=${videoID}/`
-    const xtreamhubCom = `https://xtreamhub.com/video/${videoID}`
+    const vidsrcTo = `https://vidsrc.to/embed/movie/${params.id}`
+    const vidsrcMe = `https://vidsrc.me/embed/movie?tmdb=${params.id}/`
+    const xtreamhubCom = `https://xtreamhub.com/video/${params.id}`
 
     const chooseServer = () => {
         if (serverButtonID === 'server01') {
@@ -43,17 +46,17 @@ const VideoPlayer = ({ videoID }) => {
                 Video Player
             </iframe>
         }
-        if (serverButtonID === 'server04') {
-            return <iframe
-                allowFullScreen
-                src={vidsrcTo}
-                id='video-player'
-                name='video-player'
-                title='video-player'
-            >
-                Video Player
-            </iframe>
-        }
+        // if (serverButtonID === 'server04') {
+        //     return <iframe
+        //         allowFullScreen
+        //         src={vidsrcTo}
+        //         id='video-player'
+        //         name='video-player'
+        //         title='video-player'
+        //     >
+        //         Video Player
+        //     </iframe>
+        // }
         else {
             console.log('Sorry, video is not available in our servers.')
         }

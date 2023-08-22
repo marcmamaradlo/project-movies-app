@@ -155,7 +155,7 @@ class MyProvider extends Component {
 
     render() {
 
-        console.log(this.state.userInput);
+        // console.log(this.state.userInput);
 
         const { pageID, bgSrc, apiData, apiKey } = this.state;
 
