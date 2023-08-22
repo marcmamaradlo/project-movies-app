@@ -6,13 +6,12 @@ const ImageCarouselPortrait = (props) => {
 
     const context = useContext(MyContext);
     const [viewAll, setViewAll] = useState(false);
-    const pageID = context.state.pageID;
-    // const pageType = context.state.pageType;
     const data = props.data;
     const type = props.type;
     const headerName = props.headerName;
+    const dropDownMenu = context.state.dropDownMenu;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
-    console.log(pageID);
+    // console.log(pageID);
 
     const viewAllOnClick = () => {
         setViewAll(!viewAll);
@@ -22,7 +21,7 @@ const ImageCarouselPortrait = (props) => {
         return data.map((item) => (
             <Link
                 // to={`/${pageType}/${pageID}&${item.title.split(' ').join('-')}`}
-                to={`/movie/${item.id}`}
+                to={`/${dropDownMenu}/${item.id}`}
                 key={item.id}
                 id={item.id}
                 name={item.name}
@@ -45,7 +44,19 @@ const ImageCarouselPortrait = (props) => {
                         />
                     </div>
                     <div className='card-container-details'>
-                        <p>{item.release_date.split('-')[0]}</p>
+                        <p>
+                            {
+                                dropDownMenu === 'movie'
+                                    ? item.release_date
+                                        ? item.release_date.split('-')[0]
+                                        : null
+                                    : dropDownMenu === 'tv'
+                                        ? item.first_air_date
+                                            ? item.first_air_date.split('-')[0]
+                                            : null
+                                        : null
+
+                            }</p>
                     </div>
                     <div className='card-container-title'>
                         <p>{item.title}</p>

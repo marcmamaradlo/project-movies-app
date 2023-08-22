@@ -14,19 +14,41 @@ const BannerNavbar = () => {
     const activePage = context.state.activePage;
     const handleHamburgerIcon = context.handleHamburgerIcon;
     const handleUserInput = context.handleUserInput;
+    const handleDropDownMenu = context.handleDropDownMenu;
+    const dropDownMenu = context.state.dropDownMenu;
     const [searchResultData, setSearchResultData] = useState('');
 
     useEffect(() => {
         getSearchResults() // eslint-disable-next-line
-    }, [userInput])
+    }, [userInput]);
 
     async function getSearchResults() {
         try {
             const inputString = userInput.split(' ').join('%');
             const query = inputString;
             const apiKey = state.apiKey;
-            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?language=en-US&query=${query}&page=1&api_key=${apiKey}`);
-            setSearchResultData(response.data.results)
+            if (dropDownMenu === 'movie') {
+                console.log('movie');
+                const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=1&api_key=${apiKey}`);
+                return setSearchResultData(response.data.results);
+            }
+            if (dropDownMenu === 'tv') {
+                console.log('tv');
+                const response = await axios.get(`https://api.themoviedb.org/3/search/tv?query=${query}&language=en-US&page=1&api_key=${apiKey}`);
+                return setSearchResultData(response.data.results);
+            }
+            if (dropDownMenu === 'people') {
+                console.log('people');
+                const response = await axios.get(`https://api.themoviedb.org/3/search/person?query=${query}&language=en-US&page=1&api_key=${apiKey}`)
+                return setSearchResultData(response.data.results);
+            }
+            else {
+                // console.log('else');
+                // const response = await axios.get(`https://api.themoviedb.org/3/search/multi?language=en-US&query=${query}&page=1&api_key=${apiKey}`);
+                // return setSearchResultData(response.data.results);
+                console.log('Search Error');
+                alert('Sorry, Nothing Found');
+            }
         }
         catch (error) {
             // console.log('No Data Mounted in State');
@@ -50,6 +72,12 @@ const BannerNavbar = () => {
                             className='banner-navbar-search box-shadow'
                             onSubmit={handleSearchSubmit}
                         >
+                            {/* <label for='type'>{`${dataType}`}</label> */}
+                            <select onClick={handleDropDownMenu} name='type' id='type'>
+                                <option value='movie'>Movie</option>
+                                <option value='tv'>TV Show</option>
+                                <option value='people'>People</option>
+                            </select>
                             <input
                                 type='text'
                                 id='searchInput'

@@ -31,8 +31,14 @@ class MyProvider extends Component {
         serverButtonID: 'server01', // server01, server02, server03, server04
         hamburgerIcon: false, // true = display: none; || false = display: block;
         searchButton: false, // true = display: none; || false = display: block;
-        searchResult: true, // true = display: none; || false = display: block;
+        searchResult: true, // true = display: flex; || false = display: none;
         userInput: '',
+        dropDownMenu: 'movie', // 'movie', 'tv', 'people',
+    }
+
+    handleDropDownMenu = (e) => {
+        this.setState({ dropDownMenu: e.target.value });
+        console.log(this.state.dropDownMenu);
     }
 
     handleUserInput = (e) => {
@@ -61,6 +67,10 @@ class MyProvider extends Component {
         alert('Kalma lang, hindi pa tapos yung Website!');
     }
 
+    handleTVDynamicButton = (e) => {
+        console.log(e);
+    }
+
     handleDynamicContentButton = (e) => {
         if (e.target.name === 'trailer') {
             this.setState({ youtubePopOut: true });
@@ -73,7 +83,11 @@ class MyProvider extends Component {
     }
 
     handlePopOutTrailerButton = (e) => {
-        // console.log('onCLick', e.target.id);
+        // console.log(
+        //     'onCLick',
+        //     e.target.name,
+        //     this.state.pageType
+        // );
         this.setState({
             dynamicPageDataID: e.target.id,
             dynamicPageData: 'trailer',
@@ -141,6 +155,8 @@ class MyProvider extends Component {
 
     render() {
 
+        console.log(this.state.userInput);
+
         const { pageID, bgSrc, apiData, apiKey } = this.state;
 
         const
@@ -150,7 +166,7 @@ class MyProvider extends Component {
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                 handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
-                handleUserInput,
+                handleUserInput, handleDropDownMenu,
             } = this;
 
         return (
@@ -161,7 +177,7 @@ class MyProvider extends Component {
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                     handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
-                    handleUserInput,
+                    handleUserInput, handleDropDownMenu,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

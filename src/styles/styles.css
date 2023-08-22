@@ -24,6 +24,22 @@ iframe {
     height: 100%;
 }
 
+option,
+select {
+    border-radius: 5px 0 0 5px;
+    border: none;
+    outline: none;
+    padding: 0 0.4rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+select {
+    color: #28272699;
+}
+
+
 .material-symbols-outlined {
     font-variation-settings:
         'FILL' 0,
@@ -338,7 +354,7 @@ iframe {
 }
 
 .banner-navbar-search input {
-    border-radius: 5px 0 0 5px;
+    border-radius: 0 0 0 0;
     height: 2rem;
     width: 100%;
     background-color: rgb(255, 255, 255, 0.7);
@@ -1021,6 +1037,13 @@ iframe {
     outline: none;
 }
 
+.dynamic-button-container select {
+    border-radius: 5px;
+    height: 2rem;
+    width: 49%;
+    padding: 0 1rem;
+}
+
 .server-button-default {
     background-color: silver;
     color: #28272688;
@@ -1416,7 +1439,7 @@ iframe {
     }
 
     .banner-navbar-search input {
-        border-radius: 5px 0 0 5px;
+        border-radius: 0px 0 0 0px;
         height: 2rem;
         width: 100%;
         background-color: rgb(255, 255, 255, 0.7);
@@ -2140,6 +2163,10 @@ iframe {
 
     .dynamic-banner {
         height: 30vh;
+    }
+
+    .dynamic-button-container select {
+        padding: 0.5rem;
     }
 
     .recent-trailer {

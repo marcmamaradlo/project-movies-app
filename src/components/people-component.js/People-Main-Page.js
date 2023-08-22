@@ -2,11 +2,11 @@ import { useContext, useState, useEffect } from "react";
 import { MyContext } from "../../context";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import DynamicContent from "./Dynamic-Content";
-import DynamicBanner from "./Dynamic-Banner";
+import DynamicContent from "./People-Content";
+import DynamicBanner from "./People-Banner";
 import ImageCarouselPortrait from "../reuseable/image-carousel-portrait";
 
-const TestPage = () => {
+const PeopleMainPage = () => {
 
     window.scrollTo({
         top: '0',
@@ -26,7 +26,6 @@ const TestPage = () => {
     const dynamicPageDataID = state.dynamicPageDataID;
     const dynamicPageData = state.dynamicPageData;
     const serverButtonID = state.serverButtonID;
-    const dropDownMenu = state.dropDownMenu
     const handleServerButton = context.handleServerButton;
     const serverButtonName = ['server01', 'server02', 'server03', 'server04',];
 
@@ -36,7 +35,7 @@ const TestPage = () => {
 
     async function getDynamicPageData() {
         try {
-            const selector = dropDownMenu;
+            const selector = 'movie';
             const dataDetailes = await axios.get(`https://api.themoviedb.org/3/${selector}/${params.id}?api_key=${apiKey}&append_to_response=credits`);
             setDynamicData(dataDetailes.data);
             const dataKeywords = await axios.get(`https://api.themoviedb.org/3/${selector}/${params.id}/keywords?api_key=${apiKey}`);
@@ -52,7 +51,6 @@ const TestPage = () => {
     const handleServerButtons = () => {
         return serverButtonName.map((item, index) => (
             <button
-                key={`${item + index}`}
                 className={
                     serverButtonID === item
                         ? 'server-button-active'
@@ -98,4 +96,4 @@ const TestPage = () => {
     )
 }
 
-export default TestPage;
+export default PeopleMainPage;
