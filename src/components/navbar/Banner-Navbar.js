@@ -28,17 +28,17 @@ const BannerNavbar = () => {
             const query = inputString;
             const apiKey = state.apiKey;
             if (dropDownMenu === 'movie') {
-                console.log('movie');
+                // console.log('movie');
                 const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=1&api_key=${apiKey}`);
                 return setSearchResultData(response.data.results);
             }
             if (dropDownMenu === 'tv') {
-                console.log('tv');
+                // console.log('tv');
                 const response = await axios.get(`https://api.themoviedb.org/3/search/tv?query=${query}&language=en-US&page=1&api_key=${apiKey}`);
                 return setSearchResultData(response.data.results);
             }
-            if (dropDownMenu === 'people') {
-                console.log('people');
+            if (dropDownMenu === 'person') {
+                // console.log('person');
                 const response = await axios.get(`https://api.themoviedb.org/3/search/person?query=${query}&language=en-US&page=1&api_key=${apiKey}`)
                 return setSearchResultData(response.data.results);
             }
@@ -76,7 +76,7 @@ const BannerNavbar = () => {
                             <select onClick={handleDropDownMenu} name='type' id='type'>
                                 <option value='movie'>Movie</option>
                                 <option value='tv'>TV Show</option>
-                                <option value='people'>People</option>
+                                <option value='person'>People</option>
                             </select>
                             <input
                                 type='text'
@@ -91,7 +91,7 @@ const BannerNavbar = () => {
                     <div className='banner-navbar-menu'>
                         <p className={activePage === 'movie' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>MOVIES</p>
                         <p className={activePage === 'tv' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>TV SHOW</p>
-                        <p className={activePage === 'people' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>PEOPLE</p>
+                        <p className={activePage === 'person' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>PEOPLE</p>
                         <p className={activePage === 'search' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>SEARCH</p>
                     </div>
                     <div className='burger-icon text-shadow'>

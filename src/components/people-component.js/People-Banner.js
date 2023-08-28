@@ -1,37 +1,9 @@
-import { useContext } from "react";
-import { MyContext } from "../../context";
-import VideoPlayer from "../video-player/Video-Player";
-import YoutubePlayerTrailer from "./Video-Player-Trailer";
-import BannerNavbar from "../navbar/Banner-Navbar";
-
-const PeopleBanner = ({ data }) => {
-
-    const context = useContext(MyContext);
-    const state = context.state;
-    const wallpapper = data.backdrop_path;
-    const dynamicBannerBackground = {
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${wallpapper})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    }
-
-    const showDisplay = () => {
-        if (state.dynamicPageData === 'trailer') {
-            return <YoutubePlayerTrailer />
-        }
-        if (state.dynamicPageData === 'watchNow') {
-            return <VideoPlayer videoID={data.id} />
-        }
-    }
+const PeopleBanner = () => {
 
     return (
-        <div className='dynamic-banner' style={{ ...dynamicBannerBackground }}>
-            <BannerNavbar />
-            <div className='dynamic-banner-div'>
-                {showDisplay()}
-            </div>
-        </div>
+        <>
+
+        </>
     )
 }
 

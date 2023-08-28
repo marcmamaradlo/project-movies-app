@@ -127,6 +127,7 @@ class MyProvider extends Component {
     }
 
     handleClosePopOutWindow = () => {
+        console.log(this.state.searchResult, 'close button');
         this.setState({
             popOutWindow: 'notActive',
             youtubePopOut: false,

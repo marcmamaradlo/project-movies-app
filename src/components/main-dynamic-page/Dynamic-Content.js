@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { getLangNameFromCode } from "language-name-map";
 import { MyContext } from "../../context";
+import { Link } from "react-router-dom";
+import { getLangNameFromCode } from "language-name-map";
+
 
 const DynamicContent = ({ data, keywords }) => {
-
+    console.log(keywords);
     const context = useContext(MyContext);
     const handleDynamicContentButton = context.handleDynamicContentButton;
     const handleFakeLinks = context.handleFakeLinks;
@@ -15,18 +17,18 @@ const DynamicContent = ({ data, keywords }) => {
         return data.credits
             ? data.credits.cast.slice(0, 4).map((item, index) => (
                 <li key={index}>
-                    <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a>
+                    <Link to={`/person/${item.id}`}>{`${item.name},`}</Link>
+                    {/* <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a> */}
                 </li>
             ))
             : null // console.log('Cast Error')
     }
 
-
     const handleDynamicKeywords = () => {
         return (keywords
             ? keywords.map((item) => (
                 <li key={item.id}>
-                    <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a>
+                    <Link to='/search' id={item.id}>{`${item.name},  `}</Link>
                 </li>
             ))
             : null

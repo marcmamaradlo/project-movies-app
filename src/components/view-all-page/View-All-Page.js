@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const ViewAll = ({data}) => {
+const ViewAll = ({ data }) => {
 
     useEffect(() => {
         window.scrollTo({

@@ -166,7 +166,94 @@ select {
     transition: 200ms;
 }
 
+.heading-div {
+    display: flex;
+    /* align-items: center;
+    justify-content: center;
+    flex-direction: row; */
+}
+
+.heading div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-left: 2px solid #282726; */
+}
+
+.heading-div-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+    width: 10rem;
+}
+
+.heading-div-button-active {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 10rem;
+}
+
+.heading-div-button:hover {
+    text-decoration: underline;
+    font-weight: 600;
+    transition: 200ms;
+}
+
 /* Heading End */
+
+/* Filter Start */
+.filter-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.filter-search,
+.filter-container button {
+    border: 1px solid #282726;
+    border-radius: 5px;
+    height: 2rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+
+}
+
+.filter-search {
+    width: 30%;
+    height: 1.9rem;
+}
+
+.filter-search input {
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 95%;
+    padding: 0;
+    margin: 0 0 0 1rem;
+    border-radius: 5px;
+}
+
+.filter-search input::placeholder {
+    color: #282726;
+}
+
+.filter-submit {
+    width: 7rem;
+}
+
+
+/* Filter End */
+
 .container {
     display: flex;
     align-items: center;
@@ -204,11 +291,12 @@ select {
 
 .banner-navbar-menu-active {
     background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     color: #282726;
-    margin-top: 0;
+    /* margin-top: 0; */
     padding: 0.4rem 0.4rem 0.4rem 0.4rem;
-    padding-top: 1.5rem;
+    /* padding-top: 1.5rem; */
     border-radius: 5px;
     /* text-shadow: 2px 2px 10px #282726; */
     border: 1px solid transparent;
@@ -220,9 +308,9 @@ select {
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(2px);
     color: #282726;
-    margin-top: 0;
+    /* margin-top: 0; */
     padding: 0.4rem 0.4rem 0.4rem 0.4rem;
-    padding-top: 1.5rem;
+    /* padding-top: 1.5rem; */
     border-radius: 5px;
     /* text-shadow: 2px 2px 10px #282726; */
     border: 1px solid transparent;
@@ -230,98 +318,14 @@ select {
     font-weight: 600;
 }
 
-/* .navbar,
-.main,
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70%;
-    height: 100%;
-}
-
-.navbar {
-    justify-content: space-between;
-}
-
-.navbar-links,
-.navbar-logo {
-    display: flex;
-    flex-direction: row;
-}
-
-.navbar-logo {
-    display: flex;
-    align-items: center;
-    height: 2rem;
-}
-
-.navbar-logo a {
-    margin-right: 0.5rem;
-    font-family: 'Anton', sans-serif;
-    color: white;
-    text-decoration: none;
-    font-size: 2rem;
-    padding: 0;
-}
-
-.navbar-logo i {
-    color: white;
-    font-size: 2rem;
-}
-
-.navbar-search-container {
-    width: 50%;
-}
-
-.navbar-search {
-    display: flex;
-    width: 100%;
-}
-
-.navbar-search input {
-    border-radius: 5px 0 0 5px;
-    height: 2.5rem;
-    width: 100%;
-    background-color: white;
-    border: none;
-    outline: none;
-    padding: 0 1rem;
-    color: #282726;
-    font-family: 'Anton', sans-serif;
-    text-align: center;
-    cursor: pointer;
-}
-
-.navbar-search button {
-    border-radius: 0 5px 5px 0;
-    height: 2.5rem;
-    width: 3rem;
-    background-color: white;
-    color: #282726;
-    border: none;
-    outline: none;
-}
-
-.navbar-search button:hover {
-    cursor: pointer;
-    background-color: #282726;
-    color: white;
-    transition: 200ms;
-}
-
-.navbar-links a {
-    margin-left: 1rem;
-    text-decoration: none;
-    color: white;
-    font-family: 'Raleway', sans-serif; */
-
 .banner-navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 3rem;
+    height: 5rem;
     width: 100%;
+    z-index: 1;
+    /* border-bottom: 2px solid silver; */
 }
 
 .banner-navbar-logo {
@@ -384,28 +388,28 @@ select {
 .search-result-container {
     position: absolute;
     top: 3rem;
-    left: 27.6%;
     width: 35%;
     max-height: 50vh;
-    /* height: auto; */
-    background-color: rgb(255, 255, 255, 0.7);
+    background-color: silver;
     border-radius: 5px;
     overflow-y: scroll;
+    z-index: 10;
 }
 
 .search-result-card-container {
     max-height: 50vh;
     min-height: 100%;
-
 }
 
 .search-result-container::-webkit-scrollbar {
     display: none;
+    width: 0;
 }
 
 .search-result-card {
     display: flex;
     padding: 0.5rem;
+    margin: 0;
     border-bottom: 1px solid #28272655;
     height: 100%;
     width: 96%;
@@ -1162,6 +1166,262 @@ select {
 
 /* Dynamic Banner Component End */
 
+/* Person Container Component Start */
+.person-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    /* border-top: 1px solid grey; */
+    /* border-bottom: 1px solid grey; */
+    padding: 2rem 0;
+    /* margin-top: 2rem; */
+}
+
+.person-image {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 18.75rem;
+    min-width: 18.75rem;
+    padding-right: 2rem;
+}
+
+.person-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 70%;
+}
+
+.person-details h1 {
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 0;
+}
+
+.person-biography-header {
+    font-size: 1rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.person-biography-details-default {
+    font-size: 0.8rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    width: 100%;
+    line-height: 1rem;
+    height: 4.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.person-biography-details-active {
+    font-size: 0.8rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    width: 100%;
+    line-height: 1rem;
+    height: 100%;
+    transition: ease-in-out 200ms;
+}
+
+.biography-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.see-more {
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    background-color: #28272655;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 200;
+}
+
+.see-more:hover {
+    /* text-decoration: underline; */
+    font-weight: 400;
+}
+
+.person-image img {
+    height: 28.125rem;
+    width: 18.75rem;
+    border-radius: 5px;
+}
+
+.person-related-movie-carousel {
+    height: 50%;
+}
+
+.related-movie-carousel {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.related-movie-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.person-card {
+    width: auto;
+    height: auto;
+    /* border: 1px solid white; */
+}
+
+.person-card-image {
+    width: 9rem;
+    height: 13rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.person-card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.person-card-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+}
+
+.person-acting-details {
+    border-top: 1px solid grey;
+    width: 100%;
+}
+
+.personal-icons {
+    display: flex;
+    justify-content: flex-start;
+    margin: 2rem 0;
+}
+
+.personal-icons i {
+    font-size: 1.5rem;
+    padding-right: 1.5rem;
+    color: white;
+}
+
+.person-personal-info {
+    height: 100%;
+}
+
+.person-personal-info h3 {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* .personal-info {
+    
+} */
+
+.personal-info-content {
+    width: 100%;
+}
+
+.personal-info-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.personal-info-detail {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    padding: 0;
+    margin: 0;
+}
+
+/* .acting-container {
+    padding: 0 1rem;
+} */
+
+.acting-container-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.acting-container-content .acting-title {
+    font-weight: 400;
+    width: 100%;
+    position: relative;
+}
+
+.acting-container-content .acting-year {
+    font-weight: 100;
+}
+
+.acting-container-content i,
+.acting-container-content p {
+    padding-right: 1rem;
+}
+
+.acting-container-content i {
+    font-size: 0.5rem;
+}
+
+.acting-container-content:nth-child(odd) {
+    background-color: rgb(36, 36, 33);
+    /* border: 1px solid white; */
+}
+
+.acting-title-span {
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+}
+
+.acting-title a {
+    color: white;
+    text-decoration: none;
+}
+
+.acting-title a:hover {
+    text-decoration: underline;
+}
+
+.acting-button-container {
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acting-button-container button {
+    height: 2rem;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    color: white;
+    font-size: 1rem;
+}
+
+
+
+/* Person Container Component End */
+
 /* View All Component Start */
 .view-all {
     display: flex;
@@ -1346,12 +1606,13 @@ select {
 
     .banner-navbar-search-container {
         width: 50%;
+        position: relative;
     }
 
     .search-result-container {
         top: 3rem;
-        left: 18.8%;
-        width: 45%;
+        /* left: 18.8%; */
+        width: 100%;
     }
 
     .banner-button {
@@ -1397,8 +1658,8 @@ select {
 
     .search-result-container {
         top: 3rem;
-        left: 19.8%;
-        width: 36%;
+        /* left: 19.8%; */
+        width: 100%;
     }
 
     .banner-navbar {
@@ -1626,8 +1887,8 @@ select {
     }
 
     .search-result-container {
-        left: 23.75%;
-        width: 63%;
+        /* left: %; */
+        width: 100%;
     }
 
     .card-container {
@@ -1697,8 +1958,8 @@ select {
 
     .search-result-container {
         top: 3rem;
-        left: 25.5%;
-        width: 63%;
+        /* left: %; */
+        width: 100%;
     }
 
     .card-container {
@@ -1908,7 +2169,7 @@ select {
     .search-result-container {
         top: 3rem;
         left: unset;
-        width: 90%;
+        width: 100%;
     }
 
     .card-container {

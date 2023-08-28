@@ -1,13 +1,14 @@
 import { useState, useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import axios from "axios";
-import BannerNavbar from "../navbar/Banner-Navbar";
+// import BannerNavbar from "../navbar/Banner-Navbar";
 import { Link } from "react-router-dom";
 
 const Banner = () => {
 
     const context = useContext(MyContext);
     const apiKey = context.apiKey;
+    const dropDownMenu = context.state.dropDownMenu;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
     const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const [bannerBGData, setBannerBGData] = useState([]);
@@ -54,7 +55,7 @@ const Banner = () => {
     return (
         <div onClick={handleClosePopOutWindow} className='banner-container' style={{ ...bannerStyles }}>
             <div className='banner'>
-                <BannerNavbar />
+                {/* <BannerNavbar /> */}
                 <div className='banner-div'>
                     <div className='banner-details'>
                         <div className="banner-details-div">
@@ -64,7 +65,14 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className='banner-button'>
-                    <Link to='/movie-page'><button id={bannerBGData} onClick={handlePopOutTrailerButton}>Watch Now</button></Link>
+                    <Link to={`/${dropDownMenu}/${movieDetails.id}`}>
+                        <button
+                            id={movieDetails.id}
+                            onClick={handlePopOutTrailerButton}
+                        >
+                            Watch Now
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

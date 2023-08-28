@@ -30,7 +30,7 @@ const SearchResult = ({ data }) => {
                                         ? item.poster_path
                                             ? <img src={`https://image.tmdb.org/t/p/w92${item.poster_path}`} alt={item.name} />
                                             : <img src={`https://images.unsplash.com/photo-1604161546853-1a097fbc30fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=742&q=80`} alt={item.name} />
-                                        : dropDownMenu === 'people'
+                                        : dropDownMenu === 'person'
                                             ? item.profile_path
                                                 ? <img src={`https://image.tmdb.org/t/p/w185${item.profile_path}`} alt={item.name} />
                                                 : <img src={`https://images.unsplash.com/photo-1604161546853-1a097fbc30fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=742&q=80`} alt={item.name} />
@@ -44,7 +44,7 @@ const SearchResult = ({ data }) => {
                                         ? item.title
                                         : dropDownMenu === 'tv'
                                             ? item.name
-                                            : dropDownMenu === 'people'
+                                            : dropDownMenu === 'person'
                                                 ? item.name
                                                 : null
                                 }
@@ -62,7 +62,7 @@ const SearchResult = ({ data }) => {
                                                     ? item.first_air_date.split('-')[0]
                                                     : '????'
                                                 )
-                                                : dropDownMenu === 'people'
+                                                : dropDownMenu === 'person'
                                                     ? item.gender === 0 ? 'Male' : 'Female'
                                                     : item.gender === 1 ? 'Female' : 'Male'
                                     }
@@ -74,7 +74,7 @@ const SearchResult = ({ data }) => {
                                             ? dropDownMenu
                                             : dropDownMenu === 'tv'
                                                 ? dropDownMenu
-                                                : dropDownMenu === 'people'
+                                                : dropDownMenu === 'person'
                                                     ? item.known_for_department
                                                     : null
                                     }
@@ -86,7 +86,7 @@ const SearchResult = ({ data }) => {
                                             ? item.vote_average
                                             : dropDownMenu === 'tv'
                                                 ? item.vote_average
-                                                : dropDownMenu === 'people'
+                                                : dropDownMenu === 'person'
                                                     ? item.popularity
                                                     : null
                                     }
@@ -110,6 +110,8 @@ const SearchResult = ({ data }) => {
             >
                 <div className='search-result-card-container' >
                     {searchResults()}
+                    {console.log(searchResult)}
+                    {console.log(data)}
                     {/* {data.length > 5
                         ? <div className='search-result-view-all'>
                             <p>
@@ -120,7 +122,7 @@ const SearchResult = ({ data }) => {
                     } */}
                 </div >
             </div >
-            : null
+            : console.log('Search-Result not showing')
     )
 }
 

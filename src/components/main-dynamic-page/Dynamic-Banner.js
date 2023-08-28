@@ -3,12 +3,15 @@ import { MyContext } from "../../context";
 import { useParams } from "react-router-dom";
 import VideoPlayer from "../video-player/Video-Player";
 import YoutubePlayerTrailer from "./Video-Player-Trailer";
-import BannerNavbar from "../navbar/Banner-Navbar";
+// import BannerNavbar from "../navbar/Banner-Navbar";
 
 const DynamicBanner = ({ data }) => {
-    const params = useParams();
-    console.log(params)
 
+    // useEffect(() = {
+
+    // })
+
+    const params = useParams();
     const context = useContext(MyContext);
     const state = context.state;
     const wallpapper = data.backdrop_path;
@@ -24,13 +27,13 @@ const DynamicBanner = ({ data }) => {
             return <YoutubePlayerTrailer />
         }
         if (state.dynamicPageData === 'watchNow') {
-            return <VideoPlayer videoID={data.id} />
+            return <VideoPlayer videoID={params.id} />
         }
     }
 
     return (
         <div className='dynamic-banner' style={{ ...dynamicBannerBackground }}>
-            <BannerNavbar />
+            {/* <BannerNavbar /> */}
             <div className='dynamic-banner-div'>
                 {showDisplay()}
             </div>
