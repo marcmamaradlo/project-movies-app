@@ -5,7 +5,7 @@ import { getLangNameFromCode } from "language-name-map";
 
 
 const DynamicContent = ({ data, keywords }) => {
-    console.log(keywords);
+    // console.log(keywords);
     const context = useContext(MyContext);
     const handleDynamicContentButton = context.handleDynamicContentButton;
     const handleFakeLinks = context.handleFakeLinks;

@@ -1074,6 +1074,72 @@ select {
     font-weight: 600;
 }
 
+.dynamic-tv-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10rem;
+}
+
+.dynamic-season-container,
+.dynamic-episode-container {
+    position: relative;
+    border-radius: 5px;
+    height: 2rem;
+    border: 1px solid white;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+}
+
+.dynamic-season-container button,
+.dynamic-episode-container button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    padding: 0 1rem;
+    margin: 0;
+}
+
+.episode-selection-container,
+.season-selection-container {
+    position: absolute;
+    left: -1px;
+    width: 100%;
+    height: 10rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid silver;
+    background-color: silver;
+    z-index: 1;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+
+.episode-selection-container::-webkit-scrollbar,
+.season-selection-container::-webkit-scrollbar {
+    display: none;
+}
+
+.episode-selection-container button,
+.season-selection-container button {
+    height: 2rem;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    /* padding: 0 1rem; */
+}
+
+.episode-selection-container button:hover,
+.season-selection-container button:hover {
+    background-color: white;
+    color: #282726;
+
+}
+
 .dynamic-details {
     width: 100%;
     margin-left: 2rem;
@@ -2062,6 +2128,11 @@ select {
 
     .image-carousel-portrait {
         padding: 2rem 0;
+    }
+
+    .dynamic-tv-button-container {
+        width: 70%;
+        margin-top: 0.5rem;
     }
 
     .pop-out-div {

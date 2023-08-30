@@ -6,7 +6,7 @@ class MyProvider extends Component {
 
     state = {
         pageID: '',
-        pageType: '',
+        pageType: 'movie', // 'movie', 'tv', 'people',
         activePage: 'movie', // 'movie', 'tv', 'people', 'search'
         hoverEffect: false,
         apiKey: '0b6d2ddf9c5e096294fa3534fb357915',
@@ -34,6 +34,16 @@ class MyProvider extends Component {
         searchResult: true, // true = display: flex; || false = display: none;
         userInput: '',
         dropDownMenu: 'movie', // 'movie', 'tv', 'people',
+        tvSeason: '', // 0, 1, 2, 3, ...
+        tvEpisode: '', // 0, 1, 2, 3, ...
+    }
+
+    handleShowEpisode = (e) => {
+        console.log(e);
+        this.setState({
+            tvSeason: e.target.id,
+            tvEpisode: e.target.id
+        });
     }
 
     handleDropDownMenu = (e) => {
@@ -167,7 +177,7 @@ class MyProvider extends Component {
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                 handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
-                handleUserInput, handleDropDownMenu,
+                handleUserInput, handleDropDownMenu, handleShowEpisode,
             } = this;
 
         return (
@@ -178,7 +188,7 @@ class MyProvider extends Component {
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                     handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
-                    handleUserInput, handleDropDownMenu,
+                    handleUserInput, handleDropDownMenu, handleShowEpisode,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

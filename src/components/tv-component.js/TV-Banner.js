@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { MyContext } from "../../context";
-import VideoPlayer from "../video-player/Video-Player";
+// import VideoPlayer from "../video-player/Video-Player";
 import YoutubePlayerTrailer from "../main-dynamic-page/Video-Player-Trailer";
+import SeriesPlayer from "../video-player/Series-Player";
 // import BannerNavbar from "../navbar/Banner-Navbar";
 
 const TVBanner = ({ data }) => {
@@ -22,7 +23,7 @@ const TVBanner = ({ data }) => {
             return <YoutubePlayerTrailer />
         }
         if (state.dynamicPageData === 'watchNow') {
-            return <VideoPlayer />
+            return <SeriesPlayer />
         }
     }
 
