@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import { useParams } from "react-router-dom";
 
@@ -11,8 +11,12 @@ const SeriesPlayer = () => {
   const season = context.state.tvSeason;
   const episode = context.state.tvEpisode;
   const vidsrcTo = `https://vidsrc.to/embed/tv/${params.id}/${season}/${episode}`
-  const vidsrcMe = `https://vidsrc.me/embed/tv?tmdb=${params.id}/${season}/${episode}`
-  const xtreamhubCom = `http://xtreamhub.com/video/${params.id}/${season}/${episode}`
+  const vidsrcMe = `https://vidsrc.me/embed/tv?tmdb=${params.id}&season=${season}&episode=${episode}`
+  const xtreamhubCom = `http://xtreamhub.com/video/${params.id}s${season}e${episode}`
+
+  useEffect(() => {
+    chooseServer(); // eslint-disable-next-line
+  }, [season, episode])
 
   const chooseServer = () => {
     if (serverButtonID === 'server01') {

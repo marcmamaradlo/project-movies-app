@@ -11,12 +11,10 @@ const TVContent = ({ data, keywords }) => {
     const [seasonIndex, setSeasonIndex] = useState();
     const [seasonButtonName, setSeasonButtonName] = useState('Select Season');
     const [episodeButton, setEpisodeButton] = useState(false);
+    const [episodeIndex, setEpisodeIndex] = useState();
     const [episodeButtonName, setEpisodeButtonName] = useState('Select Episode');
-    // const params = useParams();
-    // const [episode, setEpisode] = useState('');
-    // const handleDynamicContentButton = context.handleDynamicContentButton;
     const handleFakeLinks = context.handleFakeLinks;
-    // const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
+    const handleShowEpisode = context.handleShowEpisode;
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
     const genres = data.genres;
     console.log(data);
@@ -54,14 +52,6 @@ const TVContent = ({ data, keywords }) => {
         )
     }
 
-    // const handleRuntimeRemainder = () => {
-    //     const runtime = (data.runtime ? data.runtime / 60 : data.runtime);
-    //     let x = runtime;
-    //     x = Math.floor(x * 100) / 100;
-    //     return x;
-    // }
-
-
     const handleSeasonsIndex = (e) => {
         setSeasonIndex(e.target.value);
         setSeasonButton(false);
@@ -87,6 +77,8 @@ const TVContent = ({ data, keywords }) => {
     const handleEpisodeButtonName = (e) => {
         setEpisodeButtonName(e.target.id);
         setEpisodeButton(false);
+        setEpisodeIndex(e.target.name);
+        handleShowEpisode(seasonIndex, episodeIndex);
     }
 
     const handleEpisodesDropDown = () => {
@@ -96,16 +88,15 @@ const TVContent = ({ data, keywords }) => {
     const handleEpisodes = () => {
         let numOfOptions = data.seasons[seasonIndex].episode_count;
         let array = []
-        // console.log(numOfOptions)
         for (let i = 0; i < numOfOptions; i++) {
             array.push(i + 1)
-            // <option id='episode' key={i} value={i}>{`Episode ${i}`}</option>
         }
         return array.map((item, index) => (
             <button
                 onClick={handleEpisodeButtonName}
                 id={`Episode ${item}`}
                 key={item + index}
+                name={item}
                 value={item}
             >
                 {`Episode ${item}`}
@@ -126,10 +117,6 @@ const TVContent = ({ data, keywords }) => {
             <div className='dynamic-container'>
                 <div className='dynamic-image-container'>
                     <img src={`https://image.tmdb.org/t/p/w780${data.poster_path}`} alt={data.title} />
-                    {/* <div className='dynamic-button-container'>
-                        <button name='trailer' id={data.id} onClick={handleDynamicContentButton}>Trailer</button>
-                        <button name='watchNow' id={data.id} onClick={handleDynamicContentButton}>Watch Now</button>
-                    </div> */}
                     <div className='dynamic-tv-button-container'>
                         <div className='dynamic-season-container'>
                             <button
@@ -159,16 +146,11 @@ const TVContent = ({ data, keywords }) => {
                     </div>
                 </div>
                 <div className='dynamic-details'>
-                    <p className='dynamic-details-title'>{data.name}
-                        <span></span></p>
+                    <p className='dynamic-details-title'>{data.name}</p>
                     <div className='dynamic-details-title-icons'>
-                        {/* <p><span className="material-symbols-outlined">hd</span></p> */}
                         <p><i className="fa-solid fa-star"></i> {data.vote_average}</p>
                         <p>Seasons: {data.number_of_seasons}</p>
                         <p>Episodes: {data.number_of_episodes}</p>
-                        {/* <p><i className="fa-solid fa-clock"></i> {handleRuntimeRemainder()}H</p> */}
-                        {/* <p><i className="fa-solid fa-volume-off"></i> 2.1</p> */}
-                        {/* <p><i className="fa-regular fa-calendar-days"></i> {releaseData}</p> */}
                     </div>
                     <p className='dynamic-details-overview'>{data.overview}</p>
                     <div className='dynamic-details-details'>
@@ -202,12 +184,10 @@ const TVContent = ({ data, keywords }) => {
                             </ul>
                         </div>
                         <div>
-
                             {data.homepage
                                 ? <p className='details'>Homepage: </p>
                                 : null}
                             <p className='tags'><a href={data.homepage}>{data.homepage}</a></p>
-
                         </div>
                     </div>
                 </div>

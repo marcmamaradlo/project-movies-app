@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { MyContext } from "../../context";
 // import VideoPlayer from "../video-player/Video-Player";
-import YoutubePlayerTrailer from "../main-dynamic-page/Video-Player-Trailer";
+// import YoutubePlayerTrailer from "../main-dynamic-page/Video-Player-Trailer";
 import SeriesPlayer from "../video-player/Series-Player";
 // import BannerNavbar from "../navbar/Banner-Navbar";
 
@@ -9,6 +9,7 @@ const TVBanner = ({ data }) => {
 
     const context = useContext(MyContext);
     const state = context.state;
+    const seriesPlayer = state.seriesPlayer;
     const handleClosePopOutWindow = context.handleClosePopOutWindow
     const wallpapper = data.backdrop_path;
     const dynamicBannerBackground = {
@@ -19,12 +20,7 @@ const TVBanner = ({ data }) => {
     }
 
     const showDisplay = () => {
-        if (state.dynamicPageData === 'trailer') {
-            return <YoutubePlayerTrailer />
-        }
-        if (state.dynamicPageData === 'watchNow') {
-            return <SeriesPlayer />
-        }
+        return (seriesPlayer ? <SeriesPlayer /> : null)
     }
 
     return (

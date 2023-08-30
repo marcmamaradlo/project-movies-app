@@ -36,19 +36,21 @@ class MyProvider extends Component {
         dropDownMenu: 'movie', // 'movie', 'tv', 'people',
         tvSeason: '', // 0, 1, 2, 3, ...
         tvEpisode: '', // 0, 1, 2, 3, ...
+        seriesPlayer: false,
     }
 
-    handleShowEpisode = (e) => {
-        console.log(e);
+    handleShowEpisode = (seasonIndex, episodeIndex) => {
+        console.log('fired from context');
         this.setState({
-            tvSeason: e.target.id,
-            tvEpisode: e.target.id
+            tvSeason: seasonIndex,
+            tvEpisode: episodeIndex,
+            seriesPlayer: true,
         });
     }
 
     handleDropDownMenu = (e) => {
         this.setState({ dropDownMenu: e.target.value });
-        console.log(this.state.dropDownMenu);
+        // console.log(this.state.dropDownMenu);
     }
 
     handleUserInput = (e) => {
@@ -60,7 +62,7 @@ class MyProvider extends Component {
 
     handleSearchButton = () => {
         this.setState({ searchButton: !this.state.searchButton });
-        console.log(this.state.searchButton);
+        // console.log(this.state.searchButton);
     }
 
     handleHamburgerIcon = () => {
@@ -137,7 +139,7 @@ class MyProvider extends Component {
     }
 
     handleClosePopOutWindow = () => {
-        console.log(this.state.searchResult, 'close button');
+        // console.log(this.state.searchResult, 'close button');
         this.setState({
             popOutWindow: 'notActive',
             youtubePopOut: false,
@@ -166,7 +168,7 @@ class MyProvider extends Component {
 
     render() {
 
-        // console.log(this.state.userInput);
+        console.log(this.state.tvEpisode, this.state.tvSeason);
 
         const { pageID, bgSrc, apiData, apiKey } = this.state;
 
