@@ -2460,6 +2460,12 @@ select {
         flex-direction: column;
         align-items: center;
     }
+
+    .heading-div-button,
+    .heading-div-button-active,
+    .heading-div-button:hover {
+        width: 7rem;
+    }
 }
 
 @media screen and (max-width: 375px) {
