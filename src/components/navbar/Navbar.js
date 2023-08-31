@@ -96,16 +96,6 @@ const Navbar = () => {
                         <p className={activePage === 'search' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>SEARCH</p>
                     </div>
                     <div className='burger-icon text-shadow'>
-                        {/* <button
-                            onClick={handleSearchButton}
-                            className={
-                                searchButton
-                                    ? 'display-none'
-                                    : 'box-shadow'
-                            }
-                        >
-                            Search... <i class="fa-solid fa-magnifying-glass"></i>
-                        </button> */}
                         <i
                             onClick={handleHamburgerIcon}
                             className={
@@ -114,7 +104,6 @@ const Navbar = () => {
                                     : 'fa-solid fa-bars'
                             }
                         >
-
                         </i>
                         <div className={
                             hamburgerIcon
@@ -122,7 +111,7 @@ const Navbar = () => {
                                 : 'display-none'
                         }
                         >
-                            <p>HOME</p>
+                            <Link to='/'>HOME</Link>
                             <p>MOVIES</p>
                             <p>TV SHOW</p>
                             <p>PEOPLE</p>
@@ -131,12 +120,10 @@ const Navbar = () => {
                                 onClick={handleHamburgerIcon}
                                 className="fa-regular fa-rectangle-xmark"
                             >
-
                             </i>
                         </div>
                     </div>
                 </div>
-                {/* <SearchResult data={searchResultData} /> */}
             </div>
         </div>
     )

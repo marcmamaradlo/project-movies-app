@@ -1884,6 +1884,7 @@ select {
         backdrop-filter: blur(5px);
         font-family: 'Raleway', sans-serif;
         font-size: 1.5rem;
+        z-index: 1;
     }
 
     .off-canvas-menu p:hover {
@@ -1896,6 +1897,15 @@ select {
         top: 0.9rem;
         right: 2.2rem;
         color: white;
+    }
+
+    .off-canvas-menu a {
+        color: white;
+    }
+
+    .off-canvas-menu a:hover {
+        text-decoration: underline;
+        transition: 200ms;
     }
 
     .heading {
