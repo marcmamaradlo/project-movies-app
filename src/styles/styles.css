@@ -350,6 +350,7 @@ select {
 
 .banner-navbar-search-container {
     width: 50%;
+    border-radius: 5px;
 }
 
 .banner-navbar-search {
@@ -358,7 +359,7 @@ select {
 }
 
 .banner-navbar-search input {
-    border-radius: 0 0 0 0;
+    border-radius: 5px 0 0 5px;
     height: 2rem;
     width: 100%;
     background-color: rgb(255, 255, 255, 0.7);

@@ -22,7 +22,7 @@ const TVMainPage = () => {
     const [similarData, setSimilarData] = useState([]);
     const state = context.state;
     const apiKey = state.apiKey;
-    const dynamicPageDataID = state.dynamicPageDataID;
+    // const dynamicPageDataID = state.dynamicPageDataID;
     const dynamicPageData = state.dynamicPageData;
     const serverButtonID = state.serverButtonID;
     const handleServerButton = context.handleServerButton;
@@ -30,7 +30,7 @@ const TVMainPage = () => {
 
     useEffect(() => {
         getDynamicPageData(); // eslint-disable-next-line
-    }, [dynamicPageDataID]);
+    }, [params.id]);
 
     async function getDynamicPageData() {
         try {
@@ -91,7 +91,7 @@ const TVMainPage = () => {
                 <ImageCarouselPortrait
                     data={similarData}
                     headerName='Recommendations'
-                    type='movie'
+                    type='tv'
                 />
             </div>
         </>

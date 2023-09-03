@@ -9,7 +9,7 @@ const ImageCarouselPortrait = (props) => {
     const data = props.data;
     const type = props.type;
     const headerName = props.headerName;
-    const dropDownMenu = context.state.dropDownMenu;
+    // const dropDownMenu = context.state.dropDownMenu;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
     // console.log(pageID);
 
@@ -20,8 +20,11 @@ const ImageCarouselPortrait = (props) => {
     const imageComponent = () => {
         return data.map((item) => (
             <Link
-                // to={`/${pageType}/${pageID}&${item.title.split(' ').join('-')}`}
-                to={`/${dropDownMenu}/${item.id}`}
+                to={props.type === 'movie'
+                    ? `/movie/${item.id}`
+                    : props.type === 'tv'
+                        ? `/tv/${item.id}`
+                        : null}
                 key={item.id}
                 id={item.id}
                 name={item.name}
@@ -45,21 +48,25 @@ const ImageCarouselPortrait = (props) => {
                     </div>
                     <div className='card-container-details'>
                         <p>
-                            {
-                                dropDownMenu === 'movie'
-                                    ? item.release_date
-                                        ? item.release_date.split('-')[0]
+                            {props.type === 'movie'
+                                ? item.release_date
+                                    ? item.release_date.split('-')[0]
+                                    : null
+                                : props.type === 'tv'
+                                    ? item.first_air_date
+                                        ? item.first_air_date.split('-')[0]
                                         : null
-                                    : dropDownMenu === 'tv'
-                                        ? item.first_air_date
-                                            ? item.first_air_date.split('-')[0]
-                                            : null
-                                        : null
-
-                            }</p>
+                                    : null}
+                        </p>
                     </div>
                     <div className='card-container-title'>
-                        <p>{item.title}</p>
+                        <p>
+                            {props.type === 'movie'
+                                ? item.title
+                                : props.type === 'tv'
+                                    ? item.name
+                                    : null}
+                        </p>
                     </div>
                 </div>
             </Link>

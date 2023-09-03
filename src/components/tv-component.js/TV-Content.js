@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { getLangNameFromCode } from "language-name-map";
 import { MyContext } from "../../context";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const TVContent = ({ data, keywords }) => {
 
     const context = useContext(MyContext);
+    const params = useParams();
     const [seasonButton, setSeasonButton] = useState(false);
     const [seasonIndex, setSeasonIndex] = useState();
     const [seasonButtonName, setSeasonButtonName] = useState('Select Season');
@@ -15,9 +17,13 @@ const TVContent = ({ data, keywords }) => {
     const [episodeButtonName, setEpisodeButtonName] = useState('Select Episode');
     const handleFakeLinks = context.handleFakeLinks;
     const handleShowEpisode = context.handleShowEpisode;
-    const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
+    const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language);
     const genres = data.genres;
-    console.log(data);
+
+    useEffect(() => {
+        setSeasonButtonName('Select Season');
+        setEpisodeButtonName('Select Episode');
+    }, [params.id]);
 
     const handleCastArtist = () => {
         return data.credits
@@ -82,7 +88,7 @@ const TVContent = ({ data, keywords }) => {
     }
 
     const handleEpisodesDropDown = () => {
-        return seasonIndex ? handleEpisodes() : 'false'
+        return seasonIndex ? handleEpisodes() : null
     }
 
     const handleEpisodes = () => {
@@ -139,7 +145,8 @@ const TVContent = ({ data, keywords }) => {
                             >{episodeButtonName} <i className={episodeButton ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down'}></i>
                             </button>
                             <div
-                                className={episodeButton ? 'episode-selection-container' : 'display-none'}>
+                                className={episodeButton ? 'episode-selection-container' : 'display-none'}
+                            >
                                 {handleEpisodesDropDown()}
                             </div>
                         </div>
