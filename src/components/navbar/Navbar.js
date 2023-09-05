@@ -15,6 +15,7 @@ const Navbar = () => {
     const activePage = context.state.activePage;
     const handleHamburgerIcon = context.handleHamburgerIcon;
     const handleUserInput = context.handleUserInput;
+    const handleNavbarMenu = context.handleNavbarMenu;
 
     useEffect(() => {
         getSearchResults() // eslint-disable-next-line
@@ -69,10 +70,10 @@ const Navbar = () => {
                         <SearchResult data={searchResultData} />
                     </div>
                     <div className='banner-navbar-menu'>
-                        <p className={activePage === 'movie' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>MOVIES</p>
-                        <p className={activePage === 'tv' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>TV SHOW</p>
-                        <p className={activePage === 'person' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>PEOPLE</p>
-                        <p className={activePage === 'search' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>SEARCH</p>
+                        <p name='movie' onClick={handleNavbarMenu} className={activePage === 'movie' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>MOVIES</p>
+                        <p name='tv' onClick={handleNavbarMenu} className={activePage === 'tv' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>TV SHOW</p>
+                        <p name='person' onClick={handleNavbarMenu} className={activePage === 'person' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>PEOPLE</p>
+                        <Link to='/search' name='search' onClick={handleNavbarMenu} className={activePage === 'search' ? 'banner-navbar-menu-active' : 'banner-navbar-menu-default'}>SEARCH</Link>
                     </div>
                     <div className='burger-icon text-shadow'>
                         <i
@@ -94,7 +95,7 @@ const Navbar = () => {
                             <p>MOVIES</p>
                             <p>TV SHOW</p>
                             <p>PEOPLE</p>
-                            <p>SEARCH</p>
+                            <Link to='/search'>SEARCH</Link>
                             <i
                                 onClick={handleHamburgerIcon}
                                 className="fa-regular fa-rectangle-xmark"

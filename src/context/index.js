@@ -6,8 +6,8 @@ class MyProvider extends Component {
 
     state = {
         pageID: '',
-        pageType: 'movie', // 'movie', 'tv', 'people',
-        activePage: 'movie', // 'movie', 'tv', 'people', 'search'
+        pageType: 'movie', // 'movie', 'tv', 'person',
+        activePage: 'movie', // 'movie', 'tv', 'person', 'search'
         hoverEffect: false,
         apiKey: '0b6d2ddf9c5e096294fa3534fb357915',
         // displayComponent: 'main',
@@ -37,6 +37,15 @@ class MyProvider extends Component {
         tvSeason: '', // 0, 1, 2, 3, ...
         tvEpisode: '', // 0, 1, 2, 3, ...
         seriesPlayer: false,
+        filterMenu: 'movie', // 'movie', 'tv', 'person', 'collection'
+    }
+
+    handleSearchMenu = (e) => {
+        this.setState({ filterMenu: e.target.name })
+    }
+
+    handleNavbarMenu = (e) => {
+        this.setState({ activePage: e.target.name })
     }
 
     handleShowEpisode = (seasonIndex, episodeIndex) => {
@@ -179,7 +188,8 @@ class MyProvider extends Component {
                 handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                 handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
-                handleUserInput, handleDropDownMenu, handleShowEpisode,
+                handleUserInput, handleDropDownMenu, handleShowEpisode, handleNavbarMenu,
+                handleSearchMenu,
             } = this;
 
         return (
@@ -190,7 +200,8 @@ class MyProvider extends Component {
                     handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                     handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
-                    handleUserInput, handleDropDownMenu, handleShowEpisode,
+                    handleUserInput, handleDropDownMenu, handleShowEpisode, handleNavbarMenu,
+                    handleSearchMenu,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

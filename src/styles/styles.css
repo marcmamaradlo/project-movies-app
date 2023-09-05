@@ -208,6 +208,34 @@ select {
     transition: 200ms;
 }
 
+.heading-with-navigation {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'Work Sans', sans-serif;
+    padding: 0;
+    margin: 2rem 0;
+    border-bottom: 1px solid #282726;
+}
+
+.heading-with-navigation-default,
+.heading-with-navigation-active {
+    margin-right: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    color: #28272699;
+    cursor: pointer;
+}
+
+.heading-with-navigation-default:hover,
+.heading-with-navigation-active {
+    color: #282726;
+    transition: 200ms;
+}
+
 /* Heading End */
 
 /* Filter Start */
@@ -276,6 +304,10 @@ select {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    color: white;
+}
+
+.banner-navbar-menu a {
     color: white;
 }
 

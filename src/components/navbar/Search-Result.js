@@ -110,8 +110,8 @@ const SearchResult = ({ data }) => {
             >
                 <div className='search-result-card-container' >
                     {searchResults()}
-                    {console.log(searchResult)}
-                    {console.log(data)}
+                    {/* {console.log(searchResult)}
+                    {console.log(data)} */}
                     {/* {data.length > 5
                         ? <div className='search-result-view-all'>
                             <p>

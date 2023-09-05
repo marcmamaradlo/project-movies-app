@@ -1,6 +1,30 @@
-// import ImageCarouselPortrait from "../reuseable/image-carousel-portrait";
+import { useContext } from "react";
+import { MyContext } from "../../context";
 
 const SearchMainPage = () => {
+
+  const context = useContext(MyContext);
+  const handleSearchMenu = context.handleSearchMenu;
+  const filterMenu = context.state.filterMenu;
+  const buttonList = ['movie', 'tv', 'person', 'collection'];
+
+  const handleButtonNames = () => {
+    return buttonList.map((item, index) => (
+      <button
+        key={index}
+        name={item}
+        onClick={handleSearchMenu}
+        className={item === filterMenu
+          ? 'heading-with-navigation-active'
+          : 'heading-with-navigation-default'}
+      >
+        {item === 'person'
+          ? 'Person (0)'
+          : `${item.charAt(0).toUpperCase() + item.slice(1)} (0)`}
+      </button>
+    ))
+  }
+
   return (
     <>
       <div className='container'>
@@ -11,7 +35,7 @@ const SearchMainPage = () => {
           </div>
           <div className='filter-container'>
             <div className='filter-search'>
-              <input type='text' placeholder='search...' />
+              <input type='text' placeholder='movies, tv shows, actors...' />
             </div>
             <button>Type
               <select className='filter-select'>
@@ -47,8 +71,12 @@ const SearchMainPage = () => {
             <button className='filter-submit' type='submit'><i class="fa-solid fa-filter"></i> Filter</button>
           </div>
           <div className='section>'>
-            <div className='heading'>
-              <p>{`0 Results > item`}</p>
+            <div className='heading-with-navigation'>
+              {/* <button onClick={handleSearchMenu} name='movie' className='heading-with-navigation-active'>Movies (0)</button>
+              <button onClick={handleSearchMenu} name='tv' className='heading-with-navigation-default'>TV Shows (0)</button>
+              <button onClick={handleSearchMenu} name='person' className='heading-with-navigation-default'>People (0)</button>
+              <button onClick={handleSearchMenu} name='collections' className='heading-with-navigation-default'>Collections (0)</button> */}
+              {handleButtonNames()}
             </div>
           </div>
           <div className='pagenation'>
@@ -62,12 +90,11 @@ const SearchMainPage = () => {
           </div>
         </div>
         {/* <ImageCarouselPortrait /> */}
-        <div className='section>'>
+        {/* <div className='section>'>
           <div className='heading'>
             <h3>Suggestions</h3>
           </div>
-        </div>
-
+        </div> */}
       </div>
     </>
   )
