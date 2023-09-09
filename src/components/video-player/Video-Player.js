@@ -3,9 +3,8 @@ import { MyContext } from "../../context";
 import { useParams } from "react-router-dom";
 
 const VideoPlayer = () => {
-    const params = useParams();
-    console.log(params.id);
 
+    const params = useParams();
     const context = useContext(MyContext);
     const serverButtonID = context.state.serverButtonID;
     const vidsrcTo = `https://vidsrc.to/embed/movie/${params.id}`

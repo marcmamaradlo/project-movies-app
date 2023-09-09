@@ -7,8 +7,6 @@ const SearchResult = ({ data }) => {
     const context = useContext(MyContext);
     const searchResult = context.state.searchResult;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
-    const handleClosePopOutWindow = context.handleClosePopOutWindow;
-    // const dropDownMenu = context.state.dropDownMenu;
 
     const searchResults = () => {
         return data
@@ -106,7 +104,6 @@ const SearchResult = ({ data }) => {
                         ? 'search-result-container'
                         : 'display-none'
                 }
-                onBlur={handleClosePopOutWindow}
             >
                 <div className='search-result-card-container' >
                     {searchResults()}
@@ -122,7 +119,7 @@ const SearchResult = ({ data }) => {
                     } */}
                 </div >
             </div >
-            : console.log('Search-Result not showing')
+            : null // console.log('Search-Result not showing')
     )
 }
 

@@ -17,6 +17,7 @@ const TVContent = ({ data, keywords }) => {
     const [episodeButtonName, setEpisodeButtonName] = useState('Select Episode');
     const handleFakeLinks = context.handleFakeLinks;
     const handleShowEpisode = context.handleShowEpisode;
+    const setDynamicPageData = context.setDynamicPageData;
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language);
     const genres = data.genres;
 
@@ -34,7 +35,6 @@ const TVContent = ({ data, keywords }) => {
             ))
             : null // console.log('Cast Error')
     }
-
 
     const handleDynamicKeywords = () => {
         return (keywords
@@ -85,6 +85,8 @@ const TVContent = ({ data, keywords }) => {
         setEpisodeButton(false);
         setEpisodeIndex(e.target.name);
         handleShowEpisode(seasonIndex, episodeIndex);
+        setDynamicPageData();
+        console.log(`s${seasonIndex}e${episodeIndex}`);
     }
 
     const handleEpisodesDropDown = () => {

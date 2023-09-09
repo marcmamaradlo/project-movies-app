@@ -1,53 +1,43 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { MyContext } from "../../context";
-import axios from 'axios';
+import { Link } from "react-router-dom";
+// import axios from 'axios';
 
-const Trending = () => {
-
+const Trending = (props) => {
     const context = useContext(MyContext);
     const state = context.state;
     const handleButtonSelector = context.handleButtonSelector;
     const trendingData = state.trendingData;
     const active = 'heading-left-button-active';
     const notActive = 'heading-left-button';
-
-    const [dataTrending, setDataTrending] = useState([]);
-    console.log(dataTrending);
-
-    useEffect(() => {
-        getTrendingMovieData('movie') // eslint-disable-next-line
-    }, [trendingData]);
-
-    async function getTrendingMovieData() {
-        try {
-            const apiKey = '0b6d2ddf9c5e096294fa3534fb357915';
-            const selector = state.trendingData;
-            const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/${selector}?api_key=${apiKey}`);
-            // console.log(response.data);
-            setDataTrending(response.data.results);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
+    const [viewAll, setViewAll] = useState(false);
 
     const trendingComponent = () => {
         try {
-            return dataTrending.map((item) => (
-                <div className='card-container' key={item.id}>
-                    <div className='card-container-img'>
-                        <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.title} />
-                        {/* <div className='rating'>
-                            <p>{item.vote_average}</p>
-                        </div> */}
+            return props.data.map((item) => (
+                <Link to={`/${props.dataType}/${item.id}`} key={item.id}>
+                    <div className='card-container'>
+                        <div className='card-container-img'>
+                            {props.dataType === 'movie'
+                                ? <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.title} />
+                                : props.dataType === 'tv'
+                                    ? <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.name} />
+                                    : props.dataType === 'person'
+                                        ? <img src={`https://image.tmdb.org/t/p/w185${item.profile_path}`} alt={item.name} />
+                                        : <img src='https://images.unsplash.com/photo-1604161546853-1a097fbc30fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2242&q=80' alt='Preview not available' />
+                            }
+                        </div>
+                        <div className='card-container-title'>
+                            <p>{props.dataType === 'movie' ?
+                                item.title
+                                : props.dataType === 'tv'
+                                    ? item.name
+                                    : props.dataType === 'person'
+                                        ? item.name
+                                        : null}</p>
+                        </div>
                     </div>
-                    <div className='card-container-title'>
-                        <p>{item.title}</p>
-                    </div>
-                    <div className='card-container-year'>
-                        <p>{item.release_date}</p>
-                    </div>
-                </div>
+                </Link>
             ))
         }
         catch (error) {
@@ -55,11 +45,15 @@ const Trending = () => {
         }
     }
 
+    const viewAllOnClick = () => {
+        setViewAll(!viewAll);
+    }
+
     return (
         <div className='section'>
             <div className='heading'>
                 <div className='heading-left'>
-                    <h3>Trending Movies</h3>
+                    <h3>Trending {props.dataType}</h3>
                     <button
                         className={(trendingData === 'day' ? active : notActive)}
                         onClick={handleButtonSelector}
@@ -77,9 +71,9 @@ const Trending = () => {
                         This Week
                     </button>
                 </div>
-                <p>view all <i className="fa-solid fa-arrow-right"></i></p>
+                <p onClick={viewAllOnClick}>{viewAll ? 'Collapse' : 'Expand'} <i className="fa-solid fa-arrow-right"></i></p>
             </div>
-            <div className='trending'>
+            <div className={viewAll ? 'view-all-expanded' : 'image-carousel-portrait'}>
                 {trendingComponent()}
             </div>
         </div>

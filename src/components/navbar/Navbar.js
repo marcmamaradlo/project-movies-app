@@ -18,7 +18,9 @@ const Navbar = () => {
     const handleNavbarMenu = context.handleNavbarMenu;
 
     useEffect(() => {
-        getSearchResults() // eslint-disable-next-line
+        const timeOutId = setTimeout(() => getSearchResults(), 500);
+        return () => clearTimeout(timeOutId);
+        //  eslint-disable-next-line
     }, [userInput]);
 
     async function getSearchResults() {
@@ -91,11 +93,11 @@ const Navbar = () => {
                                 : 'display-none'
                         }
                         >
-                            <Link to='/'>HOME</Link>
+                            <Link to='/' onClick={handleHamburgerIcon}>HOME</Link>
                             <p>MOVIES</p>
                             <p>TV SHOW</p>
                             <p>PEOPLE</p>
-                            <Link to='/search'>SEARCH</Link>
+                            <Link to='/search' onClick={handleHamburgerIcon}>SEARCH</Link>
                             <i
                                 onClick={handleHamburgerIcon}
                                 className="fa-regular fa-rectangle-xmark"

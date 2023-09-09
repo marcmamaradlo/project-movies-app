@@ -37,7 +37,30 @@ class MyProvider extends Component {
         tvSeason: '', // 0, 1, 2, 3, ...
         tvEpisode: '', // 0, 1, 2, 3, ...
         seriesPlayer: false,
-        filterMenu: 'movie', // 'movie', 'tv', 'person', 'collection'
+        filterMenu: 'movie', // 'movie', 'tv', 'person', 'collection',
+        filteredMovies: 0,
+        filteredtv: 0,
+        filteredPerson: 0,
+        filteredCollection: 0,
+
+    }
+
+    headingNavigationButton = (a, b, c, d) => {
+        this.setState({
+            filteredMovies: a,
+            filteredtv: b,
+            filteredPerson: c,
+            filteredCollection: d,
+        });
+        console.log(this.state.filteredMovies);
+        console.log(this.state.filteredtv);
+        console.log(this.state.filteredPerson);
+        console.log(this.state.filteredCollection);
+    }
+
+    handleOnBlurEvent = () => {
+        this.setState({ searchResult: false });
+        // console.log('searchResult should close');
     }
 
     handleSearchMenu = (e) => {
@@ -48,13 +71,17 @@ class MyProvider extends Component {
         this.setState({ activePage: e.target.name })
     }
 
+    setDynamicPageData = () => {
+        this.setState({ dynamicPageData: 'watchNow' });
+    }
+
     handleShowEpisode = (seasonIndex, episodeIndex) => {
-        console.log('fired from context');
         this.setState({
             tvSeason: seasonIndex,
             tvEpisode: episodeIndex,
             seriesPlayer: true,
         });
+        console.log(seasonIndex, episodeIndex);
     }
 
     handleDropDownMenu = (e) => {
@@ -89,7 +116,7 @@ class MyProvider extends Component {
     }
 
     handleTVDynamicButton = (e) => {
-        console.log(e);
+        // console.log(e);
     }
 
     handleDynamicContentButton = (e) => {
@@ -100,7 +127,7 @@ class MyProvider extends Component {
             dynamicPageData: e.target.name,
             youtubeComponentID: e.target.id,
         });
-        console.log(this.state.youtubeComponentID)
+        // console.log(this.state.youtubeComponentID)
     }
 
     handlePopOutTrailerButton = (e) => {
@@ -177,8 +204,6 @@ class MyProvider extends Component {
 
     render() {
 
-        console.log(this.state.tvEpisode, this.state.tvSeason);
-
         const { pageID, bgSrc, apiData, apiKey } = this.state;
 
         const
@@ -189,7 +214,7 @@ class MyProvider extends Component {
                 handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                 handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
                 handleUserInput, handleDropDownMenu, handleShowEpisode, handleNavbarMenu,
-                handleSearchMenu,
+                handleSearchMenu, handleOnBlurEvent, setDynamicPageData, headingNavigationButton,
             } = this;
 
         return (
@@ -201,7 +226,7 @@ class MyProvider extends Component {
                     handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
                     handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
                     handleUserInput, handleDropDownMenu, handleShowEpisode, handleNavbarMenu,
-                    handleSearchMenu,
+                    handleSearchMenu, handleOnBlurEvent, setDynamicPageData, headingNavigationButton,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

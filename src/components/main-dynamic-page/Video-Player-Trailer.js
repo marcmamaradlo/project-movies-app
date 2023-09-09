@@ -10,7 +10,6 @@ const YoutubePlayerTrailer = () => {
     const youtubeComponentID = state.youtubeComponentID;
     const params = useParams();
     const [videoData, setVideoData] = useState([]);
-    console.log(youtubeComponentID)
 
     useEffect(() => {
         getVideoData() // eslint-disable-next-line

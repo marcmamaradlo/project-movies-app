@@ -211,8 +211,8 @@ const PeopleContent = (props) => {
 
     return (
 
-        <div className='person-container' onCLick={handleClosePopOutWindow}>
-            <div className='person-image' onCLick={handleClosePopOutWindow}>
+        <div className='person-container' onClick={handleClosePopOutWindow}>
+            <div className='person-image'>
                 <img src={`https://image.tmdb.org/t/p/h632${data.profile_path}`} alt={data.name} />
                 <div className='person-personal-info'>
                     {handleSocialMedia()}
@@ -247,7 +247,7 @@ const PeopleContent = (props) => {
                     </div>
                 </div>
             </div>
-            <div className='person-details' onCLick={handleClosePopOutWindow}>
+            <div className='person-details'>
                 <h1>{data.name}</h1>
                 <div className='person-details-biography'>
                     <p className='person-biography-header'>Biography</p>
