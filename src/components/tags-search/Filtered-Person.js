@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 
 const FilteredPerson = ({ data }) => {
 
-  console.log(data);
-
   const showFilteredPersonData = () => {
     return data.map((item) => (
       <Link to={`/person/${item.id}`}>

@@ -253,11 +253,14 @@ select {
     height: 2rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+}
 
+.filter-container form {
+    width: 100%;
 }
 
 .filter-search {
-    width: 30%;
+    /* width: 30%; */
     height: 1.9rem;
 }
 
@@ -272,7 +275,7 @@ select {
 }
 
 .filter-search input::placeholder {
-    color: #282726;
+    color: #28272699;
 }
 
 .filter-submit {
@@ -837,6 +840,10 @@ select {
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.search-filter-card-container-container a {
+    color: #282726;
 }
 
 /* Card Container End  */
@@ -2076,6 +2083,49 @@ select {
 
     .person-acting-details {
         margin-top: 2rem;
+    }
+
+    .filter-container form {
+        height: 100%;
+    }
+
+    .filter-search {
+        width: 100%;
+    }
+
+    .filter-select {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .filter-select select {
+        width: 24%;
+        border: 1px solid #282726;
+        border-radius: 5px;
+        height: 1.9rem;
+        cursor: pointer;
+    }
+
+    .filter-select option {
+        color: silver;
+        height: -10px;
+        width: 100%;
+        max-height: 10rem;
+        background-color: #282726;
+        border: 1px solid #282726;
+        border-radius: 0px;
+        overflow: hidden;
+    }
+
+    /* .filter-select option::-webkit-scrollbar {
+        display: none;
+    } */
+
+    .filter-submit {
+        width: 24%;
     }
 
 }

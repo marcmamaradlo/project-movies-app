@@ -84,37 +84,31 @@ const SearchMainPage = () => {
                   placeholder='movies, tv shows, actors...'
                 />
               </div>
-              <button>Type
-                <select className='filter-select'>
-                  <option> </option>
+              <div className='filter-select'>
+                <select>
+                  <option value=''>Type</option>
                   <option>Movie</option>
                   <option>TV Show</option>
                 </select>
-              </button>
-              <button>Genre
-                <select className='filter-select'>
-                  <option> </option>
+                <select>
+                  <option value=''>Genre</option>
+                  <option>Biography</option>
+                  <option>Documentary</option>
+                  <option>Action</option>
+                </select>
+                <select>
+                  <option value=''>Country</option>
                   <option>Action</option>
                   <option>Biography</option>
                   <option>Documentary</option>
                 </select>
-              </button>
-              <button>Country
-                <select className='filter-select'>
-                  <option> </option>
+                <select>
+                  <option value=''>Year</option>
                   <option>Action</option>
                   <option>Biography</option>
                   <option>Documentary</option>
                 </select>
-              </button>
-              <button>Year
-                <select className='filter-select'>
-                  <option> </option>
-                  <option>Action</option>
-                  <option>Biography</option>
-                  <option>Documentary</option>
-                </select>
-              </button>
+              </div>
               <button
                 className='filter-submit'
                 type='submit'
@@ -167,7 +161,7 @@ const SearchMainPage = () => {
           <SearchContent searchInput={filterThisInput} image={appLogo} />
         </div>
         {/* <ImageCarouselPortrait />*/}
-      </div>
+      </div >
       <div className='container bg-dark'>
         <Trending data={dataTrendingMovie} dataType='movie' />
         <Trending data={dataTrendingTV} dataType='tv' />

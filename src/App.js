@@ -7,8 +7,7 @@ import ViewAll from './components/view-all-page/View-All-Page';
 import RouteNotFound from './components/404/Router-Not-Found';
 import TVMainPage from './components/tv-component.js/TV-Main-Page';
 import PeopleMainPage from './components/people-component.js/People-Main-Page';
-// import SearchMainPage from './components/tags-search/Search-Main-Page';
-import SearchMainPage from './components/tags-search/Search-Main-Page';
+import SearchMainPage from './components/tags-search/search-main-page';
 
 
 const App = () => {

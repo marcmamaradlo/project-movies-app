@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const FilteredMovies = ({ data, image }) => {
-  console.log(data);
+
   const showFilteredMovieData = () => {
     return data.map((item) => (
       <Link to={`/movie/${item.id}`}>
