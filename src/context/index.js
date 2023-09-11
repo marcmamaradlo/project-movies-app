@@ -37,7 +37,7 @@ class MyProvider extends Component {
         tvSeason: '', // 0, 1, 2, 3, ...
         tvEpisode: '', // 0, 1, 2, 3, ...
         seriesPlayer: false,
-        filterMenu: 'movie', // 'movie', 'tv', 'person', 'collection',
+        filterMenu: '', // 'movie', 'tv', 'person', 'collection', 'company',
         filteredMovies: 0,
         filteredtv: 0,
         filteredPerson: 0,
@@ -52,15 +52,14 @@ class MyProvider extends Component {
             filteredPerson: c,
             filteredCollection: d,
         });
-        console.log(this.state.filteredMovies);
-        console.log(this.state.filteredtv);
-        console.log(this.state.filteredPerson);
-        console.log(this.state.filteredCollection);
+        // console.log(this.state.filteredMovies);
+        // console.log(this.state.filteredtv);
+        // console.log(this.state.filteredPerson);
+        // console.log(this.state.filteredCollection);
     }
 
     handleOnBlurEvent = () => {
         this.setState({ searchResult: false });
-        // console.log('searchResult should close');
     }
 
     handleSearchMenu = (e) => {
@@ -86,7 +85,6 @@ class MyProvider extends Component {
 
     handleDropDownMenu = (e) => {
         this.setState({ dropDownMenu: e.target.value });
-        // console.log(this.state.dropDownMenu);
     }
 
     handleUserInput = (e) => {

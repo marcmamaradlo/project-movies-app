@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const FilteredPerson = ({ data }) => {
 
   const showFilteredPersonData = () => {
-    return data.map((item) => (
-      <Link to={`/person/${item.id}`}>
+    return data.results.map((item) => (
+      <Link to={`/person/${item.id}`} key={item.id}>
         <div className='card-container'>
           <div className='card-container-img'>
             {item.profile_path

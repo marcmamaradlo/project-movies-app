@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const FilteredTV = ({ data, image }) => {
 
   const showFilteredTVData = () => {
-    return data.map((item) => (
+    return data.results.map((item) => (
       <Link to={`/tv/${item.id}`}>
         <div className='card-container'>
           <div className='card-container-img'>

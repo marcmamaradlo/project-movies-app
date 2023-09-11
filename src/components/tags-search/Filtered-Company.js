@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 
 const FilteredCompany = ({ data, image }) => {
-  console.log(data);
 
   const showFilteredCompanyData = () => {
-    return data.map((item) => (
+    return data.results.map((item) => (
       <Link to={`/company/${item.id}`} key={item.id}>
         <div className='card-container'>
           <div className='card-container-img'>
