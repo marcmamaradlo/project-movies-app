@@ -141,19 +141,20 @@ select {
     margin-left: 1rem;
     border: none;
     outline: none;
-    background-color: #282726;
+    background-color: silver;
     height: 1.5rem;
     padding: 0 1rem;
     border-radius: 25px;
     font-family: 'Work Sans', sans-serif;
-    color: #e5be1a;
+    color: #282726;
 }
 
 .heading-left-button {
     margin-left: 1rem;
     border: none;
     outline: none;
-    background-color: #e5be1a;
+    background-color: #282726;
+    color: silver;
     height: 1.5rem;
     padding: 0 1rem;
     border-radius: 25px;
@@ -161,8 +162,8 @@ select {
 }
 
 .heading-left-button:hover {
-    background-color: #282726;
-    color: #e5be1a;
+    background-color: silver;
+    color: #282726;
     transition: 200ms;
 }
 
@@ -1566,10 +1567,12 @@ select {
 /* Pagenation Component Start */
 .pagenation {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     border-top: 1px solid white;
     height: 4rem;
+
 }
 
 .pagenation p {

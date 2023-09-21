@@ -5,7 +5,7 @@ const FilteredTV = ({ data, image }) => {
   const showFilteredTVData = () => {
     return data.results.map((item) => (
       <Link to={`/tv/${item.id}`}>
-        <div className='card-container'>
+        <div className='card-container' key={item.id}>
           <div className='card-container-img'>
             {item.poster_path
               ? <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.name} />

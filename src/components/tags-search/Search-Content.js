@@ -14,6 +14,9 @@ const SearchContent = (props) => {
   const state = context.state;
   const filterMenu = state.filterMenu;
   const handleSearchMenu = context.handleSearchMenu;
+  const changePaginationCurrent = context.changePaginationCurrent;
+  const changePaginationPrevious = context.changePaginationPrevious;
+  const changePaginationNext = context.changePaginationNext;
   // const headingNavigationButton = context.headingNavigationButton;
 
   // use this stateName.data >>> .results, .total_pages, .total_results, 
@@ -22,100 +25,61 @@ const SearchContent = (props) => {
   const [personResult, setPersonResult] = useState([]);
   const [collectionResult, setCollectionResult] = useState([]);
   const [companyResult, setCompanyResult] = useState([]);
-  //
 
   // const buttonList = [{ 'movie': movieResult, 'tv': tvResult, 'person': personResult, 'collection': collectionResult, 'company': companyResult }];
   // console.log(buttonList.map((item) => (
   //   item
   // )))
 
-  async function getTrendingData() {
+  async function getMovieDataWithPagination() {
     const apiKey = state.apiKey;
-    const userInput = props.searchInput === '' ? console.log('userInput is empty') : props.searchInput.split(' ').join('%');
+    const userInput = props.searchInput.split(' ').join('%');
+    const paginationCurrent = state.paginationCurrent;
     try {
-      const movieResult = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${userInput}&api_key=${apiKey}&page=1`);
+      const movieResult = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${userInput}&api_key=${apiKey}&page=${paginationCurrent}`);
       setMovieResult(movieResult.data);
-      console.log(movieResult.data);
-
-      const tvResult = await axios.get(`https://api.themoviedb.org/3/search/tv?query=${userInput}&api_key=${apiKey}&page=1`);
-      setTvResult(tvResult.data);
-      console.log(tvResult.data);
-
-      const personResult = await axios.get(`https://api.themoviedb.org/3/search/person?query=${userInput}&language=en-US&page=1&api_key=${apiKey}`);
-      setPersonResult(personResult.data);
-      console.log(personResult.data);
-
-      const collectionResult = await axios.get(`https://api.themoviedb.org/3/search/collection?query=${userInput}&language=en-US&page=1&api_key=${apiKey}`);
-      setCollectionResult(collectionResult.data);
-      console.log(collectionResult.data);
-
-      const companyResult = await axios.get(`https://api.themoviedb.org/3/search/company?query=${userInput}&page=1&api_key=${apiKey}`);
-      setCompanyResult(companyResult.data);
-      console.log(companyResult.data);
     }
     catch (error) {
       console.log(error);
     }
   }
 
-  // async function getTrendingData() {
-  //   const apiKey = state.apiKey;
-  //   const userInput = props.searchInput === '' ? console.log('userInput is empty') : props.searchInput.split(' ').join('%');
-  //   if (userInput) {
-  //     const movieResult = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${userInput}&api_key=${apiKey}&page=1`);
-  //     setMovieResult(movieResult.data);
-  //     // console.log(movieResult.data);
+  async function getTrendingData() {
+    const apiKey = state.apiKey;
+    const userInput = props.searchInput.split(' ').join('%');
+    try {
+      const movieResult = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${userInput}&api_key=${apiKey}&page=1`);
+      setMovieResult(movieResult.data);
+      // console.log(movieResult.data);
 
-  //     const tvResult = await axios.get(`https://api.themoviedb.org/3/search/tv?query=${userInput}&api_key=${apiKey}&page=1`);
-  //     setTvResult(tvResult.data);
-  //     // console.log(tvResult.data);
+      const tvResult = await axios.get(`https://api.themoviedb.org/3/search/tv?query=${userInput}&api_key=${apiKey}&page=1`);
+      setTvResult(tvResult.data);
+      // console.log(tvResult.data);
 
-  //     const personResult = await axios.get(`https://api.themoviedb.org/3/search/person?query=${userInput}&language=en-US&page=1&api_key=${apiKey}`);
-  //     setPersonResult(personResult.data);
-  //     // console.log(personResult.data);
+      const personResult = await axios.get(`https://api.themoviedb.org/3/search/person?query=${userInput}&language=en-US&page=1&api_key=${apiKey}`);
+      setPersonResult(personResult.data);
+      // console.log(personResult.data);
 
-  //     const collectionResult = await axios.get(`https://api.themoviedb.org/3/search/collection?query=${userInput}&language=en-US&page=1&api_key=${apiKey}`);
-  //     setCollectionResult(collectionResult.data);
-  //     // console.log(collectionResult.data);
+      const collectionResult = await axios.get(`https://api.themoviedb.org/3/search/collection?query=${userInput}&language=en-US&page=1&api_key=${apiKey}`);
+      setCollectionResult(collectionResult.data);
+      // console.log(collectionResult.data);
 
-  //     const companyResult = await axios.get(`https://api.themoviedb.org/3/search/company?query=${userInput}&page=1&api_key=${apiKey}`);
-  //     setCompanyResult(companyResult.data);
-  //     // console.log(companyResult.data);
-  //   }
-  //   else {
-  //     console.log('error');
-  //   }
-  // }
+      const companyResult = await axios.get(`https://api.themoviedb.org/3/search/company?query=${userInput}&page=1&api_key=${apiKey}`);
+      setCompanyResult(companyResult.data);
+      // console.log(companyResult.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     getTrendingData(); // eslint-disable-next-line
   }, [props.searchInput]);
 
-  // const handleButtonNames = () => {
-  //   return buttonList.map((item, index) => (
-  //     <button
-  //       key={index}
-  //       name={item}
-  //       onClick={handleSearchMenu}
-  //       className={item === filterMenu
-  //         ? 'heading-with-navigation-active'
-  //         : 'heading-with-navigation-default'}
-  //     >
-  //       {item === 'movie'
-  //         ? `Movie (${movieResult.total_results})`
-  //         : item === 'tv'
-  //           ? `TV (${tvResult.total_results})`
-  //           : item === 'person'
-  //             ? `People (${personResult.total_results})`
-  //             : item === 'collection'
-  //               ? `Collection (${collectionResult.total_results})`
-  //               : item === 'company'
-  //                 ? `Company (${companyResult.total_results})`
-  //                 : null
-  //       }
-  //     </button>
-  //   ))
-  // }
+  useEffect(() => {
+    getMovieDataWithPagination() // eslint-disable-next-line
+  }, [state.paginationCurrent]);
 
   const handleOutput = () => {
     return (
@@ -130,7 +94,26 @@ const SearchContent = (props) => {
               : filterMenu === 'company'
                 ? <FilteredCompany data={companyResult} image={props.image} />
                 : null
-    )
+    );
+  }
+
+  const showPagenation = () => {
+    let a = [];
+    for (let i = 0; i < movieResult.total_pages; i++) {
+      a.push(i);
+    }
+
+    return a.map((item, index) => (
+      <a href='#search-filter-menu' key={item}>
+        <p
+          key={item + index}
+          id={item}
+          onClick={changePaginationCurrent}
+        >
+          {item + 1}
+        </p>
+      </a>
+    ));
   }
 
   return (
@@ -203,17 +186,17 @@ const SearchContent = (props) => {
           : null
         }
       </div>
+
       <div className='search-filter-card-container-container'>
         {handleOutput()}
       </div>
       <div className='pagenation'>
-        <p><i className="fa-solid fa-caret-left"></i></p>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
-        <p><i className="fa-solid fa-caret-right"></i></p>
+        <p id='paginationPrevious' onClick={changePaginationPrevious}><i className="fa-solid fa-caret-left"></i></p>
+        {showPagenation()}
+        <p id='pagenationNext' onClick={changePaginationNext}><i className="fa-solid fa-caret-right"></i></p>
+      </div>
+      <div>
+        {`Page ${state.paginationCurrent} / ${movieResult.total_pages}`}
       </div>
     </>
   )
