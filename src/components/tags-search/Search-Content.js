@@ -6,7 +6,7 @@ import FilteredMovies from "./Filtered-Movies";
 import FilteredTV from "./Filtered-TV";
 import FilteredPerson from "./Filtered-Person";
 import FilteredCollection from "./Filtered-Collection.";
-import FilteredCompany from "./Filtered-Company";
+// import FilteredCompany from "./Filtered-Company";
 
 const SearchContent = (props) => {
 
@@ -24,7 +24,7 @@ const SearchContent = (props) => {
   const [tvResult, setTvResult] = useState([]);
   const [personResult, setPersonResult] = useState([]);
   const [collectionResult, setCollectionResult] = useState([]);
-  const [companyResult, setCompanyResult] = useState([]);
+  // const [companyResult, setCompanyResult] = useState([]);
 
   // const buttonList = [{ 'movie': movieResult, 'tv': tvResult, 'person': personResult, 'collection': collectionResult, 'company': companyResult }];
   // console.log(buttonList.map((item) => (
@@ -64,8 +64,8 @@ const SearchContent = (props) => {
       setCollectionResult(collectionResult.data);
       // console.log(collectionResult.data);
 
-      const companyResult = await axios.get(`https://api.themoviedb.org/3/search/company?query=${userInput}&page=1&api_key=${apiKey}`);
-      setCompanyResult(companyResult.data);
+      // const companyResult = await axios.get(`https://api.themoviedb.org/3/search/company?query=${userInput}&page=1&api_key=${apiKey}`);
+      // setCompanyResult(companyResult.data);
       // console.log(companyResult.data);
     }
     catch (error) {
@@ -91,9 +91,9 @@ const SearchContent = (props) => {
             ? <FilteredPerson data={personResult} image={props.image} />
             : filterMenu === 'collection'
               ? <FilteredCollection data={collectionResult} image={props.image} />
-              : filterMenu === 'company'
-                ? <FilteredCompany data={companyResult} image={props.image} />
-                : null
+              // : filterMenu === 'company'
+              //   ? <FilteredCompany data={companyResult} image={props.image} />
+              : null
     );
   }
 
@@ -172,7 +172,7 @@ const SearchContent = (props) => {
           // : console.log('collection, no data')
           : null
         }
-        {companyResult.total_results > 0
+        {/* {companyResult.total_results > 0
           ? <button
             name='company'
             onClick={handleSearchMenu}
@@ -184,7 +184,7 @@ const SearchContent = (props) => {
           </button>
           // : console.log('company, no data')
           : null
-        }
+        } */}
       </div>
 
       <div className='search-filter-card-container-container'>

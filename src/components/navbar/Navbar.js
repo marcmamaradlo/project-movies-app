@@ -43,7 +43,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='container bg-dark'>
+        <div className='container dark'>
             <div className='section-zero-mp'>
                 <div className='banner-navbar'>
                     <div className='banner-navbar-logo'>
@@ -94,9 +94,9 @@ const Navbar = () => {
                         }
                         >
                             <Link to='/' onClick={handleHamburgerIcon}>HOME</Link>
-                            <p>MOVIES</p>
-                            <p>TV SHOW</p>
-                            <p>PEOPLE</p>
+                            <Link to='/' onClick={handleHamburgerIcon}>MOVIES</Link>
+                            <Link to='/' onClick={handleHamburgerIcon}>TV SHOW</Link>
+                            <Link to='/' onClick={handleHamburgerIcon}>PEOPLE</Link>
                             <Link to='/search' onClick={handleHamburgerIcon}>SEARCH</Link>
                             <i
                                 onClick={handleHamburgerIcon}

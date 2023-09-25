@@ -8,6 +8,7 @@ import RouteNotFound from './components/404/Router-Not-Found';
 import TVMainPage from './components/tv-component.js/TV-Main-Page';
 import PeopleMainPage from './components/people-component.js/People-Main-Page';
 import SearchMainPage from './components/tags-search/search-main-page';
+import CollectionMainPage from './components/collection/Collection-Main-Page';
 
 
 const App = () => {
@@ -23,6 +24,8 @@ const App = () => {
           <Route path='/tv' element={<TVMainPage />} />
           <Route path='/tv/:id' element={<TVMainPage />} />
           <Route path='/person/:id' element={<PeopleMainPage />} />
+          <Route path='/collection' element={<CollectionMainPage />} />
+          <Route path='/collection/:id' element={<CollectionMainPage />} />
           <Route path='/recommendations' element={<DynamicPage />} />
           <Route path='/view-all' element={<ViewAll />} />
           <Route path='/search' element={<SearchMainPage />} />

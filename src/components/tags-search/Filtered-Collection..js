@@ -4,8 +4,8 @@ const FilteredCollection = ({ data, image }) => {
 
   const showFilteredCollectionData = () => {
     return data.results.map((item) => (
-      <Link to={`/collection/${item.id}`}>
-        <div className='card-container'>
+      <Link to={`/collection/${item.id}`} key={item.id}>
+        <div key={item.id} className='card-container'>
           <div className='card-container-img'>
             {item.poster_path
               ? <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.name} />
