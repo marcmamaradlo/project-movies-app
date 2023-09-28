@@ -42,38 +42,10 @@ class MyProvider extends Component {
         filteredtv: 0,
         filteredPerson: 0,
         filteredCollection: 0,
-        paginationPrevious: '',
-        paginationCurrent: 1,
-        paginationNext: '',
     }
 
-    changePaginationCurrent = (e) => {
-        this.setState({ paginationCurrent: parseInt(e.target.id) })
-    }
-
-    changePaginationPrevious = () => {
-        // const pagenationPrevious = this.state.pagenationPrevious;
-        const paginationCurrent = this.state.paginationCurrent;
-        // if (pagenationCurrent > 1) {
-        //     this.setState({ pagenationCurrent: pagenationPrevious - 1 });
-        // }
-        // else {
-        //     return null;
-        // }
-        this.setState({ paginationCurrent: paginationCurrent - 1 });
-    }
-
-    changePaginationNext = () => {
-        // const pagenationNext = this.state.pagenationNext;
-        // const pagenationCurrent = this.state.pagenationCurrent;
-        // if (pagenationCurrent > 1) {
-        //     this.setState({ pagenationCurrent: pagenationNext + 1 });
-        // }
-        // else {
-        //     return null;
-        // }
-        const paginationCurrent = this.state.paginationCurrent;
-        this.setState({ paginationCurrent: paginationCurrent + 1 })
+    showItemFilterMenu = (e) => {
+        this.setState({ filterMenu: e.target.name });
     }
 
     headingNavigationButton = (a, b, c, d) => {
@@ -94,11 +66,11 @@ class MyProvider extends Component {
     }
 
     handleSearchMenu = (e) => {
-        this.setState({ filterMenu: e.target.name })
+        this.setState({ filterMenu: e.target.name });
     }
 
     handleNavbarMenu = (e) => {
-        this.setState({ activePage: e.target.name })
+        this.setState({ activePage: e.target.name });
     }
 
     setDynamicPageData = () => {
@@ -133,6 +105,11 @@ class MyProvider extends Component {
     handleHamburgerIcon = () => {
         const hamburgerIcon = this.state.hamburgerIcon;
         this.setState({ hamburgerIcon: !hamburgerIcon, });
+    }
+
+    handleNavbarMenuButtons = (e) => {
+        this.handleHamburgerIcon();
+        this.setState({ activePage: e.target.name });
     }
 
     handleServerButton = (e) => {
@@ -244,7 +221,7 @@ class MyProvider extends Component {
                 handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
                 handleUserInput, handleDropDownMenu, handleShowEpisode, handleNavbarMenu,
                 handleSearchMenu, handleOnBlurEvent, setDynamicPageData, headingNavigationButton,
-                changePaginationCurrent, changePaginationPrevious, changePaginationNext,
+                showItemFilterMenu, handleNavbarMenuButtons,
             } = this;
 
         return (
@@ -257,7 +234,7 @@ class MyProvider extends Component {
                     handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
                     handleUserInput, handleDropDownMenu, handleShowEpisode, handleNavbarMenu,
                     handleSearchMenu, handleOnBlurEvent, setDynamicPageData, headingNavigationButton,
-                    changePaginationCurrent, changePaginationPrevious, changePaginationNext,
+                    showItemFilterMenu, handleNavbarMenuButtons,
                 }}>
                 {this.props.children}
             </MyContext.Provider>

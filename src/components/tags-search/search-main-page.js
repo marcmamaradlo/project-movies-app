@@ -17,7 +17,7 @@ const SearchMainPage = () => {
   const [dataTrendingTV, setDataTrendingTV] = useState([]);
   const [dataTrendingPerson, setDataTrendingPerson] = useState([]);
   const [userInput, setUserInput] = useState('');
-  const [filterThisInput, setFilterThisInput] = useState('');
+  // const [filterThisInput, setFilterThisInput] = useState('');
 
   useEffect(() => {
     getTrendingData(); // eslint-disable-next-line
@@ -64,7 +64,9 @@ const SearchMainPage = () => {
       return console.log('userInput is empty');
     }
     else {
-      return setFilterThisInput(userInput);
+      // return setFilterThisInput(userInput);
+      // return window.location.pathname = `/search/${userInput.split(' ').join('%')}`
+      return window.location.pathname = `/search/${userInput}`
     }
   }
 
@@ -89,7 +91,7 @@ const SearchMainPage = () => {
                   placeholder='movies, tv shows, actors...'
                 />
               </div>
-              <div className='filter-select'>
+              {/* <div className='filter-select'>
                 <select>
                   <option value=''>Type</option>
                   <option>Movie</option>
@@ -113,7 +115,7 @@ const SearchMainPage = () => {
                   <option>Biography</option>
                   <option>Documentary</option>
                 </select>
-              </div>
+              </div> */}
               <button
                 className='filter-submit'
                 type='submit'
@@ -122,7 +124,8 @@ const SearchMainPage = () => {
               </button>
             </form>
           </div>
-          <SearchContent searchInput={filterThisInput} image={appLogo} />
+          {/* <SearchContent searchInput={filterThisInput} image={appLogo} /> */}
+          <SearchContent image={appLogo} />
         </div>
         {/* <ImageCarouselPortrait />*/}
       </div >

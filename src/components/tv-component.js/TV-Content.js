@@ -15,7 +15,7 @@ const TVContent = ({ data, keywords }) => {
     const [episodeButton, setEpisodeButton] = useState(false);
     const [episodeIndex, setEpisodeIndex] = useState();
     const [episodeButtonName, setEpisodeButtonName] = useState('Select Episode');
-    const handleFakeLinks = context.handleFakeLinks;
+    // const handleFakeLinks = context.handleFakeLinks;
     const handleShowEpisode = context.handleShowEpisode;
     const setDynamicPageData = context.setDynamicPageData;
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language);
@@ -30,7 +30,7 @@ const TVContent = ({ data, keywords }) => {
         return data.credits
             ? data.credits.cast.slice(0, 4).map((item, index) => (
                 <li key={index}>
-                    <Link to={`/person/${item.id}`} href='/' id={item.id}>{`${item.name},  `}</Link>
+                    <Link to={`/person/${item.id}`} id={item.id}>{`${item.name},  `}</Link>
                 </li>
             ))
             : null // console.log('Cast Error')
@@ -40,7 +40,12 @@ const TVContent = ({ data, keywords }) => {
         return (keywords
             ? keywords.map((item) => (
                 <li key={item.id}>
-                    <Link to={`/search`} onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</Link>
+                    <Link
+                        to={`/search/${item.name}`}
+                        id={item.id}
+                    >
+                        {`${item.name},  `}
+                    </Link>
                 </li>
             ))
             : null
@@ -51,7 +56,12 @@ const TVContent = ({ data, keywords }) => {
         return (genres
             ? genres.map((item, index) => (
                 <li key={index}>
-                    <Link to={`/search`} onClick={handleFakeLinks} href='/'>{`${item.name} `}</Link>
+                    <Link
+                        to={`/search/${item.name}`}
+                        id={item.id}
+                    >
+                        {`${item.name} `}
+                    </Link>
                 </li>
             ))
             : null

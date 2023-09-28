@@ -14,6 +14,7 @@ const Navbar = () => {
     const hamburgerIcon = context.state.hamburgerIcon;
     const activePage = context.state.activePage;
     const handleHamburgerIcon = context.handleHamburgerIcon;
+    const handleNavbarMenuButtons = context.handleNavbarMenuButtons;
     const handleUserInput = context.handleUserInput;
     const handleNavbarMenu = context.handleNavbarMenu;
 
@@ -93,11 +94,11 @@ const Navbar = () => {
                                 : 'display-none'
                         }
                         >
-                            <Link to='/' onClick={handleHamburgerIcon}>HOME</Link>
-                            <Link to='/' onClick={handleHamburgerIcon}>MOVIES</Link>
-                            <Link to='/' onClick={handleHamburgerIcon}>TV SHOW</Link>
-                            <Link to='/' onClick={handleHamburgerIcon}>PEOPLE</Link>
-                            <Link to='/search' onClick={handleHamburgerIcon}>SEARCH</Link>
+                            <Link to='/' name='home' onClick={handleNavbarMenuButtons}>HOME</Link>
+                            <Link to='/' name='movie' onClick={handleNavbarMenuButtons}>MOVIES</Link>
+                            <Link to='/' name='tv' onClick={handleNavbarMenuButtons}>TV SHOW</Link>
+                            <Link to='/' name='person' onClick={handleNavbarMenuButtons}>PEOPLE</Link>
+                            <Link to='/search' name='search' onClick={handleNavbarMenuButtons}>SEARCH</Link>
                             <i
                                 onClick={handleHamburgerIcon}
                                 className="fa-regular fa-rectangle-xmark"

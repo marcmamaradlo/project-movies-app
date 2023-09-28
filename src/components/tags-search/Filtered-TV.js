@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const FilteredTV = ({ data, image }) => {
 
   const showFilteredTVData = () => {
-    return data.results.map((item) => (
+    return data.results ? data.results.map((item) => (
       <Link to={`/tv/${item.id}`}>
         <div className='card-container' key={item.id}>
           <div className='card-container-img'>
@@ -18,6 +18,7 @@ const FilteredTV = ({ data, image }) => {
         </div>
       </Link>
     ))
+      : null
   }
 
   return (

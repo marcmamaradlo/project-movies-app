@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const CollectionContent = ({ data }) => {
-  console.log(data);
 
   const showCollectionData = () => {
     return (

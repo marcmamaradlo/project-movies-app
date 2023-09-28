@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const FilteredCollection = ({ data, image }) => {
 
   const showFilteredCollectionData = () => {
-    return data.results.map((item) => (
+    return data.results ? data.results.map((item) => (
       <Link to={`/collection/${item.id}`} key={item.id}>
         <div key={item.id} className='card-container'>
           <div className='card-container-img'>
@@ -18,6 +18,7 @@ const FilteredCollection = ({ data, image }) => {
         </div>
       </Link>
     ))
+      : null
   }
 
   return (

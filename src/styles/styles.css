@@ -1687,21 +1687,49 @@ select {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     border-top: 1px solid white;
-    height: 4rem;
+    height: 100%;
 
 }
 
-.pagenation p {
+.pagenation ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.pagenation-a {
     margin: 0 0.5rem;
-    font-size: 1.1rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
     width: 1rem;
     font-family: 'Work Sans', sans-serif;
+    color: #28272699;
 }
 
-.pagenation p:hover {
-    font-size: 1.5rem;
+.page-item-li {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    margin: 0.20rem;
+}
+
+.page-link-a {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    color: #28272699;
+}
+
+.page-link-active {
+    border: 1px solid lightgrey;
+    background-color: lightgrey;
+}
+
+.pagenation a:hover {
+    /* font-size: 1.5rem; */
     transition: all 200ms;
     text-decoration: underline;
     cursor: pointer;
@@ -2556,6 +2584,10 @@ select {
     .person-image {
         padding-right: unset;
     }
+
+    .collection-card {
+        width: 97%;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -2580,6 +2612,22 @@ select {
 
     .heading p {
         font-size: 0.8rem;
+    }
+
+    .heading-left-button-active {
+        margin-left: 1rem;
+        padding: 0 1rem;
+        border: none;
+        outline: none;
+        background-color: silver;
+        height: 1.4rem;
+        border-radius: 15px;
+        font-family: 'Work Sans', sans-serif;
+        color: #282726;
+    }
+
+    .heading-left-button {
+        margin-left: unset;
     }
 
     .banner-navbar-logo {
@@ -2781,6 +2829,58 @@ select {
     .heading-div-button:hover {
         width: 7rem;
     }
+
+    .heading-with-navigation {
+        width: 100%;
+    }
+
+    .heading-with-navigation-active,
+    .heading-with-navigation-default,
+    .heading-with-navigation-default:hover {
+        padding: unset;
+        margin: unset;
+        width: 25%;
+        font-size: 0.9rem;
+        height: 100%;
+    }
+
+    .collection-banner-content {
+        flex-direction: column;
+    }
+
+    .collection-banner {
+        height: 95vh;
+    }
+
+    .collection-banner-details p {
+        font-size: 0.9rem;
+        text-align: justify;
+    }
+
+    .collection-banner-details h3 {
+        text-align: center;
+    }
+
+    .collection-banner-image {
+        display: flex;
+        justify-content: center;
+        padding-right: unset;
+    }
+
+    .collection-banner-image img {
+        box-shadow: 0px 5px 20px #282726;
+    }
+
+    .collection-card img {
+        padding-right: 0.5rem;
+    }
+
+    .collection-card-details-overview {
+        height: 5.5rem;
+        overflow: hidden;
+        /* white-space: nowrap; */
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -2923,6 +3023,14 @@ select {
 
     .person-personal-info {
         width: 95%;
+    }
+
+    .collection-card {
+        width: 95%;
+    }
+
+    .collection-card-title {
+        font-size: 0.9rem;
     }
 
 }

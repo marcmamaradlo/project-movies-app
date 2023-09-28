@@ -29,6 +29,7 @@ const App = () => {
           <Route path='/recommendations' element={<DynamicPage />} />
           <Route path='/view-all' element={<ViewAll />} />
           <Route path='/search' element={<SearchMainPage />} />
+          <Route path='/search/:query' element={<SearchMainPage />} />
           <Route path='*' element={<RouteNotFound />} />
         </Routes>
         <Footer />
