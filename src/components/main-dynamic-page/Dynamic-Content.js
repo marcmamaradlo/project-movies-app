@@ -8,7 +8,7 @@ const DynamicContent = ({ data, keywords }) => {
     // console.log(keywords);
     const context = useContext(MyContext);
     const handleDynamicContentButton = context.handleDynamicContentButton;
-    const handleFakeLinks = context.handleFakeLinks;
+    // const handleFakeLinks = context.handleFakeLinks;
     const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
     const genres = data.genres;
@@ -28,7 +28,7 @@ const DynamicContent = ({ data, keywords }) => {
         return (keywords
             ? keywords.map((item) => (
                 <li key={item.id}>
-                    <Link to='/search' id={item.id}>{`${item.name},  `}</Link>
+                    <Link to={`/search/${item.name}`} id={item.id}>{`${item.name},  `}</Link>
                 </li>
             ))
             : null
@@ -46,7 +46,7 @@ const DynamicContent = ({ data, keywords }) => {
         return (genres
             ? genres.map((item, index) => (
                 <li key={index}>
-                    <a onClick={handleFakeLinks} href='/'>{`${item.name} `}</a>
+                    <Link to={`/search/${item.name}`}>{`${item.name} `}</Link>
                 </li>
             ))
             : null
