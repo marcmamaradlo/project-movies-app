@@ -37,7 +37,7 @@ class MyProvider extends Component {
         tvSeason: '', // 0, 1, 2, 3, ...
         tvEpisode: '', // 0, 1, 2, 3, ...
         seriesPlayer: false,
-        filterMenu: '', // 'movie', 'tv', 'person', 'collection', 'company',
+        filterMenu: 'movie', // 'movie', 'tv', 'person', 'collection', 'company',
         filteredMovies: 0,
         filteredtv: 0,
         filteredPerson: 0,
@@ -45,7 +45,8 @@ class MyProvider extends Component {
     }
 
     showItemFilterMenu = (e) => {
-        this.setState({ filterMenu: e.target.name });
+        this.setState({ filterMenu: e });
+        console.log(e);
     }
 
     headingNavigationButton = (a, b, c, d) => {
@@ -209,6 +210,8 @@ class MyProvider extends Component {
 
 
     render() {
+
+        console.log(this.state.filterMenu);
 
         const { pageID, bgSrc, apiData, apiKey } = this.state;
 

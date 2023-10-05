@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { MyContext } from "../../context";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Trending from "../body/Trending";
 import SearchContent from "./Search-Content";
@@ -8,6 +9,8 @@ import appLogo from '../../assets/image-not-found/app-icon.png';
 const SearchMainPage = () => {
 
   const context = useContext(MyContext);
+  const params = useParams();
+  console.log(document.URL, params.query);
   // const handleSearchMenu = context.handleSearchMenu;
   // const filterMenu = context.state.filterMenu;
   const handleOnBlurEvent = context.handleOnBlurEvent;
@@ -66,7 +69,8 @@ const SearchMainPage = () => {
     else {
       // return setFilterThisInput(userInput);
       // return window.location.pathname = `/search/${userInput.split(' ').join('%')}`
-      return window.location.pathname = `/search/${userInput}`
+      // return window.location.pathname = `/search/${userInput}`
+      return params.query = userInput;
     }
   }
 
@@ -84,42 +88,12 @@ const SearchMainPage = () => {
           </div>
           <div className='filter-container'>
             <form onSubmit={handleFormSubmit}>
-              <div className='filter-search'>
-                <input
-                  type='text'
-                  onChange={handleInputChange}
-                  placeholder='movies, tv shows, actors...'
-                />
-              </div>
-              {/* <div className='filter-select'>
-                <select>
-                  <option value=''>Type</option>
-                  <option>Movie</option>
-                  <option>TV Show</option>
-                </select>
-                <select>
-                  <option value=''>Genre</option>
-                  <option>Biography</option>
-                  <option>Documentary</option>
-                  <option>Action</option>
-                </select>
-                <select>
-                  <option value=''>Country</option>
-                  <option>Action</option>
-                  <option>Biography</option>
-                  <option>Documentary</option>
-                </select>
-                <select>
-                  <option value=''>Year</option>
-                  <option>Action</option>
-                  <option>Biography</option>
-                  <option>Documentary</option>
-                </select>
-              </div> */}
-              <button
-                className='filter-submit'
-                type='submit'
-              >
+              <input
+                type='text'
+                onChange={handleInputChange}
+                placeholder='movies, tv shows, actors...'
+              />
+              <button type='submit'>
                 <i className="fa-solid fa-filter"></i> Filter
               </button>
             </form>

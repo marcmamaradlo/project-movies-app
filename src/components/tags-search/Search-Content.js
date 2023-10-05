@@ -13,9 +13,10 @@ const SearchContent = (props) => {
   const params = useParams();
   const context = useContext(MyContext);
   const state = context.state;
-  const filterMenu = state.filterMenu;
+  const filterMenu = context.state.filterMenu;
+  console.log(params);
   const handleSearchMenu = context.handleSearchMenu;
-  // const showItemFilterMenu = context.showItemFilterMenu;
+  const showItemFilterMenu = context.showItemFilterMenu;
   const [movieResult, setMovieResult] = useState([]);
   const [tvResult, setTvResult] = useState([]);
   const [personResult, setPersonResult] = useState([]);
@@ -65,10 +66,7 @@ const SearchContent = (props) => {
       : getTrendingData()
   }
 
-  useEffect(() => {
-    returnNothing();
-    // eslint-disable-next-line
-  }, [params.query]);
+
 
   useEffect(() => {
     getMovieDataWithPagination() // eslint-disable-next-line
@@ -95,6 +93,23 @@ const SearchContent = (props) => {
   const previousLabel = <i className="fa-solid fa-caret-left"></i>
   const nextLabel = <i className="fa-solid fa-caret-right"></i>
 
+  const changeItemFilterMenu = () => {
+    let e = '';
+    showItemFilterMenu(e);
+    console.log(e);
+    return movieResult ? e = 'movie'
+      : tvResult ? e = 'tv'
+        : personResult ? e = 'person'
+          : collectionResult ? e = 'collection'
+            : e = 'movie'
+  }
+
+  useEffect(() => {
+    returnNothing();
+    changeItemFilterMenu();
+    // eslint-disable-next-line
+  }, [params.query]);
+
   return (
     <>
       <div className='heading-with-navigation' id='search-filter-menu'>
@@ -106,6 +121,7 @@ const SearchContent = (props) => {
               ? 'heading-with-navigation-active'
               : 'heading-with-navigation-default'}
           >
+            {console.log(filterMenu)}
             {`Movie [${movieResult.total_results}]`}
           </button>
           // : console.log('movie, no data')

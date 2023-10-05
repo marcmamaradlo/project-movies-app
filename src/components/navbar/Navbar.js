@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+// import appIcon from '../../assets/image-not-found/app-icon.png'
 import axios from "axios";
 import SearchResult from "./Search-Result";
 
@@ -48,7 +49,11 @@ const Navbar = () => {
             <div className='section-zero-mp'>
                 <div className='banner-navbar'>
                     <div className='banner-navbar-logo'>
-                        <p className='text-shadow'><Link to='/'>MoviesDB</Link></p>
+                        {/* <Link to='/'>
+                            <img src={appIcon} alt='App Logo' />
+                        </Link> */}
+                        {/* <p className='text-shadow'><Link>TV-Natin.to</Link></p> */}
+                        <p className='text-shadow'><Link>MoviesDB</Link></p>
                     </div>
                     <div className='banner-navbar-search-container'>
                         <form
@@ -65,7 +70,7 @@ const Navbar = () => {
                                 type='text'
                                 id='searchInput'
                                 value={userInput}
-                                placeholder='Search...'
+                                placeholder='Quick Search'
                                 onChange={handleUserInput}
                             />
                             <button><i className="fa-solid fa-magnifying-glass"></i></button>
