@@ -1,15 +1,48 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../context";
 
 const SearchResult = ({ data }) => {
 
     const context = useContext(MyContext);
+    const refOne = useRef(null);
+    const [checkData, setCheckData] = useState(false);
     const searchResult = context.state.searchResult;
+    const handleOnBlurEvent = context.handleOnBlurEvent;
     const handlePopOutTrailerButton = context.handlePopOutTrailerButton;
 
-    const searchResults = () => {
+    useEffect(() => {
+        data ? setCheckData(true) : setCheckData(false);
+        mountEventListener();
+        // document.addEventListener('click', handleClickOutsideNavbar, true);
+        // eslint-disable-next-line
+    }, [data]);
+
+    // useEffect(() => {
+    //     mountEventListener();
+    //     // eslint-disable-next-line
+    // }, []);
+
+    const mountEventListener = () => {
         return data
+            ? document.addEventListener('click', handleClickOutsideNavbar, true)
+            : null
+    }
+
+    const handleClickOutsideNavbar = (e) => {
+        if (!refOne.current.contains(e.target)) {
+            console.log('click outside navbar');
+            handleOnBlurEvent();
+            // setCheckData(false);
+        }
+        else {
+            console.log('search result closed!');
+            console.log(e.target);
+        }
+    }
+
+    const searchResults = () => {
+        return checkData
             ? data.map((item, index) => (
                 <Link
                     to={`/${item.media_type}/${item.id}`}
@@ -97,26 +130,17 @@ const SearchResult = ({ data }) => {
     }
 
     return (
-        data
+        checkData
             ? <div
+                ref={refOne}
                 className={
                     searchResult
                         ? 'search-result-container'
                         : 'display-none'
                 }
             >
-                <div className='search-result-card-container' >
+                <div className='search-result-card-container'>
                     {searchResults()}
-                    {/* {console.log(searchResult)}
-                    {console.log(data)} */}
-                    {/* {data.length > 5
-                        ? <div className='search-result-view-all'>
-                            <p>
-                                VIEW ALL <i className="fa-solid fa-arrow-right"></i>
-                            </p>
-                        </div >
-                        : null
-                    } */}
                 </div >
             </div >
             : null // console.log('Search-Result not showing')

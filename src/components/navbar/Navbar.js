@@ -53,7 +53,7 @@ const Navbar = () => {
                             <img src={appIcon} alt='App Logo' />
                         </Link> */}
                         {/* <p className='text-shadow'><Link>TV-Natin.to</Link></p> */}
-                        <p className='text-shadow'><Link>MoviesDB</Link></p>
+                        <p className='text-shadow'><Link to='/'>MoviesDB</Link></p>
                     </div>
                     <div className='banner-navbar-search-container'>
                         <form

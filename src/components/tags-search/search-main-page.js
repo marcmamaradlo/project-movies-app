@@ -10,7 +10,6 @@ const SearchMainPage = () => {
 
   const context = useContext(MyContext);
   const params = useParams();
-  console.log(document.URL, params.query);
   // const handleSearchMenu = context.handleSearchMenu;
   // const filterMenu = context.state.filterMenu;
   const handleOnBlurEvent = context.handleOnBlurEvent;
@@ -91,7 +90,7 @@ const SearchMainPage = () => {
               <input
                 type='text'
                 onChange={handleInputChange}
-                placeholder='movies, tv shows, actors...'
+                placeholder='movies, tv shows, actors, collection...'
               />
               <button type='submit'>
                 <i className="fa-solid fa-filter"></i> Filter

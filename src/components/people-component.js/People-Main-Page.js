@@ -26,7 +26,7 @@ const PeopleMainPage = () => {
     const dynamicPageData = state.dynamicPageData;
     const serverButtonID = state.serverButtonID;
     const handleServerButton = context.handleServerButton;
-    const handleClosePopOutWindow = context.handleClosePopOutWindow;
+    // const handleClosePopOutWindow = context.handleClosePopOutWindow;
     const serverButtonName = ['server01', 'server02', 'server03', 'server04',];
 
     useEffect(() => {
@@ -80,7 +80,9 @@ const PeopleMainPage = () => {
                     {handleServerButtons()}
                 </div>
             </div>
-            <div className='container bg-dark' onClick={handleClosePopOutWindow}>
+            <div className='container bg-dark'
+            // onClick={handleClosePopOutWindow}
+            >
                 <div className='section'>
                     <PeopleContent
                         data={dataDetailes}

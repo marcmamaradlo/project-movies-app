@@ -2177,6 +2177,11 @@ select {
         margin-right: 1rem;
         margin-top: 0;
         font-family: 'Work Sans', sans-serif;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 80%;
+        width: 12rem;
     }
 
     .collection-card-release-date {
@@ -2436,7 +2441,7 @@ select {
     }
 
     .banner-div {
-        height: 70%;
+        height: 85%;
     }
 
     .off-canvas-menu {
@@ -3009,6 +3014,18 @@ select {
         padding: 0 0 0 1rem;
     }
 
+    .collection-card-title {
+        margin-right: 1rem;
+        margin-top: 0;
+        font-family: 'Work Sans', sans-serif;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        /* max-width: 80%; */
+        width: 9.6rem;
+        font-size: 0.9rem;
+    }
+
     .trailer-card-container {
         height: 70%;
     }
@@ -3102,8 +3119,20 @@ select {
         width: 95%;
     }
 
+    .collection-card img {
+        margin-right: 0.5rem;
+        width: 4rem;
+        height: 7rem;
+    }
+
     .collection-card-title {
         font-size: 0.9rem;
+        width: 8.5rem;
+    }
+
+    .collection-card-details-overview {
+        height: 4.5rem;
+        margin-bottom: unset;
     }
 
 }

@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { MyContext } from "../../context";
+// import { useContext } from "react";
+// import { MyContext } from "../../context";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const PeopleContent = (props) => {
 
-    const context = useContext(MyContext);
+    // const context = useContext(MyContext);
     const [seeMore, setSeeMore] = useState(false);
     const [actingData, setActingData] = useState('movie');
     const [showAll, setShowAll] = useState(false);
@@ -17,7 +17,7 @@ const PeopleContent = (props) => {
     const tvCrew = props.tv.crew;
 
     const socialMedia = props.socialMedia;
-    const handleClosePopOutWindow = context.handleClosePopOutWindow;
+    // const handleClosePopOutWindow = context.handleClosePopOutWindow;
 
     const relatedMovieCarousel = () => {
         return movieCast
@@ -59,13 +59,13 @@ const PeopleContent = (props) => {
         setActingData(e.target.name)
     }
 
-    const alsoKnownAs = () => {
-        return data.also_known_as
-            ? data.also_known_as.map((item, index) => (
-                <p key={index} className='personal-info-detail'>{item}</p>
-            ))
-            : null
-    }
+    // const alsoKnownAs = () => {
+    //     return data.also_known_as
+    //         ? data.also_known_as.map((item, index) => (
+    //             <p key={index} className='personal-info-detail'>{item}</p>
+    //         ))
+    //         : null
+    // }
 
     const homepage = () => {
         return data.homepage
@@ -89,7 +89,7 @@ const PeopleContent = (props) => {
         return showAll
             ? movieCast ?
                 movieCast.map((item) => (
-                    <div className='acting-container-content' key={item.id}>
+                    <div className='acting-container-content' key={`movieCast${item.id}`}>
                         <p className='acting-year'>{item.release_date ? item.release_date.split('-')[0] : '????'}</p>
                         <p className='acting-title'>
                             <Link to={`/movie/${item.id}`}>{item.title} </Link>
@@ -99,7 +99,7 @@ const PeopleContent = (props) => {
                 : null
             : movieCast ?
                 movieCast.slice(0, 10).map((item) => (
-                    <div className='acting-container-content' key={item.id}>
+                    <div className='acting-container-content' key={`movieCast${item.id}`}>
                         <p className='acting-year'>{item.release_date ? item.release_date.split('-')[0] : '????'}</p>
                         <p className='acting-title'>
                             <Link to={`/movie/${item.id}`}>{item.title} </Link>
@@ -112,7 +112,7 @@ const PeopleContent = (props) => {
     const handleActingMovieCrew = () => {
         return movieCrew ?
             movieCrew.map((item) => (
-                <div className='acting-container-content' key={item.id}>
+                <div className='acting-container-content' key={`movieCrew${item.id}`}>
                     <p className='acting-year'>{item.release_date ? item.release_date.split('-')[0] : '????'}</p>
                     <p className='acting-title'>
                         <Link to={`/movie/${item.id}`}>{item.title} </Link>
@@ -125,7 +125,7 @@ const PeopleContent = (props) => {
     const handleActingTVCast = () => {
         return tvCast ?
             tvCast.map((item) => (
-                <div className='acting-container-content' key={item.id}>
+                <div className='acting-container-content' key={`tvCast${item.id}`}>
                     <p className='acting-year'>{item.first_air_date ? item.first_air_date.split('-')[0] : '????'}</p>
                     <p className='acting-title'>
                         <Link to={`/tv/${item.id}`}>{item.name} </Link>
@@ -138,7 +138,7 @@ const PeopleContent = (props) => {
     const handleActingTVCrew = () => {
         return tvCrew ?
             tvCrew.map((item) => (
-                <div className='acting-container-content' key={item.id}>
+                <div className='acting-container-content' key={`tvCrew${item.id}`}>
                     <p className='acting-year'>{item.first_air_date ? item.first_air_date.split('-')[0] : '????'}</p>
                     <p className='acting-title'>
                         <Link to={`/movie/${item.id}`}>{item.name} </Link>
@@ -211,7 +211,9 @@ const PeopleContent = (props) => {
 
     return (
 
-        <div className='person-container' onClick={handleClosePopOutWindow}>
+        <div className='person-container'
+        // onClick={handleClosePopOutWindow}
+        >
             <div className='person-image'>
                 <img src={`https://image.tmdb.org/t/p/h632${data.profile_path}`} alt={data.name} />
                 <div className='person-personal-info'>
@@ -239,10 +241,10 @@ const PeopleContent = (props) => {
                             <p className='personal-info-detail'>{data.place_of_birth}</p>
                         </div>
                         {homepage()}
-                        <div className='personal-info-content'>
+                        {/* <div className='personal-info-content'>
                             <p className='personal-info-title'>Also Known As</p>
                             {alsoKnownAs()}
-                        </div>
+                        </div> */}
                         {deathDay()}
                     </div>
                 </div>

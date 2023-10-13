@@ -7,10 +7,6 @@ import YoutubePlayerTrailer from "./Video-Player-Trailer";
 
 const DynamicBanner = ({ data }) => {
 
-    // useEffect(() = {
-
-    // })
-
     const params = useParams();
     const context = useContext(MyContext);
     const state = context.state;
@@ -32,8 +28,10 @@ const DynamicBanner = ({ data }) => {
     }
 
     return (
-        <div className='dynamic-banner' style={{ ...dynamicBannerBackground }}>
-            {/* <BannerNavbar /> */}
+        <div
+            className='dynamic-banner'
+            style={{ ...dynamicBannerBackground }}
+        >
             <div className='dynamic-banner-div'>
                 {showDisplay()}
             </div>

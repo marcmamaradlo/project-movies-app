@@ -5,10 +5,8 @@ import { getLangNameFromCode } from "language-name-map";
 
 
 const DynamicContent = ({ data, keywords }) => {
-    // console.log(keywords);
     const context = useContext(MyContext);
     const handleDynamicContentButton = context.handleDynamicContentButton;
-    // const handleFakeLinks = context.handleFakeLinks;
     const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
     const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
     const genres = data.genres;
@@ -18,10 +16,9 @@ const DynamicContent = ({ data, keywords }) => {
             ? data.credits.cast.slice(0, 4).map((item, index) => (
                 <li key={index}>
                     <Link to={`/person/${item.id}`}>{`${item.name},`}</Link>
-                    {/* <a onClick={handleFakeLinks} href='/' id={item.id}>{`${item.name},  `}</a> */}
                 </li>
             ))
-            : null // console.log('Cast Error')
+            : null
     }
 
     const handleDynamicKeywords = () => {
@@ -72,10 +69,10 @@ const DynamicContent = ({ data, keywords }) => {
                 <div className='dynamic-details'>
                     <p className='dynamic-details-title'>{handleTitle()}</p>
                     <div className='dynamic-details-title-icons'>
-                        <p><span className="material-symbols-outlined">hd</span></p>
+                        {/* <p><span className="material-symbols-outlined">hd</span></p> */}
                         <p><i className="fa-solid fa-star"></i> {data.vote_average}</p>
                         <p><i className="fa-solid fa-clock"></i> {handleRuntimeRemainder()}H</p>
-                        <p><i className="fa-solid fa-volume-off"></i> 2.1</p>
+                        {/* <p><i className="fa-solid fa-volume-off"></i> 2.1</p> */}
                         <p><i className="fa-regular fa-calendar-days"></i> {releaseData}</p>
                     </div>
                     <p className='dynamic-details-overview'>{data.overview}</p>

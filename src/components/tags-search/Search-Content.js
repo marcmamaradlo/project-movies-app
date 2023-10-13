@@ -14,7 +14,6 @@ const SearchContent = (props) => {
   const context = useContext(MyContext);
   const state = context.state;
   const filterMenu = context.state.filterMenu;
-  console.log(params);
   const handleSearchMenu = context.handleSearchMenu;
   const showItemFilterMenu = context.showItemFilterMenu;
   const [movieResult, setMovieResult] = useState([]);
@@ -96,7 +95,6 @@ const SearchContent = (props) => {
   const changeItemFilterMenu = () => {
     let e = '';
     showItemFilterMenu(e);
-    console.log(e);
     return movieResult ? e = 'movie'
       : tvResult ? e = 'tv'
         : personResult ? e = 'person'
@@ -121,7 +119,6 @@ const SearchContent = (props) => {
               ? 'heading-with-navigation-active'
               : 'heading-with-navigation-default'}
           >
-            {console.log(filterMenu)}
             {`Movie [${movieResult.total_results}]`}
           </button>
           // : console.log('movie, no data')

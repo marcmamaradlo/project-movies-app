@@ -46,7 +46,6 @@ class MyProvider extends Component {
 
     showItemFilterMenu = (e) => {
         this.setState({ filterMenu: e });
-        console.log(e);
     }
 
     headingNavigationButton = (a, b, c, d) => {
@@ -62,8 +61,10 @@ class MyProvider extends Component {
         // console.log(this.state.filteredCollection);
     }
 
-    handleOnBlurEvent = () => {
-        this.setState({ searchResult: false });
+    handleOnBlurEvent = () => { // close the quick search results
+        if (this.state.searchResult === true) {
+            this.setState({ searchResult: false });
+        }
     }
 
     handleSearchMenu = (e) => {
@@ -210,8 +211,6 @@ class MyProvider extends Component {
 
 
     render() {
-
-        console.log(this.state.filterMenu);
 
         const { pageID, bgSrc, apiData, apiKey } = this.state;
 
