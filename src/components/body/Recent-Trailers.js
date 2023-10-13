@@ -32,8 +32,8 @@ const RecentTrailers = () => {
         backgroundImage: `url(${bgSrc})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        bakcgroundPosition: 'center',
-        transition: '200ms',
+        bakcgroundPosition: 'center center',
+        transition: '500ms',
     }
 
     const trailerCarouselData = () => {
@@ -41,7 +41,7 @@ const RecentTrailers = () => {
             <div className='trailer-card-container' key={item.id} onClick={handleYoutubeComponent} id={item.id}>
                 <div className='trailer-card-container-img'>
                     <img
-                        src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`}
+                        src={`https://image.tmdb.org/t/p/w1280${item.backdrop_path}`}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                         alt='backdrop-path' />
@@ -60,34 +60,23 @@ const RecentTrailers = () => {
 
     return (
         <>
-            {/* <div className='section'>
-                <div className='heading'>
-                    <div className='heading-left'>
-                        <h3>Movie Trailers</h3>
-                    </div>
-                    <p>view all <i className="fa-solid fa-arrow-right"></i></p>
-                </div>
-                <div className='recent-trailer' style={{ ...dynamicBG }}>
-                    <div className='recent-trailer-div'>
-                        {trailerCarouselData()}
-                    </div>
-                </div>
-                <YoutubeComponent />
-            </div> */}
-            <div className='container bg-dark'>
-                <div className='section'>
-                    <div className='heading'>
-                        <div className='heading-left'>
-                            <h3>Movie Trailers</h3>
+            {/* <div className='bg-fade-black'> */}
+            <div className='container dynamicBG box-shadow-dark' style={{ ...dynamicBG }}>
+                <div className='bg-fade-black'>
+                    <div className='container'>
+                        <div className='section'>
+                            <div className='heading'>
+                                <div className='heading-left text-white text-shadow'>
+                                    <h3>Movie Trailers</h3>
+                                </div>
+                            </div>
+                            <div className='recent-trailer'>
+                                {trailerCarouselData()}
+                            </div>
                         </div>
                     </div>
-                    <div className='recent-trailer' style={{ ...dynamicBG }}>
-                        <div className='recent-trailer-div'>
-                            {trailerCarouselData()}
-                        </div>
-                    </div>
+                    <YoutubeComponent />
                 </div>
-                <YoutubeComponent />
             </div>
         </>
     )
