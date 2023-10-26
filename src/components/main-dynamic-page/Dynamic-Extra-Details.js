@@ -18,7 +18,7 @@ const DynamicExtraDetails = ({ fullCast, poster, video }) => {
 
   // const context = useContext(MyContext);
   // const state = context.state;
-  const [buttonActive, setButtonActive] = useState('video'); //'cast','poster','video',
+  const [buttonActive, setButtonActive] = useState('cast'); //'cast','poster','video',
   const [showMore, setShowMore] = useState(false);
 
   const handleCastButton = (e) => {
