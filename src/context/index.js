@@ -42,6 +42,8 @@ class MyProvider extends Component {
         filteredtv: 0,
         filteredPerson: 0,
         filteredCollection: 0,
+        customButton: 'Custom Button Action',
+        customCardHorizontal: 'Custom Card Horizontal',
     }
 
     showItemFilterMenu = (e) => {

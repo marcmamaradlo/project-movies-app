@@ -3,6 +3,7 @@ import { MyContext } from "../../context";
 import axios from "axios";
 // import BannerNavbar from "../navbar/Banner-Navbar";
 import { Link } from "react-router-dom";
+import CustomButton from "../reuseable/CustomButton";
 
 const Banner = () => {
 
@@ -66,12 +67,18 @@ const Banner = () => {
                 </div>
                 <div className='banner-button'>
                     <Link to={`/${dropDownMenu}/${movieDetails.id}`}>
-                        <button
+                        {/* <button
                             id={movieDetails.id}
                             onClick={handlePopOutTrailerButton}
                         >
                             Watch Now
-                        </button>
+                        </button> */}
+                        <CustomButton
+                          text='WATCH NOW'
+                          style={`custom-button-rectangle-active`}
+                          action={handlePopOutTrailerButton}
+                          id={movieDetails.id}
+                        />
                     </Link>
                 </div>
             </div>

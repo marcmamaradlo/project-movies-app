@@ -31,13 +31,13 @@ const SearchResult = ({ data }) => {
 
     const handleClickOutsideNavbar = (e) => {
         if (!refOne.current.contains(e.target)) {
-            console.log('click outside navbar');
+            // console.log('click outside navbar');
             handleOnBlurEvent();
             // setCheckData(false);
         }
         else {
             console.log('search result closed!');
-            console.log(e.target);
+            // console.log(e.target);
         }
     }
 

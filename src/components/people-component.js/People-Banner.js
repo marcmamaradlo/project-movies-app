@@ -2,7 +2,7 @@ const PeopleBanner = () => {
 
     return (
         <>
-
+            
         </>
     )
 }
