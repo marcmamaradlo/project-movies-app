@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { MyContext } from "../../context";
 import { Link } from "react-router-dom";
 import { getLangNameFromCode } from "language-name-map";
+import CustomButton from "../reuseable/CustomButton";
 
 
 const DynamicContent = ({ data, keywords }) => {
@@ -63,8 +64,18 @@ const DynamicContent = ({ data, keywords }) => {
         <div className='dynamic-image-container'>
           <img src={`https://image.tmdb.org/t/p/w780${data.poster_path}`} alt={data.title} />
           <div className='dynamic-button-container'>
-            <button name='trailer' id={data.id} onClick={handleDynamicContentButton}>Trailer</button>
-            <button name='watchNow' id={data.id} onClick={handleDynamicContentButton}>Watch Now</button>
+            <CustomButton
+              text='Trailer'
+              name='trailer'
+              id={data.id}
+              action={handleDynamicContentButton}
+            />
+            <CustomButton
+              text='Watch Now'
+              name='watchNow'
+              id={data.id}
+              action={handleDynamicContentButton}
+            />
           </div>
         </div>
         <div className='dynamic-details'>

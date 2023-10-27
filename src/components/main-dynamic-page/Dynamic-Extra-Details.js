@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 // import { useContext } from 'react';
 // import { MyContext } from '../../context';
 import YouTube from 'react-youtube';
@@ -8,9 +9,9 @@ import CustomButton from '../reuseable/CustomButton';
 
 const DynamicExtraDetails = ({ fullCast, poster, video }) => {
 
-  // console.log('FullCast',fullCast);
+  // console.log('FullCast', fullCast.cast);
   // console.log('Poster', poster);
-  console.log('Video', video);
+  // console.log('Video', video);
 
   useEffect(() => {
     setShowMore(false);
@@ -35,19 +36,22 @@ const DynamicExtraDetails = ({ fullCast, poster, video }) => {
 
   const showFullCast = () => {
     return fullCast.cast.slice(0, showMore ? fullCast.cast.length : 10).map((item, index) => (
-      <div className='card-movie-extra' key={index + item.name}>
-        <div className='card-movie-extra-image-container'>
-          {
-            item.profile_path
-              ? <img className='card-movie-extra-img' src={`https://image.tmdb.org/t/p/w92${item.profile_path}`} alt={item.name} />
-              : <img className='card-movie-extra-image-not-found' src={noImageFound} alt={item.name} />
-          }
+
+      <Link to={`/person/${item.id}`} className='card-movie-extra-link-wrapper'>
+        <div className='card-movie-extra' key={index + item.name}>
+          <div className='card-movie-extra-image-container'>
+            {
+              item.profile_path
+                ? <img className='card-movie-extra-img' src={`https://image.tmdb.org/t/p/w92${item.profile_path}`} alt={item.name} />
+                : <img className='card-movie-extra-image-not-found' src={noImageFound} alt={item.name} />
+            }
+          </div>
+          <div className='card-movie-extra-details'>
+            <p className='extra-details-name'>{item.name}</p>
+            <p className='extra-details-character'>{item.character}</p>
+          </div>
         </div>
-        <div className='card-movie-extra-details'>
-          <p className='extra-details-name'>{item.name}</p>
-          <p className='extra-details-character'>{item.character}</p>
-        </div>
-      </div>
+      </Link >
     ))
   }
 
@@ -87,10 +91,15 @@ const DynamicExtraDetails = ({ fullCast, poster, video }) => {
       marginTop: 'unset',
       marginBottom: 'unset',
       color: 'silver',
-      fontFamily: `'Raleway', sans-serif`,
+      fontFamily: `'Work Sans', sans-serif`,
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      maxWidth: '80%',
+      width: '12rem',
     }
     return video.map((item) => (
-      <div className='youtube-player'>
+      <div className='youtube-player' title={item.name}>
         <YouTube key={item.id} videoId={item.key} opts={opts} className={``} />
         <p style={{ ...style }}>{item.name}</p>
       </div>

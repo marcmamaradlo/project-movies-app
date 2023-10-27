@@ -17,6 +17,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: goldenrod;
+}
+
 iframe {
   border-radius: 5px;
   border: none;
@@ -122,8 +126,11 @@ select {
   margin-top: 2rem;
 }
 
+.custom-button-rectangle,
 .custom-button-rectangle-active,
 .custom-button-rectangle:hover,
+
+.custom-button-rounded,
 .custom-button-rounded-active,
 .custom-button-rounded:hover {
   cursor: pointer;
@@ -1462,11 +1469,11 @@ select {
 
 .card-movie-extra {
   display: flex;
-  height: 8rem;
-  width: 49%;
-  margin: 0.5rem 0;
+  height: 100%;
+  width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 5px;
+  padding: 0.5rem;
 }
 
 .card-movie-extra-img {
@@ -1475,7 +1482,6 @@ select {
   /* border: 1px solid white; */
   border-radius: 3px;
   margin-right: 1rem;
-  margin-left: 0.5rem;
 }
 
 .card-movie-extra-image-not-found {
@@ -1485,6 +1491,18 @@ select {
   border-radius: 5px 0 0 5px;
   margin-right: 1rem;
   margin-left: 0.5rem;
+}
+
+.card-movie-extra-link-wrapper {
+  width: 32%;
+  height: 100%;
+  /* border: 1px solid red; */
+  margin: 0.5rem 0;
+}
+
+.card-movie-extra-link-wrapper:hover {
+  transform: scale(1.02);
+  transition: all 300ms;
 }
 
 .card-movie-extra-image-container {
@@ -1576,8 +1594,8 @@ select {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
   width: 100%;
-  line-height: 1rem;
-  height: 4.5rem;
+  /* line-height: 1rem;
+  height: 4.5rem; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -1589,9 +1607,9 @@ select {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
   width: 100%;
-  line-height: 1rem;
+  /* line-height: 1rem; */
   height: 100%;
-  transition: ease-in-out 200ms;
+  transition: 200ms;
 }
 
 .biography-container {
@@ -1603,18 +1621,19 @@ select {
   position: absolute;
   bottom: -2rem;
   right: 0;
-  background-color: #28272655;
-  color: white;
+  background-color: #121112;
+  color: silver;
   border: none;
   outline: none;
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .see-more:hover {
   /* text-decoration: underline; */
   font-weight: 400;
+  color: goldenrod;
 }
 
 .person-image img {
@@ -1662,6 +1681,10 @@ select {
 .person-card-title {
   font-family: 'Raleway', sans-serif;
   font-size: 0.8rem;
+}
+
+.person-card-title p:hover {
+  color: goldenrod;
 }
 
 .person-acting-details {
@@ -1762,7 +1785,8 @@ select {
 }
 
 .acting-title a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: goldenrod;
 }
 
 .acting-button-container {
@@ -1773,7 +1797,7 @@ select {
   justify-content: center;
 }
 
-.acting-button-container button {
+/* .acting-button-container button {
   height: 2rem;
   border: none;
   outline: none;
@@ -1782,7 +1806,7 @@ select {
   font-weight: 400;
   color: white;
   font-size: 1rem;
-}
+} */
 
 /* Person Container Component End */
 
@@ -1994,7 +2018,7 @@ select {
   align-items: flex-start;
   flex-direction: column;
   height: auto;
-  background-color: #282726;
+  background-color: #121112;
   color: silver;
   width: 100%;
 }
@@ -2680,6 +2704,10 @@ select {
     width: 24%;
   }
 
+  .card-movie-extra-link-wrapper {
+    width: 48%;
+  }
+
 }
 
 @media screen and (max-width: 576px) {
@@ -2841,6 +2869,17 @@ select {
 
   .card-movie-extra {
     width: 100%;
+    /* padding: 0.5rem 0 0.5rem 0.5rem; */
+  }
+
+  .card-movie-extra:hover {
+    border: 1px solid rgba(192, 192, 192, 0.801);
+    transition: 500ms;
+  }
+
+  .card-movie-extra-link-wrapper {
+    width: 96.5%;
+    padding: unset;
   }
 
   .extra-details-button-container {
@@ -2848,6 +2887,13 @@ select {
     display: flex;
     align-content: center;
     justify-content: center;
+  }
+
+  .custom-button-rectangle,
+  .custom-button-rectangle-active,
+  .custom-button-rounded,
+  .custom-button-rounded-active {
+    min-width: 6rem;
   }
 
   .show-more-button-container {
@@ -3168,6 +3214,11 @@ select {
   .extra-details-character {
     font-size: 0.8rem;
     font-weight: 600;
+  }
+
+  .card-movie-extra-link-wrapper {
+    width: 95%;
+    padding: unset;
   }
 
   .view-all-expanded {
