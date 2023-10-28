@@ -10,8 +10,9 @@ const SeriesPlayer = () => {
   const episode = parseInt(context.state.tvEpisode);
   const vidsrcTo = `https://vidsrc.to/embed/tv/${params.id}/${season}/${episode}`
   const vidsrcMe = `https://vidsrc.me/embed/tv?tmdb=${params.id}&season=${season}&episode=${episode}`
-  const xtreamhubCom = `http://xtreamhub.com/video/${params.id}s${season + 1}e${episode}`
-  console.log(season, episode);
+  // const xtreamhubCom = `http://xtreamhub.com/video/${params.id}s${season + 1}e${episode}`
+  const xtreamhubCom = `http://fixembed.com/video/${params.id}s${season + 1}e${episode}`
+  // console.log(season, episode);
 
   useEffect(() => {
     chooseServer(); // eslint-disable-next-line

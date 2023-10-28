@@ -10,6 +10,7 @@ const VideoPlayer = () => {
     const vidsrcTo = `https://vidsrc.to/embed/movie/${params.id}`
     const vidsrcMe = `https://vidsrc.me/embed/movie?tmdb=${params.id}/`
     const xtreamhubCom = `http://xtreamhub.com/video/${params.id}`
+    // const xtreamhubCom = `http://fixembed.com/video/${params.id}`
 
     const chooseServer = () => {
         if (serverButtonID === 'server01') {

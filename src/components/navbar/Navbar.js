@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import appIcon from '../../assets/tv-natin.to__1_-removebg-preview_crop.png'
+// import appIcon from '../../assets/tv-natin.to__1_-removebg-preview_crop.png'
 // import appIconTwo from '../../assets/tv-natin.to-removebg-preview.png'
 import axios from "axios";
 import SearchResult from "./Search-Result";
@@ -50,14 +50,14 @@ const Navbar = () => {
             <div className='section-zero-mp'>
                 <div className='banner-navbar'>
                     <div className='banner-navbar-logo'>
-                        <Link to='/'>
+                        {/* <Link to='/'>
                             <img src={appIcon} alt='App Logo' />
-                        </Link>
+                        </Link> */}
                         {/* <Link to='/'>
                             <img src={appIconTwo} alt='App Logo' />
                         </Link> */}
                         {/* <p className='text-shadow'><Link>TV-Natin.to</Link></p> */}
-                        {/* <p className='text-shadow'><Link to='/'>MoviesDB</Link></p> */}
+                        <p className='banner-navbar-menu'><Link to='/'>MoviesDB</Link></p>
                     </div>
                     <div className='banner-navbar-search-container'>
                         <form

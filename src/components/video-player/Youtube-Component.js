@@ -75,6 +75,10 @@ const YoutubeComponent = () => {
         onClick={handleClosePopOutWindow}
         className='youtube-component'>
         <div className='trailer-container'>
+          {/* <div className='trailer-container-close-icon'>
+            <i className="fa-solid fa-xmark"></i>
+            <p>Close</p>
+          </div> */}
           {videoData
             ? handleTrailerVideoID()
             : null
