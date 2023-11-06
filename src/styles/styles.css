@@ -44,7 +44,21 @@ select {
   color: #28272699;
 }
 
+.fa-magnifying-glass {
+  color: gray;
+}
 
+.fa-bars {
+  color: grey;
+}
+
+.fa-bars:hover {
+  color: white;
+}
+
+.fa-magnifying-glass:hover {
+  color: #121112;
+}
 
 /* reuseable button start */
 
@@ -369,8 +383,8 @@ select {
   padding: 0;
   margin: 2rem 0;
   border-bottom: 1px solid lightgray;
-  border-radius: 5px;
-  box-shadow: 0px 1px 5px -1px lightgray;
+  /* border-radius: 5px; */
+  /* box-shadow: 0px 1px 5px -1px lightgray; */
   height: 2rem;
 }
 
@@ -455,11 +469,13 @@ select {
 }
 
 .banner-navbar {
-  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  height: 5rem;
+  width: 101%;
+  z-index: 1;
+  /* border-bottom: 2px solid silver; */
 }
 
 .banner-navbar-menu {
@@ -478,7 +494,7 @@ select {
   /* margin-left: 0.7rem; */
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+  padding: 0.4rem;
   border-radius: 5px;
   border: 1px solid transparent;
   color: gray;
@@ -487,27 +503,18 @@ select {
 .banner-navbar-menu-active {
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
+  /* padding: 0.4rem; */
   /* color: white; */
   color: goldenrod;
 }
 
 .banner-navbar-menu-default:hover {
   /* color: white; */
-  color: #121112;
+  color: goldenrod;
   padding: 0.4rem 0.4rem 0.4rem 0.4rem;
   border: 1px solid transparent;
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-}
-
-.banner-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 5rem;
-  width: 100%;
-  z-index: 1;
-  /* border-bottom: 2px solid silver; */
 }
 
 .banner-navbar-logo {
@@ -526,10 +533,14 @@ select {
   margin-right: 0.5rem;
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  color: white;
+  color: gray;
   text-decoration: none;
   font-size: 1.1rem;
   padding: 0;
+}
+
+.banner-navbar-logo a:hover {
+  color: goldenrod;
 }
 
 .banner-navbar-logo i {
@@ -555,8 +566,9 @@ select {
   border: none;
   outline: none;
   padding: 0 1rem;
-  color: grey;
-  font-family: 'Work Sans', sans-serif;
+  color: #121112;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
   cursor: auto;
 }
 
@@ -577,7 +589,7 @@ select {
 
 .search-result-container {
   position: absolute;
-  top: 3rem;
+  top: 5rem;
   width: 35%;
   max-height: 50vh;
   background-color: silver;
@@ -902,6 +914,7 @@ select {
   transition: all 200ms;
 }
 
+
 .trending,
 .recent-trailer-div,
 .image-carousel-portrait {
@@ -930,6 +943,10 @@ select {
 .recent-trailer-div::-webkit-scrollbar,
 .image-carousel-portrait::-webkit-scrollbar {
   display: none;
+}
+
+.trending-button-container {
+  margin-bottom: 2rem;
 }
 
 .card-container {
@@ -1377,7 +1394,7 @@ select {
 
 .dynamic-details-overview {
   font-family: 'Raleway', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0 0 2rem 0;
   text-align: left;
   font-weight: 300;
@@ -1486,7 +1503,7 @@ select {
 }
 
 .card-movie-extra-image-not-found {
-  height: 6rem;
+  height: 7rem;
   width: 5.5rem;
   /* border: 1px solid white; */
   border-radius: 5px 0 0 5px;
@@ -1876,16 +1893,16 @@ select {
   display: flex;
   width: 100%;
   margin-bottom: 1rem;
-  color: #282726;
+  color: #646264;
   border: 1px solid lightgray;
   padding: 0.5rem;
   border-radius: 5px;
 }
 
 .collection-card:hover {
-  box-shadow: 1px 1px 15px grey;
+  box-shadow: 1px 1px 15px lightgray;
   transition: 200ms;
-  border: 1px solid rgb(165, 165, 165);
+  border: 1px solid lightgrey;
 }
 
 .collection-card img {
@@ -2256,13 +2273,13 @@ select {
         padding-left: 1rem;
     } */
 
-  .banner-navbar {
+  /* .banner-navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 3rem;
     width: 100%;
-  }
+  } */
 
   .banner-navbar-logo {
     display: flex;
@@ -2746,6 +2763,7 @@ select {
 
   .section-zero-mp {
     width: 95%;
+    background-clip: content-box;
   }
 
   .dynamicBG {
@@ -2759,7 +2777,7 @@ select {
   }
 
   .banner-div {
-    height: 85%;
+    height: 80%;
   }
 
   .off-canvas-menu {

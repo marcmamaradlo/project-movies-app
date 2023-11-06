@@ -13,7 +13,6 @@ class MyProvider extends Component {
     // displayComponent: 'main',
     bgSrc: 'https://images.unsplash.com/photo-1454117096348-e4abbeba002c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     apiData: [],
-    trendingData: 'day',
     recentTrailer: 'day',
     // comingSoon: 'movie',
     // popular: 'movie',
@@ -57,10 +56,6 @@ class MyProvider extends Component {
       filteredPerson: c,
       filteredCollection: d,
     });
-    // console.log(this.state.filteredMovies);
-    // console.log(this.state.filteredtv);
-    // console.log(this.state.filteredPerson);
-    // console.log(this.state.filteredCollection);
   }
 
   handleOnBlurEvent = () => { // close the quick search results
@@ -103,7 +98,6 @@ class MyProvider extends Component {
 
   handleSearchButton = () => {
     this.setState({ searchButton: !this.state.searchButton });
-    // console.log(this.state.searchButton);
   }
 
   handleHamburgerIcon = () => {
@@ -126,7 +120,7 @@ class MyProvider extends Component {
   }
 
   handleTVDynamicButton = (e) => {
-    // console.log(e);
+
   }
 
   handleDynamicContentButton = (e) => {
@@ -137,15 +131,9 @@ class MyProvider extends Component {
       dynamicPageData: e.target.name,
       youtubeComponentID: e.target.id,
     });
-    // console.log(this.state.youtubeComponentID)
   }
 
   handlePopOutTrailerButton = (e) => {
-    // console.log(
-    //     'onCLick',
-    //     e.target.name,
-    //     this.state.pageType
-    // );
     this.setState({
       dynamicPageDataID: e.target.id,
       dynamicPageData: 'trailer',
@@ -157,7 +145,6 @@ class MyProvider extends Component {
   }
 
   handlePopOutWatchNowButton = (e) => {
-    // console.log('Watch Now Button', e.target.name);
     this.setState({
       dynamicPageDataID: e.target.name,
       dynamicPageData: 'watch-now',
@@ -186,16 +173,11 @@ class MyProvider extends Component {
   }
 
   handleClosePopOutWindow = () => {
-    // console.log(this.state.searchResult, 'close button');
     this.setState({
       popOutWindow: 'notActive',
       youtubePopOut: false,
       searchResult: false,
     });
-  }
-
-  handleButtonSelector = (e) => {
-    this.setState({ [e.target.name]: e.target.id });
   }
 
   handleMouseEnter = (e) => {
@@ -220,7 +202,7 @@ class MyProvider extends Component {
     const
       {
         state,
-        handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
+        handleMouseEnter, handleMouseLeave, handleClosePopOutWindow,
         handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
         handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
         handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,
@@ -233,7 +215,7 @@ class MyProvider extends Component {
       <MyContext.Provider
         value={{
           state, pageID, bgSrc, apiData, apiKey,
-          handleMouseEnter, handleMouseLeave, handleButtonSelector, handleClosePopOutWindow,
+          handleMouseEnter, handleMouseLeave, handleClosePopOutWindow,
           handlePopOutWindow, handleDisplayComponent, handleYoutubeComponent,
           handlePopOutTrailerButton, handlePopOutWatchNowButton, handleDynamicContentButton,
           handleFakeLinks, handleServerButton, handleHamburgerIcon, handleSearchButton,

@@ -1,4 +1,15 @@
+import { useEffect } from "react";
+
 const CollectionBanner = (props) => {
+
+  const handlePageTitle = () => {
+    return props.name ? document.title = `${props.name}` : null;
+  }
+
+  useEffect(() => {
+    handlePageTitle();
+    // eslint-disable-next-line
+  }, [props.name]);
 
   const collectionBannerStyle = {
     backgroundImage: `url(https://image.tmdb.org/t/p/w780/${props.backdropPath})`,

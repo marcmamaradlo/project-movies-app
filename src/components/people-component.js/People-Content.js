@@ -1,12 +1,18 @@
-// import { useContext } from "react";
-// import { MyContext } from "../../context";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CustomButton from "../reuseable/CustomButton";
 
 const PeopleContent = (props) => {
 
-  // const context = useContext(MyContext);
+  const handlePageTitle = () => {
+    return props.data.name ? document.title = `${props.data.name}` : null;
+  }
+
+  useEffect(() => {
+    handlePageTitle();
+    // eslint-disable-next-line
+  }, [props.data.name]);
+
   const [seeMore, setSeeMore] = useState(false);
   const [actingData, setActingData] = useState('movie');
   const [showAll, setShowAll] = useState(false);
@@ -16,9 +22,7 @@ const PeopleContent = (props) => {
   const movieCrew = props.movie.crew;
   const tvCast = props.tv.cast;
   const tvCrew = props.tv.crew;
-
   const socialMedia = props.socialMedia;
-  // const handleClosePopOutWindow = context.handleClosePopOutWindow;
 
   const relatedMovieCarousel = () => {
     return movieCast
@@ -59,14 +63,6 @@ const PeopleContent = (props) => {
   const handleActingData = (e) => {
     setActingData(e.target.name)
   }
-
-  // const alsoKnownAs = () => {
-  //     return data.also_known_as
-  //         ? data.also_known_as.map((item, index) => (
-  //             <p key={index} className='personal-info-detail'>{item}</p>
-  //         ))
-  //         : null
-  // }
 
   const homepage = () => {
     return data.homepage
@@ -240,10 +236,6 @@ const PeopleContent = (props) => {
               <p className='personal-info-detail'>{data.place_of_birth}</p>
             </div>
             {homepage()}
-            {/* <div className='personal-info-content'>
-                            <p className='personal-info-title'>Also Known As</p>
-                            {alsoKnownAs()}
-                        </div> */}
             {deathDay()}
           </div>
         </div>
@@ -305,11 +297,6 @@ const PeopleContent = (props) => {
                       text={showAll ? 'Show Less' : 'Show All'}
                       style={`custom-button-rounded-active`}
                     />
-                    {/* <button
-                      onClick={handleShowAllButton}
-                    >
-                      {showAll ? 'Show Less' : 'Show All'}
-                    </button> */}
                   </div>
                   : null
                 : null
@@ -327,12 +314,6 @@ const PeopleContent = (props) => {
               </>
               : null
           }
-          {/* <div className='heading'>
-                            <h3>Production</h3>
-                        </div>
-                        <div className='acting-container'>
-                            {actingData === 'movie' ? handleActingMovieCrew() : actingData === 'tv' ? handleActingTVCrew() : null}
-                        </div> */}
         </div>
       </div>
     </div>

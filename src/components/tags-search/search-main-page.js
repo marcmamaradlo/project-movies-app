@@ -10,30 +10,27 @@ const SearchMainPage = () => {
 
   const context = useContext(MyContext);
   const params = useParams();
-  // const handleSearchMenu = context.handleSearchMenu;
-  // const filterMenu = context.state.filterMenu;
   const handleOnBlurEvent = context.handleOnBlurEvent;
-  const state = context.state;
-  // const buttonList = ['movie', 'tv', 'person', 'collection', 'company'];
   const [dataTrendingMovie, setDataTrendingMovie] = useState([]);
   const [dataTrendingTV, setDataTrendingTV] = useState([]);
   const [dataTrendingPerson, setDataTrendingPerson] = useState([]);
   const [userInput, setUserInput] = useState('');
-  // const [filterThisInput, setFilterThisInput] = useState('');
+  const [movieSelector, setMovieSelector] = useState('day');
+  const [tvSelector, setTvSelector] = useState('day');
+  const [personSelector, setPersonSelector] = useState('day');
 
   useEffect(() => {
     getTrendingData(); // eslint-disable-next-line
-  }, []);
+  }, [movieSelector, tvSelector, personSelector]);
 
   async function getTrendingData() {
     const apiKey = '0b6d2ddf9c5e096294fa3534fb357915';
-    const selector = state.trendingData;
     try {
-      const movieData = await axios.get(`https://api.themoviedb.org/3/trending/movie/${selector}?api_key=${apiKey}`);
+      const movieData = await axios.get(`https://api.themoviedb.org/3/trending/movie/${movieSelector}?api_key=${apiKey}`);
       setDataTrendingMovie(movieData.data.results);
-      const tvData = await axios.get(`https://api.themoviedb.org/3/trending/tv/${selector}?api_key=${apiKey}`);
+      const tvData = await axios.get(`https://api.themoviedb.org/3/trending/tv/${tvSelector}?api_key=${apiKey}`);
       setDataTrendingTV(tvData.data.results);
-      const personData = await axios.get(`https://api.themoviedb.org/3/trending/person/${selector}?api_key=${apiKey}`);
+      const personData = await axios.get(`https://api.themoviedb.org/3/trending/person/${personSelector}?api_key=${apiKey}`);
       setDataTrendingPerson(personData.data.results);
     }
     catch (error) {
@@ -41,34 +38,12 @@ const SearchMainPage = () => {
     }
   }
 
-  // const handleButtonNames = () => {
-  //   return buttonList.map((item, index) => (
-  //     <button
-  //       key={index}
-  //       name={item}
-  //       onClick={handleSearchMenu}
-  //       className={item === filterMenu
-  //         ? 'heading-with-navigation-active'
-  //         : 'heading-with-navigation-default'}
-  //     >
-  //       {item === 'person'
-  //         ? 'Person'
-  //         : item === 'tv'
-  //           ? 'TV'
-  //           : `${item.charAt(0).toUpperCase() + item.slice(1)}`}
-  //     </button>
-  //   ))
-  // }
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (userInput === '') {
       return console.log('userInput is empty');
     }
     else {
-      // return setFilterThisInput(userInput);
-      // return window.location.pathname = `/search/${userInput.split(' ').join('%')}`
-      // return window.location.pathname = `/search/${userInput}`
       return params.query = userInput;
     }
   }
@@ -82,7 +57,6 @@ const SearchMainPage = () => {
       <div onMouseDown={handleOnBlurEvent} className='container'>
         <div className='section'>
           <div className='heading'>
-            {/* <i class="fa-solid fa-filter"></i> */}
             <h3>Search Filters</h3>
           </div>
           <div className='filter-container'>
@@ -97,15 +71,13 @@ const SearchMainPage = () => {
               </button>
             </form>
           </div>
-          {/* <SearchContent searchInput={filterThisInput} image={appLogo} /> */}
           <SearchContent image={appLogo} />
         </div>
-        {/* <ImageCarouselPortrait />*/}
       </div >
       <div className='container bg-dark'>
-        <Trending data={dataTrendingMovie} dataType='movie' />
-        <Trending data={dataTrendingTV} dataType='tv' />
-        <Trending data={dataTrendingPerson} dataType='person' />
+        <Trending data={dataTrendingMovie} dataType='movie' action={setMovieSelector} selector={movieSelector} />
+        <Trending data={dataTrendingTV} dataType='tv' action={setTvSelector} selector={tvSelector} />
+        <Trending data={dataTrendingPerson} dataType='person' action={setPersonSelector} selector={personSelector} />
       </div>
     </>
   )

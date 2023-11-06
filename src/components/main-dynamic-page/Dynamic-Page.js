@@ -20,19 +20,16 @@ const DynamicPage = () => {
   const [dynamicData, setDynamicData] = useState([]);
   const [dynamicKeywords, setDynamicKeywords] = useState([]);
   const [similarData, setSimilarData] = useState([]);
+
   // extra details start //
   const [poster, setPoster] = useState([]);
-  // console.log(poster);
   const [video, setVideo] = useState([]);
   // exttra details end //
+
   const state = context.state;
   const apiKey = state.apiKey;
   const dynamicPageDataID = state.dynamicPageDataID;
   const dynamicPageData = state.dynamicPageData;
-  // const serverButtonID = state.serverButtonID;
-  // const dropDownMenu = state.dropDownMenu;
-  // const handleServerButton = context.handleServerButton;
-  // const serverButtonName = ['server01', 'server02', 'server03', 'server04',];
 
   useEffect(() => {
     getDynamicPageData(); // eslint-disable-next-line
@@ -40,7 +37,6 @@ const DynamicPage = () => {
 
   async function getDynamicPageData() {
     try {
-      // const selector = dropDownMenu;
       const dataDetailes = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${apiKey}&append_to_response=credits`);
       setDynamicData(dataDetailes.data);
       const dataKeywords = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/keywords?api_key=${apiKey}`);
@@ -56,23 +52,6 @@ const DynamicPage = () => {
       console.log(error);
     }
   }
-
-  // const handleServerButtons = () => {
-  //     return serverButtonName.map((item, index) => (
-  //         <button
-  //             key={index}
-  //             className={
-  //                 serverButtonID === item
-  //                     ? 'server-button-active'
-  //                     : 'server-button-default'
-  //             }
-  //             onClick={handleServerButton}
-  //             id={item}
-  //         >
-  //             {`Server ${index + 1}`}
-  //         </button>
-  //     ))
-  // }
 
   return (
     <>

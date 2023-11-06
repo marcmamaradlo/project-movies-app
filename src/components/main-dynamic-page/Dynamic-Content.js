@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../../context";
 import { Link } from "react-router-dom";
 import { getLangNameFromCode } from "language-name-map";
@@ -6,6 +6,18 @@ import CustomButton from "../reuseable/CustomButton";
 
 
 const DynamicContent = ({ data, keywords }) => {
+
+  const handlePageTitle = () => {
+    return data.title ? document.title = `${data.title} ${data.release_date.split('-')[0]}` : null;
+  }
+
+  useEffect(() => {
+    handlePageTitle();
+    // eslint-disable-next-line
+  }, [data, keywords]);
+
+
+
   const context = useContext(MyContext);
   const handleDynamicContentButton = context.handleDynamicContentButton;
   const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);

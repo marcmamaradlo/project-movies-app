@@ -1,24 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { useContext } from 'react';
-// import { MyContext } from '../../context';
 import YouTube from 'react-youtube';
 import noImageFound from '../../assets/tv-natin.to-removebg-preview.png'
 import CustomButton from '../reuseable/CustomButton';
+// import CustomButton, { ButtonRounded, ButtonSquared, ButtonLink } from '../reuseable/CustomButton';
 
 const DynamicExtraDetails = ({ fullCast, poster, video }) => {
-
-  // console.log('FullCast', fullCast.cast);
-  // console.log('Poster', poster);
-  // console.log('Video', video);
 
   useEffect(() => {
     setShowMore(false);
   }, [])
 
-  // const context = useContext(MyContext);
-  // const state = context.state;
   const [buttonActive, setButtonActive] = useState('cast'); //'cast','poster','video',
   const [showMore, setShowMore] = useState(false);
 
