@@ -43,7 +43,19 @@ class MyProvider extends Component {
     filteredCollection: 0,
     customButton: 'Custom Button Action',
     customCardHorizontal: 'Custom Card Horizontal',
+    pageHistory: [],
   }
+
+  // handlePageHistory = (e) => {
+  //   const pageHistory = this.state.pageHistory;
+  //   if (pageHistory.length < 5) {
+  //     pageHistory.push(e);
+  //     localStorage.setItem('pageHistory', JSON.stringify(pageHistory));
+  //     console.log(pageHistory);
+  //   } else {
+  //     console.log('History.Length > 20');
+  //   }
+  // }
 
   showItemFilterMenu = (e) => {
     this.setState({ filterMenu: e });

@@ -1,11 +1,31 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../context";
 import { Link } from "react-router-dom";
 import { getLangNameFromCode } from "language-name-map";
 import CustomButton from "../reuseable/CustomButton";
+// import JSON from './sample.json';
 
 
 const DynamicContent = ({ data, keywords }) => {
+
+  const [history, setHistory] = useState([]);
+  console.log(history);
+  const context = useContext(MyContext);
+  const handleDynamicContentButton = context.handleDynamicContentButton;
+  const handlePageHistory = context.handlePageHistory;
+
+  // console.log(data.title);
+  // console.log(data.id);
+  // console.log(data.poster_path);
+  // console.log(document.URL.split('/')[3]);
+
+  const historyArray = {
+    title: data.title,
+    id: data.id,
+    image: data.poster_path,
+    dataType: document.URL.split('/')[3],
+  };
+  console.log(historyArray);
 
   const handlePageTitle = () => {
     return data.title ? document.title = `${data.title} ${data.release_date.split('-')[0]}` : null;
@@ -13,13 +33,14 @@ const DynamicContent = ({ data, keywords }) => {
 
   useEffect(() => {
     handlePageTitle();
+    setHistory(historyArray);
     // eslint-disable-next-line
-  }, [data, keywords]);
+  }, []);
 
+  useEffect(() => {
+    handlePageHistory(history); // eslint-disable-next-line
+  }, [data.title]);
 
-
-  const context = useContext(MyContext);
-  const handleDynamicContentButton = context.handleDynamicContentButton;
   const releaseData = (data.release_date ? data.release_date.split('-')[0] : data.release_date);
   const getLanguage = (data.original_language ? getLangNameFromCode(data.original_language).name : data.original_language)
   const genres = data.genres;
@@ -67,8 +88,6 @@ const DynamicContent = ({ data, keywords }) => {
   const handleTitle = () => {
     return data.title ? data.title : data.original_title;
   }
-
-  // handleCastArtist();
 
   return (
     <>

@@ -421,7 +421,7 @@ select {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  box-shadow: 1px 1px 10px 1px lightgray;
+  box-shadow: 0px 0px 0px 0px lightgray;
 }
 
 .filter-container input {
@@ -441,18 +441,19 @@ select {
 
 .filter-container button {
   width: 10rem;
-  height: 2.35rem;
+  height: 2.485rem;
   margin-right: auto;
-  border: 1px solid lightgrey;
+  border: 2px solid lightgrey;
   border-radius: 0 5px 5px 0;
-  outline: 1px solid lightgrey;
+  /* outline: 1px solid lightgrey; */
+  outline: none;
   color: grey;
 }
 
 .filter-container button:hover {
   color: #282726;
   background-color: gray;
-  outline: 1px solid grey;
+  /* outline: 1px solid grey; */
   transition: 300ms;
 }
 
@@ -970,13 +971,13 @@ select {
   cursor: pointer;
 }
 
-.card-container-img img:hover {
+/* .card-container-img img:hover {
   transform: scale(1.01);
   transition: 200ms;
   box-shadow: 1px 10px 5px 1px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 10px 5px 1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 10px 5px 1px rgba(0, 0, 0, 0.5);
-}
+} */
 
 /* .card-container-title {} */
 

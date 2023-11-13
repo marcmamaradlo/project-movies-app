@@ -58,6 +58,7 @@ const SearchMainPage = () => {
         <div className='section'>
           <div className='heading'>
             <h3>Search Filters</h3>
+            <h4>if no search result, type anything in Quick Search</h4>
           </div>
           <div className='filter-container'>
             <form onSubmit={handleFormSubmit}>
