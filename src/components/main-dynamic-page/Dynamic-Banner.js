@@ -6,37 +6,32 @@ import YoutubePlayerTrailer from "./Video-Player-Trailer";
 // import BannerNavbar from "../navbar/Banner-Navbar";
 
 const DynamicBanner = ({ data }) => {
+  const params = useParams();
+  const context = useContext(MyContext);
+  const state = context.state;
+  const wallpapper = data.backdrop_path;
+  const dynamicBannerBackground = {
+    backgroundImage: `url(https://image.tmdb.org/t/p/original${wallpapper})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "80vh",
+  };
 
-    const params = useParams();
-    const context = useContext(MyContext);
-    const state = context.state;
-    const wallpapper = data.backdrop_path;
-    const dynamicBannerBackground = {
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${wallpapper})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+  const showDisplay = () => {
+    if (state.dynamicPageData === "trailer") {
+      return <YoutubePlayerTrailer />;
     }
-
-    const showDisplay = () => {
-        if (state.dynamicPageData === 'trailer') {
-            return <YoutubePlayerTrailer />
-        }
-        if (state.dynamicPageData === 'watchNow') {
-            return <VideoPlayer videoID={params.id} />
-        }
+    if (state.dynamicPageData === "watchNow") {
+      return <VideoPlayer videoID={params.id} />;
     }
+  };
 
-    return (
-        <div
-            className='dynamic-banner'
-            style={{ ...dynamicBannerBackground }}
-        >
-            <div className='dynamic-banner-div'>
-                {showDisplay()}
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="dynamic-banner" style={{ ...dynamicBannerBackground }}>
+      <div className="dynamic-banner-div">{showDisplay()}</div>
+    </div>
+  );
+};
 
 export default DynamicBanner;

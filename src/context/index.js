@@ -44,6 +44,7 @@ class MyProvider extends Component {
     customButton: "Custom Button Action",
     customCardHorizontal: "Custom Card Horizontal",
     pageHistory: [],
+    quickSearch: "",
   };
 
   handlePageHistory = (e) => {
@@ -51,7 +52,7 @@ class MyProvider extends Component {
     if (pageHistory.length < 5) {
       pageHistory.push(e);
       localStorage.setItem("pageHistory", JSON.stringify(pageHistory));
-      console.log(pageHistory);
+      // console.log(pageHistory);
     } else {
       console.log("History.Length > 20");
     }
@@ -206,7 +207,7 @@ class MyProvider extends Component {
   };
 
   render() {
-    const { pageID, bgSrc, apiData, apiKey } = this.state;
+    const { pageID, bgSrc, apiData, apiKey, filterMenu } = this.state;
 
     const {
       state,
@@ -244,6 +245,7 @@ class MyProvider extends Component {
           bgSrc,
           apiData,
           apiKey,
+          filterMenu,
           handleMouseEnter,
           handleMouseLeave,
           handleClosePopOutWindow,

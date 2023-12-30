@@ -7,15 +7,9 @@ import CustomButton from "../reuseable/CustomButton";
 
 const DynamicContent = ({ data, keywords }) => {
   const [history, setHistory] = useState([]);
-  console.log(history);
   const context = useContext(MyContext);
   const handleDynamicContentButton = context.handleDynamicContentButton;
   const handlePageHistory = context.handlePageHistory;
-
-  // console.log(data.title);
-  // console.log(data.id);
-  // console.log(data.poster_path);
-  // console.log(document.URL.split('/')[3]);
 
   const historyArray = {
     title: data.title,
@@ -23,7 +17,6 @@ const DynamicContent = ({ data, keywords }) => {
     image: data.poster_path,
     dataType: document.URL.split("/")[3],
   };
-  console.log(historyArray);
 
   const handlePageTitle = () => {
     return data.title
@@ -61,7 +54,6 @@ const DynamicContent = ({ data, keywords }) => {
     return keywords
       ? keywords.map((item) => (
           <li key={item.id}>
-            {/* {console.log(item.id)} */}
             <Link
               to={`/search/${item.name}`}
               id={item.id}
